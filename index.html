@@ -35,7 +35,7 @@ h2{margin:35px;}
 <br>
 <!--https://i.pinimg.com/originals/2d/31/a0/2d31a050c2b57098b66d936ba55814e9.jpg;https://dxgh891opzso3.cloudfront.net/files/5/9/6/9/2/shutterstock_1045743757.jpg?height=2000&width=3000;https://www.paulmunnsinstantlawn.com.au/assets/marketing/60.jpg?1585023264-->
 <h1>Sourjya Basu</h1>
-<p>I am a boy from Surat,Gujarat,India.Who loves PROGRAMMING.<strong>I can make websites and apps for you at very cheap price.</strong></p>
+<p>I am a boy from Surat,Gujarat,India.Who loves PROGRAMMING.<strong>I can make websites and apps for you at very cheap price.</strong>For website,apps and IT solutions(software) at very cheap price about <b>(94USD OR 6999Rs or even less price for 3year)</b>visit my website below...</p>
 <div class="w3-container;w3-panel w3-win8-lime">
 <h2>Contact Me Via Phone</h2>
 <p>For calling <a href="tel:6352470266">+91 635 247 0266</a> For SMS <a href="SMS:6352470266">+91 635 247 0266</a></p>
@@ -45,7 +45,53 @@ h2{margin:35px;}
 <p>Send email to <a href="mailto:sourjyabose@gmail.com?subject=Mail from website">sourjyabose@gmail.com</a></p>
 </div> 
 </div>
+<center><canvas id="myCanvas" width="615" height="30"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the canvas element.
+</canvas></center>
+</p>
 
+<script>
+var x=0;
+const canvas = document.getElementById("myCanvas");
+
+const ctx = canvas.getContext("2d");
+
+var msg="Phone No:+91 6352470266 & Email:sourjyabose@gmail.com";
+
+function i1(pqr){
+x+=pqr;
+
+
+}
+
+
+function draw(){
+
+ctx.beginPath(); 
+
+ctx.font = "10px Arial";
+
+ctx.fillText(msg,x,canvas.height/2);
+
+ctx.fillStyle = "red";
+
+
+
+
+}
+function call(){
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+function g(){
+
+i1(10);
+if(x>canvas.width){x=0;}
+draw();
+setTimeout(call,100);
+}
+setInterval(g,101);
+</script>
 
 
 
