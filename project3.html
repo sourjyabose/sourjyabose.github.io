@@ -1,0 +1,80 @@
+<title>Basic Canvas</title>
+<body style="background-color:black;color:white;">
+<center><canvas id="myCanvas" width="615" height="30"
+style="border:1px solid #d3d3d3;height:auto;width:100%;background-color:blue;">
+Your browser does not support the canvas element.
+</canvas><br><p id="speed"></p></center>
+</p>
+
+<script>
+
+var axz=0;
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    switch (e.keyCode) {
+case 38:
+break;
+case 40:
+break;
+case 37:
+axz-=1;
+break;
+case 39:
+axz+=1;
+break;
+    }
+
+}
+const canvas = document.getElementById("myCanvas");
+
+const ctx = canvas.getContext("2d");
+
+var msg="[OOO]=[OOO]=[OOO]=[OOO]=[OOO]={XXX}";
+var x=canvas.width/2;
+function i1(pqr){
+x+=pqr;
+
+
+}
+
+
+function draw(){
+
+
+
+ctx.font = "10px Arial";
+
+ctx.strokeText(msg,x,canvas.height/2);
+
+ctx.strokeStyle = "white";
+
+
+
+
+}
+
+function call(){
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+var printSpeed;
+function g(){
+if(axz>0){printSpeed="Moving Right by "+axz*10+"pixels/seconds";}
+else if(0>axz){printSpeed="Moving Left by "+axz*-10+"pixels/seconds";}
+else if(axz>0){printSpeed="Moving Right by "+axz*10+"pixels/seconds";}
+else if(axz==0){printSpeed="Moving Left/Right by 0pixels/seconds";}
+else{printSpeed="<p style='color:red;'><strong>ERROR</strong></p>";}
+i1(axz);
+if(x>canvas.width){x=0;}
+if(x<0){x=canvas.width;}
+
+document.getElementById('speed').innerHTML=printSpeed;
+draw();
+setTimeout(call,90);
+
+}
+setInterval(g,100);
+</script>
