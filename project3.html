@@ -68,8 +68,8 @@ else if(axz>0){printSpeed="Moving Right by "+axz*10+"pixels/seconds";}
 else if(axz==0){printSpeed="Moving Left/Right by 0pixels/seconds<br><br>Click here to start";}
 else{printSpeed="<p style='color:red;'><strong>ERROR</strong></p>";}
 i1(axz);
-if(x>canvas.width){x=0;}
-if(x<0){x=canvas.width;}
+if(x>canvas.width){x=-280;}
+if(x+280<0){x=canvas.width;}
 
 document.getElementById('speed').innerHTML=printSpeed;
 draw();
@@ -78,3 +78,4 @@ setTimeout(call,90);
 }
 setInterval(g,100);
 </script>
+
