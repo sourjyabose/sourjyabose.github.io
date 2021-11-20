@@ -1,7 +1,7 @@
 export function typi(writer){
 var str=writer;
 var l=str.length;
-i=1;
+let i=1;
 var inter=setInterval(function(){
 if(i==l){clearInterval(inter);}
 
