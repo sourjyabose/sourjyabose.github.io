@@ -1,4 +1,4 @@
-function typi(writer){
+export function typi(writer){
 var str=writer;
 var l=str.length;
 i=1;
