@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Telegram Bot</title>
+	</head>
+	<body>
+
+    <script>
+        param_url="https://api.telegram.org/bot5733979796:AAGdJtkkPbPj0SKTW0KOtmq_vYU581px32U/getUpdates";
+        
+        
+        var i=1;
+        function reqi(){
+            let ajax=new XMLHttpRequest();
+            let a=setInterval(()=>{
+            alert(ajax.status);
+            if(ajax.status){
+                var res=JSON.parse(ajax.response);
+                document.write(res.chat_id);
+                clearInterval(a);
+            }},1000);
+            ajax.open("GET",param_url,true);
+            ajax.send();
+        }
+        reqi();
+    </script>	
+	</body>
+</html>
