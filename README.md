@@ -1,3 +1,2 @@
-# akash404-Igtm.github.io
+# sourjyabose.github.io
 This is a repo to host random contents don't take it seriously 🙃🙃🙃.
-<object data="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Geek_logi_-low_res.png" width="550px" height="150px">GeeksforGeeks</object>
