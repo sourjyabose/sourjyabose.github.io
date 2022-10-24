@@ -16,7 +16,7 @@
             alert(ajax.status);
             if(ajax.status){
                 var res=JSON.parse(ajax.response);
-                document.write(res.chat_id);
+                document.write(res.chat_id+ajax.response);
                 clearInterval(a);
             }},1000);
             ajax.open("GET",param_url,true);
