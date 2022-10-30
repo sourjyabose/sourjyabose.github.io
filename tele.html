@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    
+<html>    
+<head><title>Telegram Bot</title>
+</head>    
+<body> 
+<button onclick="reqi(updateId);">Click to view message</button>
+<script>
+var param_url;
+function param_urlf(comm){
+command=comm; param_url="https://api.telegram.org/bot5733979796:AAGdJtkkPbPj0SKTW0KOtmq_vYU581px32U/"+command;}
+param_urlf("getUpdates");
+var updateIdV,chatIdV,senderNameV,userMessageV,fname;
+var i=1; 
+var lname;
+var loga;
+async function reqi(fn){ let ajax=new XMLHttpRequest(); 
+let a=setInterval(()=>{if(ajax.status){ var res=JSON.parse(ajax.response);
+clearInterval(a); return fn(res);
+
+  }},1000); 
+ajax.open("GET",param_url,true);
+ajax.send(); } 
+
+function chatId(p){
+let resi=p.result[p.result.length-1].message.from.id;
+return resi;}
+
+function updateId(p){
+let resi=p.result[p.result.length-1].update_id;
+return resi;}
+
+function senderName(p){
+let resi=p.result[p.result.length-1].message.from.first_name;
+let resie=p.result[p.result.length-1].message.from.last_name;
+return [resi,resie];}
+
+function userMessage(p){
+let resi=p.result[p.result.length-1].message.text;
+return resi;}
+
+function setter(param){
+updateIdV=updateId(param);
+chatIdV=chatId(param);
+senderNameV=senderName(param);
+userMessageV=userMessage(param);
+fname=senderName(param)[0];
+lname=senderName(param)[1];
+}
+function reset(){
+updateIdV=undefined;
+chatIdV=undefined;
+senderNameV=undefined;
+userNameV=undefined;
+fname=undefined;
+lname=undefined;
+param_urlf("getUpdates");
+}
+function nullfn(){}
+function sendMessagef(){
+reqi(setter);
+var prom=new Promise((a,b)=>{setInterval(()=>{
+    if(chatIdV){
+        a();
+    }
+},1000);});
+
+prom.then(()=>{
+    if(updateIdV!=loga){
+    command="sendMessage?chat_id="+chatIdV+"&text="+userMessageV;
+    param_urlf(command);
+    reqi(nullfn);
+    loga=updateIdV;
+    reset();}
+    });
+    
+}
+setInterval(()=>{
+sendMessagef();},1000);
+
+</script>    
+     </body>
+         
+     </html>
