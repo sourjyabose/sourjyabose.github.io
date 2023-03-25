@@ -4,6 +4,7 @@ on:
       - cron: "*/1 * * * *"
   
 jobs:
+desmos:
 runs-on: ubuntu-latest
 steps:
 - run: echo $(date) >>a.txt
