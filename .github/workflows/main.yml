@@ -1,0 +1,9 @@
+name: hello world
+on:
+  schedule:
+      cron: "*/1 * * * *"
+  
+jobs:
+runs-on: ubuntu-latest
+steps:
+run: echo $(date) >>a.txt
