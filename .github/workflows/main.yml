@@ -2,7 +2,7 @@ name: hello world
 run-name: dd
 on:
   schedule:
-      - cron: "*/1 * * * *"
+      - cron: '*/5 * * * *'
   
 jobs:
   desmos:
