@@ -1,0 +1,1741 @@
+<body  style="background-color:black;color:white;"><script>alert("Terminal_snap_shared by S.Basu");setInterval(()=>{alert("Terminal_snap_shared by Basu;");},60000);</script><pre>
+SQL>create table employee_adarsh_raj (emp_name varchar (50),street varchar (100),city varchar (50));
+values('p07865','jeans',5,'piece',100,20,750,500);
+insert into product_akarsQuery OK, 0 rows affected (0.05 sec)
+
+SQL>insert into employee_adarsh_raj values('adam','spring','pittsfield');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into employee_adarsh_raj values('brooks','senator', 'brooklyn');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into employee_adarsh_raj values('curry','north', 'rye');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into employee_adarsh_raj values('demalo','sunshine','san deago');
+7Query OK, 1 row affected (0.01 sec)
+
+SQL>select * from employee_adarsh_raj;
++----------+----------+------------+
+| emp_name | street   | city       |
++----------+----------+------------+
+| adam     | spring   | pittsfield |
+| brooks   | senator  | brooklyn   |
+| curry    | north    | rye        |
+| demalo   | sunshine | san deago  |
++----------+----------+------------+
+4 rows in set (0.00 sec)
+
+SQL>
+3SQL>
+SQL>create table work_adarsh_raj (empname varchar (50),cmpname varchar (50),salary numeric (12));
+Query OK, 0 rows affected (0.08 sec)
+
+SQL>insert into work_adarsh_raj values ('adam', 'fbc', 20000);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into work_adarsh_raj values ('brooks', 'mbc', 30000);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into work_adarsh_raj values('curry', 'sbc', 10000);
+Query OK, 1 row affected (0.02 sec)
+
+SQL>select * from work_adarsh_raj;
++---------+---------+--------+
+| empname | cmpname | salary |
++---------+---------+--------+
+| adam    | fbc     |  20000 |
+| brooks  | mbc     |  30000 |
+| curry   | sbc     |  10000 |
++---------+---------+--------+
+3 rows in set (0.00 sec)
+
+SQL>
+ SQL>
+nSQL>create table company_adarsh_raj ( cmpname varchar (50),city varchar (50));
+adarsh_raj valuQuery OK, 0 rows affected (0.07 sec)
+
+SQL>insert into company_adarsh_raj values(cmpname, city);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into company_adarsh_raj values ('fbc', 'pittsfield');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into company_adarsh_raj values('mbc', 'brooklyn');
+Query OK, 1 row affected (0.02 sec)
+
+SQL>insert into company_adarsh_raj values('sbc', 'rye');
+ai','400032','maharashtra',3000,200,100,'good');Query OK, 1 row affected (0.00 sec)
+
+SQL>select * from company_adarsh_raj;
++---------+------------+
+| cmpname | city       |
++---------+------------+
+| NULL    | NULL       |
+| fbc     | pittsfield |
+| mbc     | brooklyn   |
+| sbc     | rye        |
++---------+------------+
+4 rows in set (0.00 sec)
+
+SQL>
+SQL>
+lSQL>create table manager_adarsh_raj (empname varchar (50), manname varchar (50));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into manager_adarsh_raj values('adam', 'smith');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into manager_adarsh_raj values('brooks', 'jones');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into manager_adarsh_raj values('curry', 'hayes');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>select * from manager_adarsh_raj;
++---------+---------+
+| empname | manname |
++---------+---------+
+| adam    | smith   |
+| brooks  | jones   |
+| curry   | hayes   |
++---------+---------+
+3 rows in set (0.01 sec)
+
+SQL>
+SQL>
+SQL>create table sailors_adarsh_raj ( sid numeric (12),sname varchar (50),rating int,age numeric (10));
+Query OK, 0 rows affected (0.05 sec)
+
+SQL>insert into values_adarsh_raj (29, 'brutus', 1, 33.0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '29, 'brutus', 1, 33.0)' at line 1
+SQL>insert into sailors_adarsh_raj values (31, 'lubber', 8, 55.5);
+eQuery OK, 1 row affected, 1 warning (0.01 sec)
+
+SQL>insert into sailors_adarsh_raj values (32, 'andy', 8, 25.5);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+SQL>insert into sailors_adarsh_raj values (58, 'rusty', 10, 35.0);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into sailors_adarsh_raj values (64, 'horatio', 7, 35.0);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into sailors_adarsh_raj values (71, 'zebra', 10, 16.0);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into sailors_adarsh_raj values (74, 'horatio', 9, 35.0);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into sailors_adarsh_raj values (85, 'art', 3, 25.5);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+SQL>insert into sailors_adarsh_raj values (95, 'bob', 3, 63.5);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+SQL>select * from sailors_adarsh_raj;
++------+---------+--------+------+
+| sid  | sname   | rating | age  |
++------+---------+--------+------+
+|   31 | lubber  |      8 |   56 |
+|   32 | andy    |      8 |   26 |
+|   58 | rusty   |     10 |   35 |
+|   64 | horatio |      7 |   35 |
+|   71 | zebra   |     10 |   16 |
+|   74 | horatio |      9 |   35 |
+|   85 | art     |      3 |   26 |
+|   95 | bob     |      3 |   64 |
++------+---------+--------+------+
+8 rows in set (0.00 sec)
+
+SQL>
+SQL>
+lSQL>create table reserves_adarsh_raj (sid numeric (10),bid numeric (10),day varchar (50));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into reserves_adarsh_raj values (22, 101, '10-oct-98');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into reserves_adarsh_raj values(22, 102, '10-oct-98');
+Query OK, 1 row affected (0.02 sec)
+
+SQL>insert into reserves_adarsh_raj values(22, 103, '10-aug-98');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into reserves_adarsh_raj values(22, 104, '10-jul-98');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into reserves_adarsh_raj values(31, 102, '11-oct-98');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into reserves_adarsh_raj values(31, 103, '11-jun-98');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into reserves_adarsh_raj values(31, 104, '11-dec-98');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into reserves_adarsh_raj values(64, 101, '9-may-98');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into reserves_adarsh_raj values(64, 102, '9-aug-98');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into reserves_adarsh_raj values(74, 103, '9-aug-98');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select * from reserves_adarsh_raj;
++------+------+-----------+
+| sid  | bid  | day       |
++------+------+-----------+
+|   22 |  101 | 10-oct-98 |
+|   22 |  102 | 10-oct-98 |
+|   22 |  103 | 10-aug-98 |
+|   22 |  104 | 10-jul-98 |
+|   31 |  102 | 11-oct-98 |
+|   31 |  103 | 11-jun-98 |
+|   31 |  104 | 11-dec-98 |
+|   64 |  101 | 9-may-98  |
+|   64 |  102 | 9-aug-98  |
+|   74 |  103 | 9-aug-98  |
++------+------+-----------+
+10 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table boats_adarsh_raj (bid numeric(20),bname varchar(20),color varchar(20));
+Query OK, 0 rows affected (0.05 sec)
+
+SQL>insert into boats_adarsh_raj values ('101','interlake','blue');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into boats_adarsh_raj values ('102','interlake','red');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into boats_adarsh_raj values ('103','clipper','green');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into boats_adarsh_raj values ('104','marine','red');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select * from boats_adarsh_raj;
++------+-----------+-------+
+| bid  | bname     | color |
++------+-----------+-------+
+|  101 | interlake | blue  |
+|  102 | interlake | red   |
+|  103 | clipper   | green |
+|  104 | marine    | red   |
++------+-----------+-------+
+4 rows in set (0.00 sec)
+
+SQL>
+rSQL>
+SQL>create table client_adarsh_raj (cl_no varchar(10), name varchar (50),city varchar (50),pincode varchar (10),state varchar(50),baldue numeric(10));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into client_adarsh_raj values ('c00001','ivanbayross','mumbai','400054','maharashtra',15000);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into client_adarsh_raj values ('c00002','mamtamuzumdar','madras','780001','tamilnadu',100);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into client_adarsh_raj values ('c00003','chhayabankar','mumbai','400057','maharashtra',5000);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into client_adarsh_raj values ('c00004','ashwinijoshi','bangalore','560001','karnataka',500);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into client_adarsh_raj values ('c00005','hanselcolaco','mumbai','400060','maharashtra',2000);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into client_adarsh_raj values ('c00006','deepaksharma','mangalore','560050','karnataka',1000);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select*from client_adarsh_raj;
++--------+---------------+-----------+---------+-------------+--------+
+| cl_no  | name          | city      | pincode | state       | baldue |
++--------+---------------+-----------+---------+-------------+--------+
+| c00001 | ivanbayross   | mumbai    | 400054  | maharashtra |  15000 |
+| c00002 | mamtamuzumdar | madras    | 780001  | tamilnadu   |    100 |
+| c00003 | chhayabankar  | mumbai    | 400057  | maharashtra |   5000 |
+| c00004 | ashwinijoshi  | bangalore | 560001  | karnataka   |    500 |
+| c00005 | hanselcolaco  | mumbai    | 400060  | maharashtra |   2000 |
+| c00006 | deepaksharma  | mangalore | 560050  | karnataka   |   1000 |
++--------+---------------+-----------+---------+-------------+--------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table product_adarsh_raj ( pr_no varchar (10), dscr varchar(50),profit int,unit varchar(10), qty int,reorder_lvl int,sell_price int,cost_price int);
+Query OK, 0 rows affected (0.05 sec)
+
+SQL>insert into product_adarsh_raj values('p00001','t-shirts',5,'piece',200,50,350,250);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p0345','shirts',6,'piece',150,50,500,350);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p06734','cottonjeans',5,'piece',100,20,60, 450);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p07865','jeans',5,'piece',100,20,750,500);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p07868','trousers',2,'piece',150,50,850,550);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p07885','pullovers',3,'piece',80, 30,700,450);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p07965','denimshirts',4,'piece',100,40,350, 250);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p07975','lycratops',5,'piece',70,30,300,175);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into product_adarsh_raj values('p08865','skirts',5,'piece',75,30,450, 300);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select*from product_adarsh_raj;
++--------+-------------+--------+-------+------+-------------+------------+------------+
+| pr_no  | dscr        | profit | unit  | qty  | reorder_lvl | sell_price | cost_price |
++--------+-------------+--------+-------+------+-------------+------------+------------+
+| p00001 | t-shirts    |      5 | piece |  200 |          50 |        350 |        250 |
+| p0345  | shirts      |      6 | piece |  150 |          50 |        500 |        350 |
+| p06734 | cottonjeans |      5 | piece |  100 |          20 |         60 |        450 |
+| p07865 | jeans       |      5 | piece |  100 |          20 |        750 |        500 |
+| p07868 | trousers    |      2 | piece |  150 |          50 |        850 |        550 |
+| p07885 | pullovers   |      3 | piece |   80 |          30 |        700 |        450 |
+| p07965 | denimshirts |      4 | piece |  100 |          40 |        350 |        250 |
+| p07975 | lycratops   |      5 | piece |   70 |          30 |        300 |        175 |
+| p08865 | skirts      |      5 | piece |   75 |          30 |        450 |        300 |
++--------+-------------+--------+-------+------+-------------+------------+------------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table salesman_adarsh_raj (sl_no varchar (10),name varchar(50),add1 varchar(50),add2 varchar(50),city varchar(50),pin varchar(10),state varchar(50), amt numeric,tgt numeric,sales numeric,rem varchar(50));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into salesman_adarsh_raj values('s00001', 'aman', 'a/14','worli', 'mumbai', '400002','maharashtra',3000,100,50,'good');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesman_adarsh_raj values('s00003','raj','p- 7','bandra','mumbai','400032','maharashtra',3000,200,100,'good');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesman_adarsh_raj values('s00004','ashish','a/5','juhu','mumbai','400044','maharashtra',3500,200,150, 'good');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select*from salesman_adarsh_raj;
++--------+--------+------+--------+--------+--------+-------------+------+------+-------+------+
+| sl_no  | name   | add1 | add2   | city   | pin    | state       | amt  | tgt  | sales | rem  |
++--------+--------+------+--------+--------+--------+-------------+------+------+-------+------+
+| s00001 | aman   | a/14 | worli  | mumbai | 400002 | maharashtra | 3000 |  100 |    50 | good |
+| s00003 | raj    | p- 7 | bandra | mumbai | 400032 | maharashtra | 3000 |  200 |   100 | good |
+| s00004 | ashish | a/5  | juhu   | mumbai | 400044 | maharashtra | 3500 |  200 |   150 | good |
++--------+--------+------+--------+--------+--------+-------------+------+------+-------+------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table salesorder_adarsh_raj (od_no varchar(10),cl_no varchar(10),o_dat date, sl_no varchar (10), d_type varchar (1), bill varchar (1), d_dat date,status varchar (50));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into salesorder_adarsh_raj values('o19001','c00001',date'2004-06-12','s00001','f','n',date'2004-07-20','inprocess');
+meQuery OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_adarsh_raj values('o19002','c00002',date'2004-06-25','s00002','p','n',date'2004-06-27','cancelled');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_adarsh_raj values('o46865','c00003',date'2004-02-18','s00003','f','y',date'2004-02-20', 'fulfilled');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_adarsh_raj values('o19003','c00001',date'2004-04-03','s00001','f','y',date'2004-04-07', 'fulfilled');
+Query OK, 1 row affected (0.01 sec)
+
+
+SQL>insert into salesorder_adarsh_raj values('o19008','c00005',date'2004-05-24','s00004','f','n',date'2004-07-26','inprocess');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select*from salesorder_adarsh_raj;
++--------+--------+------------+--------+--------+------+------------+-----------+
+| od_no  | cl_no  | o_dat      | sl_no  | d_type | bill | d_dat      | status    |
++--------+--------+------------+--------+--------+------+------------+-----------+
+| o19001 | c00001 | 2004-06-12 | s00001 | f      | n    | 2004-07-20 | inprocess |
+| o19002 | c00002 | 2004-06-25 | s00002 | p      | n    | 2004-06-27 | cancelled |
+| o46865 | c00003 | 2004-02-18 | s00003 | f      | y    | 2004-02-20 | fulfilled |
+| o19003 | c00001 | 2004-04-03 | s00001 | f      | y    | 2004-04-07 | fulfilled |
+| o19008 | c00005 | 2004-05-24 | s00004 | f      | n    | 2004-07-26 | inprocess |
++--------+--------+------------+--------+--------+------+------------+-----------+
+5 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table salesorder_details_adarsh_raj (od_no varchar (10), pr_no varchar (10),qty_order numeric(10),qty_disp numeric(10),rate numeric(10));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19001','p00001',4,4,525);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19001','p07965',2,1,8400);
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19001','p07885',2,1,5250);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19002','p00001',10,0,525);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o46865','p07868',3,3,3150);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o46865','p07885',3,1,5250);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o46865','p00001',10,10, 525);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o46865','p0345',4,4,1050);
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19003','p0345',2,2,1050);
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19003','p06734',1,1,12000);
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o46866','p07965',1,0,8400);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o46866','p07975',1,0,1050);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19008','p00001',10,5,525);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into salesorder_details_adarsh_raj values('o19008','p07975',5,3,1050);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select*from salesorder_details_adarsh_raj;
++--------+--------+-----------+----------+-------+
+| od_no  | pr_no  | qty_order | qty_disp | rate  |
++--------+--------+-----------+----------+-------+
+| o19001 | p00001 |         4 |        4 |   525 |
+| o19001 | p07965 |         2 |        1 |  8400 |
+| o19001 | p07885 |         2 |        1 |  5250 |
+| o19002 | p00001 |        10 |        0 |   525 |
+| o46865 | p07868 |         3 |        3 |  3150 |
+| o46865 | p07885 |         3 |        1 |  5250 |
+| o46865 | p00001 |        10 |       10 |   525 |
+| o46865 | p0345  |         4 |        4 |  1050 |
+| o19003 | p0345  |         2 |        2 |  1050 |
+| o19003 | p06734 |         1 |        1 | 12000 |
+| o46866 | p07965 |         1 |        0 |  8400 |
+| o46866 | p07975 |         1 |        0 |  1050 |
+| o19008 | p00001 |        10 |        5 |   525 |
+| o19008 | p07975 |         5 |        3 |  1050 |
++--------+--------+-----------+----------+-------+
+14 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table deposit_adarsh_raj (act_no varchar(50),cname varchar(50),bname varchar(50),amount varchar(50),dates varchar(50));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into deposit_adarsh_raj values(100,'anil','vrce',1000.00,'1-mar-95');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(101,'sunil','ajni',5000.00,'4-jan-96');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(102 ,'mehul','karolbagh', 3500.00,'17-nov-95');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(104 ,'madhuri','chandi',1200.00,'17-dec-95');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(105 ,'prmod','m.g.road',3000.00,'27-mar-96');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(106 ,'sandip','andheri',2000.00,'31-mar-96');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(107 ,'shivani','virar',1000.00,'5-sep-95');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(108 ,'kranti','nehru place', 5000.00,'2-jul-95');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into deposit_adarsh_raj values(109 ,'minu','powai',7000.00,'10-aug-95');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select * from deposit_adarsh_raj;
++--------+---------+-------------+---------+-----------+
+| act_no | cname   | bname       | amount  | dates     |
++--------+---------+-------------+---------+-----------+
+| 100    | anil    | vrce        | 1000.00 | 1-mar-95  |
+| 101    | sunil   | ajni        | 5000.00 | 4-jan-96  |
+| 102    | mehul   | karolbagh   | 3500.00 | 17-nov-95 |
+| 104    | madhuri | chandi      | 1200.00 | 17-dec-95 |
+| 105    | prmod   | m.g.road    | 3000.00 | 27-mar-96 |
+| 106    | sandip  | andheri     | 2000.00 | 31-mar-96 |
+| 107    | shivani | virar       | 1000.00 | 5-sep-95  |
+| 108    | kranti  | nehru place | 5000.00 | 2-jul-95  |
+| 109    | minu    | powai       | 7000.00 | 10-aug-95 |
++--------+---------+-------------+---------+-----------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table borrow_adarsh_raj (loanno numeric(10), cname varchar (50), bname varchar (50),amount numeric(10));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into borrow_adarsh_raj values(201,'anil','vrce',1000.00);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into borrow_adarsh_raj values(206,'mehul','ajni',5000.00);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into borrow_adarsh_raj values(311,'sunil','dharampeth',3000.00);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into borrow_adarsh_raj values(321,'madhuri','andheri',2000.00);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into borrow_adarsh_raj values(375,'prmod','virar',8000.00);
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into borrow_adarsh_raj values(481,'kranti','nehruplace',3000.00);
+Query OK, 1 row affected (0.00 sec)
+
+SQL>select*from borrow_adarsh_raj;
++--------+---------+------------+--------+
+| loanno | cname   | bname      | amount |
++--------+---------+------------+--------+
+|    201 | anil    | vrce       |   1000 |
+|    206 | mehul   | ajni       |   5000 |
+|    311 | sunil   | dharampeth |   3000 |
+|    321 | madhuri | andheri    |   2000 |
+|    375 | prmod   | virar      |   8000 |
+|    481 | kranti  | nehruplace |   3000 |
++--------+---------+------------+--------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table branch_adarsh_raj ( bname varchar (50),city varchar(50));
+Query OK, 0 rows affected (0.06 sec)
+
+SQL>insert into branch_adarsh_raj values('vrce','nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into branch_adarsh_raj values('ajni','nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into branch_adarsh_raj values('karolbagh','delhi');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into branch_adarsh_raj values('chandi','delhi');
+Query OK, 1 row affected (0.02 sec)
+
+SQL>insert into branch_adarsh_raj values('dharampeth','nagpur');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into branch_adarsh_raj values('m.g.road','banglore');
+Query OK, 1 row affected (0.02 sec)
+
+SQL>insert into branch_adarsh_raj values('andheri','bombay');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into branch_adarsh_raj values('virar','bombay');
+Query OK, 1 row affected (0.02 sec)
+
+SQL>insert into branch_adarsh_raj values('nehruplace','delhi');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into branch_adarsh_raj values('powai','bombay');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select*from branch_adarsh_raj;
++------------+----------+
+| bname      | city     |
++------------+----------+
+| vrce       | nagpur   |
+| ajni       | nagpur   |
+| karolbagh  | delhi    |
+| chandi     | delhi    |
+| dharampeth | nagpur   |
+| m.g.road   | banglore |
+| andheri    | bombay   |
+| virar      | bombay   |
+| nehruplace | delhi    |
+| powai      | bombay   |
++------------+----------+
+10 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>create table customers_adarsh_raj ( cname varchar (50),city varchar(50));
+Query OK, 0 rows affected (0.05 sec)
+
+SQL>insert into customers_adarsh_raj values('anil','calcutta');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into customers_adarsh_raj values('sunil','delhi');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into customers_adarsh_raj values('mehul','baroda');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into customers_adarsh_raj values('mandar','patna');
+Query OK, 1 row affected (0.00 sec)
+
+SQL>insert into customers_adarsh_raj values('madhuri','nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into customers_adarsh_raj values('pramod','nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into customers_adarsh_raj values('sandip','surat');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into customers_adarsh_raj values('shivani','bombay');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into customers_adarsh_raj values('kranti','bombay');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>insert into customers_adarsh_raj values('naren','bombay');
+Query OK, 1 row affected (0.01 sec)
+
+SQL>select*from customers_adarsh_raj;
++---------+----------+
+| cname   | city     |
++---------+----------+
+| anil    | calcutta |
+| sunil   | delhi    |
+| mehul   | baroda   |
+| mandar  | patna    |
+| madhuri | nagpur   |
+| pramod  | nagpur   |
+| sandip  | surat    |
+| shivani | bombay   |
+| kranti  | bombay   |
+| naren   | bombay   |
++---------+----------+
+10 rows in set (0.00 sec)
+
+SQL>show tables;
++---------------------------+
+| Tables_in_adarsh_raj1         |
++---------------------------+
+| boats_adarsh_raj              |
+| borrow_adarsh_raj             |
+| branch_adarsh_raj             |
+| client_adarsh_raj             |
+| company_adarsh_raj            |
+| customers_adarsh_raj          |
+| deposit_adarsh_raj            |
+| employee_adarsh_raj           |
+| manager_adarsh_raj            |
+| product_adarsh_raj            |
+| reserves_adarsh_raj           |
+| sailors_adarsh_raj            |
+| salesman_adarsh_raj           |
+| salesorder_adarsh_raj         |
+| salesorder_details_adarsh_raj |
+| work_adarsh_raj               |
++---------------------------+
+16 rows in set (0.00 sec)
+
+SQL>
+SQL>select * from deposit_adarsh_raj;
++--------+---------+-------------+---------+-----------+
+| act_no | cname   | bname       | amount  | dates     |
++--------+---------+-------------+---------+-----------+
+| 100    | anil    | vrce        | 1000.00 | 1-mar-95  |
+| 101    | sunil   | ajni        | 5000.00 | 4-jan-96  |
+| 102    | mehul   | karolbagh   | 3500.00 | 17-nov-95 |
+| 104    | madhuri | chandi      | 1200.00 | 17-dec-95 |
+| 105    | prmod   | m.g.road    | 3000.00 | 27-mar-96 |
+| 106    | sandip  | andheri     | 2000.00 | 31-mar-96 |
+| 107    | shivani | virar       | 1000.00 | 5-sep-95  |
+| 108    | kranti  | nehru place | 5000.00 | 2-jul-95  |
+| 109    | minu    | powai       | 7000.00 | 10-aug-95 |
++--------+---------+-------------+---------+-----------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select * from borrow_adarsh_raj;
++--------+---------+------------+--------+
+| loanno | cname   | bname      | amount |
++--------+---------+------------+--------+
+|    201 | anil    | vrce       |   1000 |
+|    206 | mehul   | ajni       |   5000 |
+|    311 | sunil   | dharampeth |   3000 |
+|    321 | madhuri | andheri    |   2000 |
+|    375 | prmod   | virar      |   8000 |
+|    481 | kranti  | nehruplace |   3000 |
++--------+---------+------------+--------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select * from customers_adarsh_raj;
++---------+----------+
+| cname   | city     |
++---------+----------+
+| anil    | calcutta |
+| sunil   | delhi    |
+| mehul   | baroda   |
+| mandar  | patna    |
+| madhuri | nagpur   |
+| pramod  | nagpur   |
+| sandip  | surat    |
+| shivani | bombay   |
+| kranti  | bombay   |
+| naren   | bombay   |
++---------+----------+
+10 rows in set (0.00 sec)
+
+SQL>
+SQL>
+ SQL>select * from branch_adarsh_raj;
++------------+----------+
+| bname      | city     |
++------------+----------+
+| vrce       | nagpur   |
+| ajni       | nagpur   |
+| karolbagh  | delhi    |
+| chandi     | delhi    |
+| dharampeth | nagpur   |
+| m.g.road   | banglore |
+| andheri    | bombay   |
+| virar      | bombay   |
+| nehruplace | delhi    |
+| powai      | bombay   |
++------------+----------+
+10 rows in set (0.00 sec)
+
+SQL>
+cSQL>
+SQL>select act_no,amount from deposit_adarsh_raj;
++--------+---------+
+| act_no | amount  |
++--------+---------+
+| 100    | 1000.00 |
+| 101    | 5000.00 |
+| 102    | 3500.00 |
+| 104    | 1200.00 |
+| 105    | 3000.00 |
+| 106    | 2000.00 |
+| 107    | 1000.00 |
+| 108    | 5000.00 |
+| 109    | 7000.00 |
++--------+---------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select * from sailors_adarsh_raj;
++------+---------+--------+------+
+| sid  | sname   | rating | age  |
++------+---------+--------+------+
+|   31 | lubber  |      8 |   56 |
+|   32 | andy    |      8 |   26 |
+|   58 | rusty   |     10 |   35 |
+|   64 | horatio |      7 |   35 |
+|   71 | zebra   |     10 |   16 |
+|   74 | horatio |      9 |   35 |
+|   85 | art     |      3 |   26 |
+|   95 | bob     |      3 |   64 |
++------+---------+--------+------+
+8 rows in set (0.00 sec)
+
+SQL>
+mSQL>
+ SQL>select bname,color from boats_adarsh_raj;
++-----------+-------+
+| bname     | color |
++-----------+-------+
+| interlake | blue  |
+| interlake | red   |
+| clipper   | green |
+| marine    | red   |
++-----------+-------+
+4 rows in set (0.00 sec)
+
+SQL>
+SQL>
+tSQL>select emp_name, city from employee_adarsh_raj;
++----------+------------+
+| emp_name | city       |
++----------+------------+
+| adam     | pittsfield |
+| brooks   | brooklyn   |
+| curry    | rye        |
+| demalo   | san deago  |
++----------+------------+
+4 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select *from client_adarsh_raj;
++--------+---------------+-----------+---------+-------------+--------+
+| cl_no  | name          | city      | pincode | state       | baldue |
++--------+---------------+-----------+---------+-------------+--------+
+| c00001 | ivanbayross   | mumbai    | 400054  | maharashtra |  15000 |
+| c00002 | mamtamuzumdar | madras    | 780001  | tamilnadu   |    100 |
+| c00003 | chhayabankar  | mumbai    | 400057  | maharashtra |   5000 |
+| c00004 | ashwinijoshi  | bangalore | 560001  | karnataka   |    500 |
+| c00005 | hanselcolaco  | mumbai    | 400060  | maharashtra |   2000 |
+| c00006 | deepaksharma  | mangalore | 560050  | karnataka   |   1000 |
++--------+---------------+-----------+---------+-------------+--------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select dscr,sell_price from product_adarsh_raj;
++-------------+------------+
+| dscr        | sell_price |
++-------------+------------+
+| t-shirts    |        350 |
+| shirts      |        500 |
+| cottonjeans |         60 |
+| jeans       |        750 |
+| trousers    |        850 |
+| pullovers   |        700 |
+| denimshirts |        350 |
+| lycratops   |        300 |
+| skirts      |        450 |
++-------------+------------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select sname,age,rating from sailors_adarsh_raj;
+me from client_adarsh_raj where +---------+------+--------+
+| sname   | age  | rating |
++---------+------+--------+
+| lubber  |   56 |      8 |
+| andy    |   26 |      8 |
+| rusty   |   35 |     10 |
+| horatio |   35 |      7 |
+| zebra   |   16 |     10 |
+| horatio |   35 |      9 |
+| art     |   26 |      3 |
+| bob     |   64 |      3 |
++---------+------+--------+
+8 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select empname,manname from manager_adarsh_raj;
+aka+---------+---------+
+| empname | manname |
++---------+---------+
+| adam    | smith   |
+| brooks  | jones   |
+| curry   | hayes   |
++---------+---------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+sSQL>select * from borrow_adarsh_raj;
++--------+---------+------------+--------+
+| loanno | cname   | bname      | amount |
++--------+---------+------------+--------+
+|    201 | anil    | vrce       |   1000 |
+|    206 | mehul   | ajni       |   5000 |
+|    311 | sunil   | dharampeth |   3000 |
+|    321 | madhuri | andheri    |   2000 |
+|    375 | prmod   | virar      |   8000 |
+|    481 | kranti  | nehruplace |   3000 |
++--------+---------+------------+--------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select sid,day from reserves_adarsh_raj;
++------+-----------+
+| sid  | day       |
++------+-----------+
+|   22 | 10-oct-98 |
+|   22 | 10-oct-98 |
+|   22 | 10-aug-98 |
+|   22 | 10-jul-98 |
+|   31 | 11-oct-98 |
+|   31 | 11-jun-98 |
+|   31 | 11-dec-98 |
+|   64 | 9-may-98  |
+|   64 | 9-aug-98  |
+|   74 | 9-aug-98  |
++------+-----------+
+10 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select cname from deposit_adarsh_raj where amount >4000;
++--------+
+| cname  |
++--------+
+| sunil  |
+| kranti |
+| minu   |
++--------+
+3 rows in set (0.00 sec)
+
+SQL>
+eSQL>
+SQL>select*from work_adarsh_raj where salary< 22000;
++---------+---------+--------+
+| empname | cmpname | salary |
++---------+---------+--------+
+| adam    | fbc     |  20000 |
+| curry   | sbc     |  10000 |
++---------+---------+--------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select*from sailors_adarsh_raj where age>25;
++------+---------+--------+------+
+| sid  | sname   | rating | age  |
++------+---------+--------+------+
+|   31 | lubber  |      8 |   56 |
+|   32 | andy    |      8 |   26 |
+|   58 | rusty   |     10 |   35 |
+|   64 | horatio |      7 |   35 |
+|   74 | horatio |      9 |   35 |
+|   85 | art     |      3 |   26 |
+|   95 | bob     |      3 |   64 |
++------+---------+--------+------+
+7 rows in set (0.00 sec)
+
+SQL>
+SQL>
+oSQL>select bid from reserves_adarsh_raj where day='10-oct-98';
++------+
+| bid  |
++------+
+|  101 |
+|  102 |
++------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+nSQL>select*from boats_adarsh_raj where bname= 'interlake';
++------+-----------+-------+
+| bid  | bname     | color |
++------+-----------+-------+
+|  101 | interlake | blue  |
+|  102 | interlake | red   |
++------+-----------+-------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+lSQL>select*from boats_adarsh_raj where color= 'red';
++------+-----------+-------+
+| bid  | bname     | color |
++------+-----------+-------+
+|  102 | interlake | red   |
+|  104 | marine    | red   |
++------+-----------+-------+
+2 rows in set (0.00 sec)
+
+SQL>
+cSQL>
+SQL>select*from client_adarsh_raj where city= 'mumbai';
++--------+--------------+--------+---------+-------------+--------+
+| cl_no  | name         | city   | pincode | state       | baldue |
++--------+--------------+--------+---------+-------------+--------+
+| c00001 | ivanbayross  | mumbai | 400054  | maharashtra |  15000 |
+| c00003 | chhayabankar | mumbai | 400057  | maharashtra |   5000 |
+| c00005 | hanselcolaco | mumbai | 400060  | maharashtra |   2000 |
++--------+--------------+--------+---------+-------------+--------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select name,baldue,city from client_adarsh_raj where baldue>1500;
++--------------+--------+--------+
+| name         | baldue | city   |
++--------------+--------+--------+
+| ivanbayross  |  15000 | mumbai |
+| chhayabankar |   5000 | mumbai |
+| hanselcolaco |   2000 | mumbai |
++--------------+--------+--------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+aSQL>select*from product_adarsh_raj where sell_price<500;
++--------+-------------+--------+-------+------+-------------+------------+------------+
+| pr_no  | dscr        | profit | unit  | qty  | reorder_lvl | sell_price | cost_price |
++--------+-------------+--------+-------+------+-------------+------------+------------+
+| p00001 | t-shirts    |      5 | piece |  200 |          50 |        350 |        250 |
+| p06734 | cottonjeans |      5 | piece |  100 |          20 |         60 |        450 |
+| p07965 | denimshirts |      4 | piece |  100 |          40 |        350 |        250 |
+| p07975 | lycratops   |      5 | piece |   70 |          30 |        300 |        175 |
+| p08865 | skirts      |      5 | piece |   75 |          30 |        450 |        300 |
++--------+-------------+--------+-------+------+-------------+------------+------------+
+5 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select*from product_adarsh_raj where qty<120 and cost_price>250;
++--------+-------------+--------+-------+------+-------------+------------+------------+
+| pr_no  | dscr        | profit | unit  | qty  | reorder_lvl | sell_price | cost_price |
++--------+-------------+--------+-------+------+-------------+------------+------------+
+| p06734 | cottonjeans |      5 | piece |  100 |          20 |         60 |        450 |
+| p07865 | jeans       |      5 | piece |  100 |          20 |        750 |        500 |
+| p07885 | pullovers   |      3 | piece |   80 |          30 |        700 |        450 |
+| p08865 | skirts      |      5 | piece |   75 |          30 |        450 |        300 |
++--------+-------------+--------+-------+------+-------------+------------+------------+
+4 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select*from deposit_adarsh_raj where amount > 2200;
++--------+--------+-------------+---------+-----------+
+| act_no | cname  | bname       | amount  | dates     |
++--------+--------+-------------+---------+-----------+
+| 101    | sunil  | ajni        | 5000.00 | 4-jan-96  |
+| 102    | mehul  | karolbagh   | 3500.00 | 17-nov-95 |
+| 105    | prmod  | m.g.road    | 3000.00 | 27-mar-96 |
+| 108    | kranti | nehru place | 5000.00 | 2-jul-95  |
+| 109    | minu   | powai       | 7000.00 | 10-aug-95 |
++--------+--------+-------------+---------+-----------+
+5 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select*from customers_adarsh_raj where city='nagpur';
++---------+--------+
+| cname   | city   |
++---------+--------+
+| madhuri | nagpur |
+| pramod  | nagpur |
++---------+--------+
+2 rows in set (0.00 sec)
+
+SQL>
+sSQL>
+SQL>select sname from sailors_adarsh_raj where rating>7;
+_+---------+
+| sname   |
++---------+
+| lubber  |
+| andy    |
+| rusty   |
+| zebra   |
+| horatio |
++---------+
+5 rows in set (0.00 sec)
+
+SQL>
+SQL>
+oSQL>select*from salesorder_adarsh_raj where extract(month from o_dat)=6;
++--------+--------+------------+--------+--------+------+------------+-----------+
+| od_no  | cl_no  | o_dat      | sl_no  | d_type | bill | d_dat      | status    |
++--------+--------+------------+--------+--------+------+------------+-----------+
+| o19001 | c00001 | 2004-06-12 | s00001 | f      | n    | 2004-07-20 | inprocess |
+| o19002 | c00002 | 2004-06-25 | s00002 | p      | n    | 2004-06-27 | cancelled |
++--------+--------+------------+--------+--------+------+------------+-----------+
+2 rows in set (0.00 sec)
+
+SQL>
+rSQL>
+SQL>select * from deposit_adarsh_raj where dates = '1-mar-95' or dates = '27-mar-96' or dates = '31-mar-96';
++--------+--------+----------+---------+-----------+
+| act_no | cname  | bname    | amount  | dates     |
++--------+--------+----------+---------+-----------+
+| 100    | anil   | vrce     | 1000.00 | 1-mar-95  |
+| 105    | prmod  | m.g.road | 3000.00 | 27-mar-96 |
+| 106    | sandip | andheri  | 2000.00 | 31-mar-96 |
++--------+--------+----------+---------+-----------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+sSQL>select*from customers_adarsh_raj where cname like'm%';
++---------+--------+
+| cname   | city   |
++---------+--------+
+| mehul   | baroda |
+| mandar  | patna  |
+| madhuri | nagpur |
++---------+--------+
+3 rows in set (0.00 sec)
+
+SQL>
+ SQL>
+SQL>select*from customers_adarsh_raj where cname like '%l';
++-------+----------+
+| cname | city     |
++-------+----------+
+| anil  | calcutta |
+| sunil | delhi    |
+| mehul | baroda   |
++-------+----------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select*from borrow_adarsh_raj where bname like 'a%';
++--------+---------+---------+--------+
+| loanno | cname   | bname   | amount |
++--------+---------+---------+--------+
+|    206 | mehul   | ajni    |   5000 |
+|    321 | madhuri | andheri |   2000 |
++--------+---------+---------+--------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select*from sailors_adarsh_raj where length(sname)>=6;
++------+---------+--------+------+
+| sid  | sname   | rating | age  |
++------+---------+--------+------+
+|   31 | lubber  |      8 |   56 |
+|   64 | horatio |      7 |   35 |
+|   74 | horatio |      9 |   35 |
++------+---------+--------+------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select*from employee_adarsh_raj where street like 's%';
++----------+----------+------------+
+| emp_name | street   | city       |
++----------+----------+------------+
+| adam     | spring   | pittsfield |
+| brooks   | senator  | brooklyn   |
+| demalo   | sunshine | san deago  |
++----------+----------+------------+
+3 rows in set (0.00 sec)
+
+SQL>
+rSQL>
+sSQL>select*from boats_adarsh_raj where bname like '%e';
+r+------+-----------+-------+
+| bid  | bname     | color |
++------+-----------+-------+
+|  101 | interlake | blue  |
+|  102 | interlake | red   |
+|  104 | marine    | red   |
++------+-----------+-------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select name,baldue,city from client_adarsh_raj where pincode like '4%';
++--------------+--------+--------+
+| name         | baldue | city   |
++--------------+--------+--------+
+| ivanbayross  |  15000 | mumbai |
+| chhayabankar |   5000 | mumbai |
+| hanselcolaco |   2000 | mumbai |
++--------------+--------+--------+
+3 rows in set (0.00 sec)
+
+SQL>
+nSQL>
+SQL>select*from customers_adarsh_raj where city like'_a%';
++---------+----------+
+| cname   | city     |
++---------+----------+
+| anil    | calcutta |
+| mehul   | baroda   |
+| mandar  | patna    |
+| madhuri | nagpur   |
+| pramod  | nagpur   |
++---------+----------+
+5 rows in set (0.00 sec)
+
+SQL>
+sSQL>
+tSQL>select sum(amount) as total_deposit_adarsh_raj from deposit_adarsh_raj;
++----------------------+
+| total_deposit_adarsh_raj |
++----------------------+
+|                28700 |
++----------------------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select max(amount) as maximumloan from borrow_adarsh_raj;
++-------------+
+| maximumloan |
++-------------+
+|        8000 |
++-------------+
+1 row in set (0.00 sec)
+
+SQL>
+*SQL>
+SQL>select avg(age) as average_age from sailors_adarsh_raj;
++-------------+
+| average_age |
++-------------+
+|     36.6250 |
++-------------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select count(*) as total_customers_adarsh_raj from customers_adarsh_raj;
++------------------------+
+| total_customers_adarsh_raj |
++------------------------+
+|                     10 |
++------------------------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+0SQL>select count(distinct city) as total_cities from customers_adarsh_raj;
++--------------+
+| total_cities |
++--------------+
+|            7 |
++--------------+
+1 row in set (0.00 sec)
+
+SQL>
+tSQL>
+SQL>select sum (tgt) as total_target from salesman_adarsh_raj;
+ERROR 1630 (42000): FUNCTION adarsh_raj1.sum does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+SQL>
+hSQL>
+SQL>select salary*1.15 as "newsalary"from work_adarsh_raj;
++-----------+
+| newsalary |
++-----------+
+|  23000.00 |
+|  34500.00 |
+|  11500.00 |
++-----------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select sell_price*1.15 as "new_sell_price" from product_adarsh_raj;
++----------------+
+| new_sell_price |
++----------------+
+|         402.50 |
+|         575.00 |
+|          69.00 |
+|         862.50 |
+|         977.50 |
+|         805.00 |
+|         402.50 |
+|         345.00 |
+|         517.50 |
++----------------+
+9 rows in set (0.00 sec)
+
+SQL>
+oSQL>
+dSQL>select salary from work_adarsh_raj where empname ='adam';
++--------+
+| salary |
++--------+
+|  20000 |
++--------+
+1 row in set (0.00 sec)
+
+SQL>
+ SQL>
+fSQL>select city from employee_adarsh_raj join work_adarsh_raj on employee_adarsh_raj.empname=work_adarsh_raj.empname where work_adarsh_raj.empname = 'brooks';
+ERROR 1054 (42S22): Unknown column 'employee_adarsh_raj.empname' in 'on clause'
+SQL>
+SQL>
+tSQL>        select s.* from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid = r.sid where r.day = '9-may-98';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '        select s.* from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid = r' at line 1
+SQL>
+SQL>
+nSQL>select r.day,s.sname from reserves_adarsh_raj r join sailors_adarsh_raj s on r.sid=s.sid where r.bid=103;
++-----------+---------+
+| day       | sname   |
++-----------+---------+
+| 11-jun-98 | lubber  |
+| 9-aug-98  | horatio |
++-----------+---------+
+2 rows in set (0.00 sec)
+
+SQL>
+_SQL>
+nSQL>select s.sname,s.age from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid=r. sid join boats_adarsh_raj b on r. bid=b.bid where b.color='red'or b.bid=101;
++---------+------+
+| sname   | age  |
++---------+------+
+| lubber  |   56 |
+| lubber  |   56 |
+| horatio |   35 |
+| horatio |   35 |
++---------+------+
+4 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select s.*from sailors_adarsh_raj s left join reserves_adarsh_raj r on s.sid=r. sid where r.sid is null;
++------+-------+--------+------+
+| sid  | sname | rating | age  |
++------+-------+--------+------+
+|   32 | andy  |      8 |   26 |
+|   58 | rusty |     10 |   35 |
+|   71 | zebra |     10 |   16 |
+|   85 | art   |      3 |   26 |
+|   95 | bob   |      3 |   64 |
++------+-------+--------+------+
+5 rows in set (0.00 sec)
+
+SQL>
+SQL>
+oSQL>select distinct s.sname from sailors_adarsh_raj s join reserves_adarsh_raj r on s. sid = r. sid join boats_adarsh_raj b on r. bid = b. bid where b.color in('red','green');
++---------+
+| sname   |
++---------+
+| lubber  |
+| horatio |
++---------+
+2 rows in set (0.01 sec)
+
+SQL>
+0SQL>
+4SQL>select s.*, b.* from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid=r.sid join boats_adarsh_raj b on r. bid = b. bid where b. bname = 'interlake';
++------+---------+--------+------+------+-----------+-------+
+| sid  | sname   | rating | age  | bid  | bname     | color |
++------+---------+--------+------+------+-----------+-------+
+|   31 | lubber  |      8 |   56 |  102 | interlake | red   |
+|   64 | horatio |      7 |   35 |  102 | interlake | red   |
+|   64 | horatio |      7 |   35 |  101 | interlake | blue  |
++------+---------+--------+------+------+-----------+-------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select s.rating, b.bid, b.bname, b.color from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid = r.sid join boats_adarsh_raj b on r.bid = b.bid where r.day = '10-oct-98';
+Empty set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select s.sid,s.sname from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid=r. sid join boats_adarsh_raj b on r. bid=b.bid where s.age>42 or b. color = 'blue';
++------+---------+
+| sid  | sname   |
++------+---------+
+|   31 | lubber  |
+|   31 | lubber  |
+|   31 | lubber  |
+|   64 | horatio |
++------+---------+
+4 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select s.sname,s.rating from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid=r.sid join boats_adarsh_raj b on r. bid = b. bid where b. bname = 'clipper';
++---------+--------+
+| sname   | rating |
++---------+--------+
+| lubber  |      8 |
+| horatio |      9 |
++---------+--------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select dscr,sell_price from product_adarsh_raj where sell_price>500 and sell_price<=750;
++-----------+------------+
+| dscr      | sell_price |
++-----------+------------+
+| jeans     |        750 |
+| pullovers |        700 |
++-----------+------------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select max(salary) as second_highest_salary from work_adarsh_raj where salary<(select max(salary)from work_adarsh_raj);
++-----------------------+
+| second_highest_salary |
++-----------------------+
+|                 20000 |
++-----------------------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select r.day as date_of_travel,s.sname as sailor_name from sailors_adarsh_raj s join reserves_adarsh_raj r on s.sid=r. sid where s.age between 35 and 65;
++----------------+-------------+
+| date_of_travel | sailor_name |
++----------------+-------------+
+| 11-oct-98      | lubber      |
+| 11-jun-98      | lubber      |
+| 11-dec-98      | lubber      |
+| 9-may-98       | horatio     |
+| 9-aug-98       | horatio     |
+| 9-aug-98       | horatio     |
++----------------+-------------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select e.empname,e.street,e.city from employee_adarsh_raj e join work_adarsh_raj w on e.empname= w.empname where w.cmpname='fbc';
+ERROR 1054 (42S22): Unknown column 'e.empname' in 'field list'
+SQL>
+SQL>
+SQL>select empname,city from employee_adarsh_raj;
+ERROR 1054 (42S22): Unknown column 'empname' in 'field list'
+SQL>
+SQL>
+SQL>select empname,cmpname from work_adarsh_raj where salary>15000;
++---------+---------+
+| empname | cmpname |
++---------+---------+
+| adam    | fbc     |
+| brooks  | mbc     |
++---------+---------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select avg(rating),avg(age)from sailors_adarsh_raj;
++-------------+----------+
+| avg(rating) | avg(age) |
++-------------+----------+
+|      7.2500 |  36.6250 |
++-------------+----------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select dscr from product_adarsh_raj;
++-------------+
+| dscr        |
++-------------+
+| t-shirts    |
+| shirts      |
+| cottonjeans |
+| jeans       |
+| trousers    |
+| pullovers   |
+| denimshirts |
+| lycratops   |
+| skirts      |
++-------------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select name from salesman_adarsh_raj where amt>2850;
++--------+
+| name   |
++--------+
+| aman   |
+| raj    |
+| ashish |
++--------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select name from client_adarsh_raj where name like'_a%';
++---------------+
+| name          |
++---------------+
+| mamtamuzumdar |
+| hanselcolaco  |
++---------------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select dscr from product_adarsh_raj where 'qty'<'reorder_lvl';
++-------------+
+| dscr        |
++-------------+
+| t-shirts    |
+| shirts      |
+| cottonjeans |
+| jeans       |
+| trousers    |
+| pullovers   |
+| denimshirts |
+| lycratops   |
+| skirts      |
++-------------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select dscr,qty from product_adarsh_raj;
++-------------+------+
+| dscr        | qty  |
++-------------+------+
+| t-shirts    |  200 |
+| shirts      |  150 |
+| cottonjeans |  100 |
+| jeans       |  100 |
+| trousers    |  150 |
+| pullovers   |   80 |
+| denimshirts |  100 |
+| lycratops   |   70 |
+| skirts      |   75 |
++-------------+------+
+9 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select distinct p.dscr from product_adarsh_raj p join salesorder_details_adarsh_raj sd on p.pr_no = sd.pr_no join salesorder_adarsh_raj so on sd.od_no = so.od_no join client_adarsh_raj c on so.cl_no = c.cl_no where c.name = 'ivanbayross';
++-------------+
+| dscr        |
++-------------+
+| t-shirts    |
+| shirts      |
+| cottonjeans |
+| pullovers   |
+| denimshirts |
++-------------+
+5 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select distinct c.name from client_adarsh_raj c join salesorder_adarsh_raj so on c.cl_no = so.cl_no join salesorder_adarsh_raj_detail;
+ERROR 1146 (42S02): Table 'adarsh_raj1.salesorder_adarsh_raj_detail' doesn't exist
+SQL>
+SQL>
+SQL>select p.dscr, sd.qty_order from client_adarsh_raj c join salesorder_adarsh_raj so on c.cl_no = so.cl_no join salesorder_details_adarsh_raj sd on so.od_no = sd.od_no join product_adarsh_raj p on sd.pr_no = p.pr_no where c.cl_no in ('c00001', 'c00002');
++-------------+-----------+
+| dscr        | qty_order |
++-------------+-----------+
+| t-shirts    |        10 |
+| t-shirts    |         4 |
+| shirts      |         2 |
+| cottonjeans |         1 |
+| pullovers   |         2 |
+| denimshirts |         2 |
++-------------+-----------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select c.* from client_adarsh_raj c join salesorder_adarsh_raj so on c.cl_no = so.cl_no where so.od_no = 'o19001';
++--------+-------------+--------+---------+-------------+--------+
+| cl_no  | name        | city   | pincode | state       | baldue |
++--------+-------------+--------+---------+-------------+--------+
+| c00001 | ivanbayross | mumbai | 400054  | maharashtra |  15000 |
++--------+-------------+--------+---------+-------------+--------+
+1 row in set (0.01 sec)
+
+SQL>
+SQL>
+SQL>select distinct c.name from client_adarsh_raj c,salesorder_adarsh_raj s,salesorder_details_adarsh_raj sd where c.cl_no=s.cl_no and s.od_no=sd.od_no and (sd.qty_order*sd.rate)>10000;
++--------------+
+| name         |
++--------------+
+| ivanbayross  |
+| chhayabankar |
++--------------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select od_no, sum (qty_order) from salesorder_details_adarsh_raj group by od_no;
+ERROR 1630 (42000): FUNCTION adarsh_raj1.sum does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+SQL>
+SQL>
+SQL>select od_no , avg(rate) from salesorder_details_adarsh_raj group by od_no ;
++--------+-----------+
+| od_no  | avg(rate) |
++--------+-----------+
+| o19001 | 4725.0000 |
+| o19002 |  525.0000 |
+| o46865 | 2493.7500 |
+| o19003 | 6525.0000 |
+| o46866 | 4725.0000 |
+| o19008 |  787.5000 |
++--------+-----------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select * from borrow_adarsh_raj;
++--------+---------+------------+--------+
+| loanno | cname   | bname      | amount |
++--------+---------+------------+--------+
+|    201 | anil    | vrce       |   1000 |
+|    206 | mehul   | ajni       |   5000 |
+|    311 | sunil   | dharampeth |   3000 |
+|    321 | madhuri | andheri    |   2000 |
+|    375 | prmod   | virar      |   8000 |
+|    481 | kranti  | nehruplace |   3000 |
++--------+---------+------------+--------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select borrow_adarsh_raj.cname , branch_adarsh_raj.bname , branch_adarsh_raj.city from borrow_adarsh_raj inner join branch_adarsh_raj on borrow_adarsh_raj.bname = branch_adarsh_raj.bname;
++---------+------------+--------+
+| cname   | bname      | city   |
++---------+------------+--------+
+| anil    | vrce       | nagpur |
+| mehul   | ajni       | nagpur |
+| sunil   | dharampeth | nagpur |
+| madhuri | andheri    | bombay |
+| prmod   | virar      | bombay |
+| kranti  | nehruplace | delhi  |
++---------+------------+--------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select d.cname, d.bname, d.amount, d.dates from deposit_adarsh_raj d join customers_adarsh_raj c on d.cname = c.cname where to_date(d.dates, 'dd-mon-yy') > to_date('10-aug-95', 'dd-mon-yy');
+ERROR 1305 (42000): FUNCTION adarsh_raj1.to_date does not exist
+SQL>
+SQL>
+SQL>select o.* from salesorder_adarsh_raj s inner join salesorder_details_adarsh_raj o on s.od_no=o.od_nowhere s.cl_no='c00001' or s.cl_no='c00002';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's.cl_no='c00001' or s.cl_no='c00002'' at line 1
+SQL>
+SQL>
+SQL>select *from salesorder_adarsh_raj where extract(month from o_dat) = 6;
++--------+--------+------------+--------+--------+------+------------+-----------+
+| od_no  | cl_no  | o_dat      | sl_no  | d_type | bill | d_dat      | status    |
++--------+--------+------------+--------+--------+------+------------+-----------+
+| o19001 | c00001 | 2004-06-12 | s00001 | f      | n    | 2004-07-20 | inprocess |
+| o19002 | c00002 | 2004-06-25 | s00002 | p      | n    | 2004-06-27 | cancelled |
++--------+--------+------------+--------+--------+------+------------+-----------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select * from client_adarsh_raj where not state='maharashtra';
++--------+---------------+-----------+---------+-----------+--------+
+| cl_no  | name          | city      | pincode | state     | baldue |
++--------+---------------+-----------+---------+-----------+--------+
+| c00002 | mamtamuzumdar | madras    | 780001  | tamilnadu |    100 |
+| c00004 | ashwinijoshi  | bangalore | 560001  | karnataka |    500 |
+| c00006 | deepaksharma  | mangalore | 560050  | karnataka |   1000 |
++--------+---------------+-----------+---------+-----------+--------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select min(cost_price) min_price,max(cost_price) max_price from product_adarsh_raj;
++-----------+-----------+
+| min_price | max_price |
++-----------+-----------+
+|       175 |       550 |
++-----------+-----------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select count(*) from product_adarsh_raj where cost_price<=500;
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select od_no,o_dat from salesorder_adarsh_raj;
++--------+------------+
+| od_no  | o_dat      |
++--------+------------+
+| o19001 | 2004-06-12 |
+| o19002 | 2004-06-25 |
+| o46865 | 2004-02-18 |
+| o19003 | 2004-04-03 |
+| o19008 | 2004-05-24 |
++--------+------------+
+5 rows in set (0.01 sec)
+
+SQL>
+SQL>
+SQL>select od_no,extract(month from d_dat) month, extract(day from d_dat)day from salesorder_adarsh_raj;
++--------+-------+------+
+| od_no  | month | day  |
++--------+-------+------+
+| o19001 |     7 |   20 |
+| o19002 |     6 |   27 |
+| o46865 |     2 |   20 |
+| o19003 |     4 |    7 |
+| o19008 |     7 |   26 |
++--------+-------+------+
+5 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select sysdate+25 day_after from dual;
+ERROR 1054 (42S22): Unknown column 'sysdate' in 'field list'
+SQL>
+SQL>
+SQL>select count(od_no) from salesorder_adarsh_raj where o_dat like '%jun%';
++--------------+
+| count(od_no) |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select sd.od_no, sd.pr_no, sd.qty_order, p.dscr from salesorder_details_adarsh_raj sd join product_adarsh_raj p on sd.pr_no = p.pr_no where p.dscr = 'pullovers' and sd.qty_order < 5;
++--------+--------+-----------+-----------+
+| od_no  | pr_no  | qty_order | dscr      |
++--------+--------+-----------+-----------+
+| o19001 | p07885 |         2 | pullovers |
+| o46865 | p07885 |         3 | pullovers |
++--------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select so.od_no, sod.pr_no,c.name from client_adarsh_raj c join salesorder_adarsh_raj so on c.cl_no = so.cl_no join salesorder_details_adarsh_raj sod on so.od_no = sod.od_no where c.name in ('ivanbayross', 'mamtamuzumdar');
++--------+--------+---------------+
+| od_no  | pr_no  | name          |
++--------+--------+---------------+
+| o19001 | p00001 | ivanbayross   |
+| o19001 | p07965 | ivanbayross   |
+| o19001 | p07885 | ivanbayross   |
+| o19002 | p00001 | mamtamuzumdar |
+| o19003 | p0345  | ivanbayross   |
+| o19003 | p06734 | ivanbayross   |
++--------+--------+---------------+
+6 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select distinct c.cl_no, c.name,so.d_dat from client_adarsh_raj c join salesorder_adarsh_raj so on c.cl_no = so.cl_no where so.o_dat < date '2004-06-04';
++--------+--------------+------------+
+| cl_no  | name         | d_dat      |
++--------+--------------+------------+
+| c00001 | ivanbayross  | 2004-04-07 |
+| c00003 | chhayabankar | 2004-02-20 |
+| c00005 | hanselcolaco | 2004-07-26 |
++--------+--------------+------------+
+3 rows in set (0.00 sec)
+
+SQL>
+SQL>
+SQL>select * from client_adarsh_raj where city = 'bangaluru' or city = 'mangalore';
++--------+--------------+-----------+---------+-----------+--------+
+| cl_no  | name         | city      | pincode | state     | baldue |
++--------+--------------+-----------+---------+-----------+--------+
+| c00006 | deepaksharma | mangalore | 560050  | karnataka |   1000 |
++--------+--------------+-----------+---------+-----------+--------+
+1 row in set (0.00 sec)
+
+SQL>
+SQL>
+
+
