@@ -1,0 +1,16 @@
+<html>
+
+<body>
+    <table>
+        {% for u in alluser %}
+        <tr>
+            <td> {{ u.uname }}</td>
+            <td> {{ u.upass }}</td>
+            <td> {{ u.utype }}</td>
+            <td> {{ u.uremarks }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
