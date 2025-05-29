@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+      <style>
+        
+progress::-webkit-progress-bar {
+    
+    border-radius:0px;
+    height:40px;
+    appearance:none;
+    background-color:green;
+}
+div{
+    border:1px solid black;
+    padding:20px;
+}
+#map { height: 300px;resize:both; overflow:auto;}
+a{color:black;}
+
+      </style>
+        <title>SourjyaBose</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.min.js"></script>
+    </head>
+    <body>
+      <div id="map"></div>
+      <br>
+        <input type="text" id="code">
+        
+        <select id="p">
+          
+              <option value="3">3</option>
+                <option value="5">5</option>
+  <option value="10">10</option>
+    <option value="25">25</option>
+
+<option value="50">50</option>
+  <option value="100">100</option>
+<option value="400">400</option>
+
+        </select>
+  <button onclick="go()">Go</button> <input type="text" id="color" value="blue"> <button onclick="maps()">Map</button>  
+  <br> 
+        <p id="disp"></p>
+        
+    </body>
+<script>
+  
+
+
+var tstamp=[];
+
+
+class EvtHandl{
+    coords=[];
+    prevnode=null;
+   constructor(){ setTimeout(()=>{this.prevnode=document.getElementById("disp");},10);}
+    handleEvent(e){
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        if(e.target.style.backgroundColor=="blue"){
+            e.target.style.backgroundColor="white";
+
+
+time[Number(e.target.children[1].innerHTML)]=(time[Number(e.target.children[1].innerHTML)-1]||time[Number(e.target.children[1].innerHTML)+1]);
+
+
+
+           console.log(this.coords);
+    console.log("\n");
+     this.coords[Number(e.target.children[1].innerHTML)]=(this.coords[Number(e.target.children[1].innerHTML)-1]||this.coords[Number(e.target.children[1].innerHTML)+1]);
+     
+     console.log(this.coords);
+    console.log("\n");
+
+            return;
+        }else if(e.target.children[1].innerHTML!="N"){
+            this.coords[Number(e.target.children[1].innerHTML)]=[Number(e.target.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[0]),Number(e.target.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[1])];
+        time[Number(e.target.children[1].innerHTML)]=e.target.children[0].innerHTML;
+        e.target.style.backgroundColor="blue";
+return;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        if((this.prevnode.nextSibling!=e.target || this.prevnode.previousSibling!=e.target )&& this.prevnode!=document.getElementById("disp")){
+            var iter=this.prevnode;
+            while(iter!=e.target){
+                
+                iter=iter.nextElementSibling;
+                //console.log(iter.innerHTML);
+               iter.children[1].innerHTML=this.coords.length; this.coords.push([Number(iter.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[0]),Number(iter.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[1])]);
+                
+                time.push(iter.children[0].innerHTML);
+iter.style.backgroundColor="blue";
+            }
+        }else{
+        e.target.children[1].innerHTML=this.coords.length;
+        this.coords.push([Number(e.target.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[0]),Number(e.target.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[1])]);
+        time.push(e.target.children[0].innerHTML);
+        e.target.style.backgroundColor="blue";
+        }
+        this.prevnode=e.target;
+                
+    }
+}
+var state=0;
+var map=null;
+function maps(){
+    if(state==0){
+    map=L.map('map').setView(evthdlr.coords[Math.floor(evthdlr.coords.length/2)],12);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);state++;}
+        if(evthdlr.coords.length>0){
+            evthdlr.coords.forEach((cord,i)=>{L.marker(cord).addTo(map).bindPopup(time[i].toString());console.log(time[i]);});
+
+       var pol=L.polyline(evthdlr.coords,{color:document.getElementById("color").value}).addTo(map);
+        L.polylineDecorator(pol,{
+            patterns:[{offset:5,repeat:100,symbol:L.Symbol.arrowHead({pixelSize:10,headAngle:330,pathOptions:{fillOpacity:1,color:'lime',weight:1}})}]
+        }).addTo(map);
+        evthdlr.coords=[];
+        evthdlr.prevnode=disp;
+        time=[];
+        
+}}
+var evthdlr=new EvtHandl();
+async function calldb(code,p){
+    var resp=await fetch('https://sourjya-learns-flask-default-rtdb.firebaseio.com/stat'+code+'.json?orderBy="$key"&limitToLast='+p);
+    
+    console.log((resp.status==200)?"Data Fetched":resp.status);
+    var jsoni=await resp.json();
+    if(jsoni!=null){
+    return jsoni;
+    }else{
+        return Promise.reject("Device Not Found");
+    }
+}
+var disp=null;
+var time=[];
+setTimeout(()=>{disp=document.getElementById("disp");},10);
+function go(){
+tstamp=[];
+evthdlr.coords=[];
+        evthdlr.prevnode=disp;
+        time=[];
+    var code=document.getElementById("code").value;    var p=document.getElementById("p").value;
+    calldb(code,p).then((value)=>{
+    disp.innerHTML="";
+    for (var i of Object.keys(value).reverse()){
+    
+    disp.innerHTML+="<div><a href='"+value[i.toString()]["Maps"]+"'>"+new Date(Number(value[i.toString()]["timestamp"]))+"</a><span>N</span><br><progress value='"+value[i.toString()]["Battery"].replace("%","")+"' max='100'></progress><br>MCC: "+value[i.toString()]["MCC"]+" | MNC: "+value[i.toString()]["MNC"]+" | LAC: "+value[i.toString()]["Location Area Code"]+" | Cell Id: "+value[i.toString()]["Cell Tower Id"]+"</div>";
+    tstamp.push(Number(value[i.toString()]["timestamp"]));
+    
+    
+    }
+    
+    setTimeout(live,0);
+    }).catch((value)=>{disp.innerHTML="<h1>"+value+"</h1>"});
+    disp.addEventListener("click",evthdlr);
+    
+}
+
+
+var expbackoff=0;
+var mapindex=0;
+var previndi;
+var firstrun=0;
+var aborti=0;
+async function live(){
+if(firstrun==0){
+firstrun++;
+previndi=tstamp[0];
+}
+    var timeelap=tstamp[0]-tstamp[1];
+    var dist=Date.now()-tstamp[0];
+    var ter=timeelap-dist;
+    if(ter>-1){
+        setTimeout(go,ter);
+        console.log(tstamp[0]);
+    }else{
+    console.log(tstamp[0]);
+        setTimeout(go,expbackoff);
+}
+
+if(previndi!=tstamp[0]){
+mapindex++;
+aborti=0;
+expbackoff=0;
+    if(previndi!=tstamp[1]){
+    mapindex--;
+    console.log(previndi+" ghd "+tstamp[0]+" hello: "+tstamp[1]);
+  mapindex=(tstamp.indexOf(previndi)-1)+mapindex;
+    console.log("mi"+mapindex);
+    
+    
+    }
+        disp.children[0].click();
+        disp.children[mapindex].click();
+    
+    maps();
+previndi=tstamp[0];
+}else{
+    aborti++;
+    if(aborti>50){
+    disp.innerHTML="<center><h1>Signal Not Found</h1></center>";
+        expbackoff=(aborti%50)*0.25*60*1000;
+    }
+}
+}
+
+
+</script>
+
+
+
+  
+</html>
