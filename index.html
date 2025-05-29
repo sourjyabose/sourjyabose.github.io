@@ -42,6 +42,7 @@ a{color:black;}
 
         </select>
   <button onclick="go()">Go</button> <input type="text" id="color" value="blue"> <button onclick="maps()">Map</button>  
+        <input type="checkbox" id="livetrack" checked>
   <br> 
         <p id="disp"></p>
         
@@ -174,8 +175,9 @@ evthdlr.coords=[];
     
     
     }
-    
+    if(document.getElementById("livetrack").checked)){
     setTimeout(live,0);
+    }
     }).catch((value)=>{disp.innerHTML="<h1>"+value+"</h1>"});
     disp.addEventListener("click",evthdlr);
     
