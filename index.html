@@ -17,16 +17,26 @@ div{
     padding:20px;
     
 }
+
+.header{
+height:5%;
+padding-top:5px;
+padding-left:25px;
+background-color:#22c55e;
+color:white;
+}b{font-weight:1000;}
+h1{rotate:20deg;}
 @media(max-width:1000px){
 div{
     font-size:20px;
     
 }
 }
+
 #map { height: 50%;resize:both; overflow:auto;}
 a{color:#CC5500;font-weight:1000;}
 input[type=checkbox]{width:25px;height:25px;padding-top:25px;}
-input,select,button,label{padding:20px; font-size:20px;}
+input,select,button,label{padding:20px; font-size:20px;font-weight:bold;}
 
       </style>
         <title>Vehicle Tracker | Sourjya Bose</title>
@@ -36,7 +46,21 @@ input,select,button,label{padding:20px; font-size:20px;}
 <script src="https://cdn.jsdelivr.net/npm/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.min.js"></script>
     </head>
     <body>
-      <div id="map"></div>
+
+
+
+
+<div class="header"><h2><b>🚗🛜 Vehicle Tracker</b> | Sourjya Bose</h2></div>
+
+
+
+
+
+
+
+
+
+      <div id="map"><center><h1><br><br><br><br><br>Map Shows Here when Live View is on or you manually map.</h1></center></div>
       <br>
         <input type="text" placeholder="Vehicle Number" id="code">
         
@@ -71,7 +95,7 @@ class EvtHandl{
    constructor(){ setTimeout(()=>{this.prevnode=document.getElementById("disp");},10);}
     handleEvent(e){
     
-    
+    if(e.target.tagName!="DIV"){return;}
     
     
     
@@ -156,6 +180,9 @@ function maps(){
         evthdlr.coords=[];
         evthdlr.prevnode=disp;
         time=[];
+if(!document.getElementById("livetrack").checked){
+    go();
+    }
         
 }}
 var evthdlr=new EvtHandl();
