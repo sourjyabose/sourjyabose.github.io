@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html>
     <head>
 
       <style>
-        
+        body,html{height:100%;}
 progress::-webkit-progress-bar {
     
     border-radius:0px;
@@ -15,11 +16,14 @@ div{
     border:1px solid black;
     padding:20px;
 }
-#map { height: 300px;resize:both; overflow:auto;}
+#map { height: 50%;resize:both; overflow:auto;}
 a{color:black;}
+input[type=checkbox]{width:25px;height:25px;padding-top:25px;}
+input,select,button,label{padding:20px; font-size:20px;}
 
       </style>
-        <title>SourjyaBose</title>
+        <title>Vehicle Tracker | Sourjya Bose</title>
+        <link rel="icon" type="image/x-icon" href="https://cdn3.iconfinder.com/data/icons/technology-155/60/car__vehicle__signal__wireless__technology-512.png">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.min.js"></script>
@@ -27,7 +31,7 @@ a{color:black;}
     <body>
       <div id="map"></div>
       <br>
-        <input type="text" id="code">
+        <input type="text" placeholder="Vehicle Number" id="code">
         
         <select id="p">
           
@@ -41,8 +45,8 @@ a{color:black;}
 <option value="400">400</option>
 
         </select>
-  <button onclick="go()">Go</button> <input type="text" id="color" value="blue"> <button onclick="maps()">Map</button>  
-        <input type="checkbox" id="livetrack" checked>
+  <button onclick="go()">Go</button><br><br><input type="text" id="color" value="blue"> <button onclick="maps()">Map</button>
+        <label> Live View</label><input type="checkbox" id="livetrack" checked>
   <br> 
         <p id="disp"></p>
         
@@ -170,7 +174,7 @@ evthdlr.coords=[];
     disp.innerHTML="";
     for (var i of Object.keys(value).reverse()){
     
-    disp.innerHTML+="<div><a href='"+value[i.toString()]["Maps"]+"'>"+new Date(Number(value[i.toString()]["timestamp"]))+"</a><span>N</span><br><progress value='"+value[i.toString()]["Battery"].replace("%","")+"' max='100'></progress><br>MCC: "+value[i.toString()]["MCC"]+" | MNC: "+value[i.toString()]["MNC"]+" | LAC: "+value[i.toString()]["Location Area Code"]+" | Cell Id: "+value[i.toString()]["Cell Tower Id"]+"</div>";
+    disp.innerHTML+="<div><a href='"+value[i.toString()]["Maps"].substr(0,value[i.toString()]["Maps"].length-1)+"'>"+new Date(Number(value[i.toString()]["timestamp"]))+"</a><span>N</span><br><progress value='"+value[i.toString()]["Battery"].replace("%","")+"' max='100'></progress><br>MCC: "+value[i.toString()]["MCC"]+" | MNC: "+value[i.toString()]["MNC"]+" | LAC: "+value[i.toString()]["Location Area Code"]+" | Cell Id: "+value[i.toString()]["Cell Tower Id"]+"</div>";
     tstamp.push(Number(value[i.toString()]["timestamp"]));
     
     
@@ -206,17 +210,17 @@ previndi=tstamp[0];
 }
 
 if(previndi!=tstamp[0]){
-mapindex++;
+//mapindex++;
 aborti=0;
 expbackoff=0;
-    if(previndi!=tstamp[1]){
-    mapindex--;
-    console.log(previndi+" ghd "+tstamp[0]+" hello: "+tstamp[1]);
-  mapindex=(tstamp.indexOf(previndi)-1)+mapindex;
+  //  if(previndi!=tstamp[1]){
+   // mapindex--;
+   // console.log(previndi+" ghd "+tstamp[0]+" hello: "+tstamp[1]);
+  mapindex=tstamp.indexOf(previndi);
     console.log("mi"+mapindex);
     
     
-    }
+   // }
         disp.children[0].click();
         disp.children[mapindex].click();
     
@@ -225,7 +229,7 @@ previndi=tstamp[0];
 }else{
     aborti++;
     if(aborti>50){
-    disp.innerHTML="<center><h1>Signal Not Found</h1></center>";
+   // disp.innerHTML="<center><h1>Signal Not Found</h1></center>";
         expbackoff=(aborti%50)*0.25*60*1000;
     }
 }
