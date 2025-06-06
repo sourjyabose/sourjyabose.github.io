@@ -15,9 +15,16 @@ progress::-webkit-progress-bar {
 div{
     border:1px solid black;
     padding:20px;
+    
+}
+@media(max-width:1000px){
+div{
+    font-size:20px;
+    
+}
 }
 #map { height: 50%;resize:both; overflow:auto;}
-a{color:black;}
+a{color:#CC5500;font-weight:1000;}
 input[type=checkbox]{width:25px;height:25px;padding-top:25px;}
 input,select,button,label{padding:20px; font-size:20px;}
 
@@ -78,7 +85,7 @@ class EvtHandl{
     
         if(e.target.style.backgroundColor=="blue"){
             e.target.style.backgroundColor="white";
-
+e.target.style.color="black";
 
 time[Number(e.target.children[1].innerHTML)]=(time[Number(e.target.children[1].innerHTML)-1]||time[Number(e.target.children[1].innerHTML)+1]);
 
@@ -120,12 +127,14 @@ return;
                 
                 time.push(iter.children[0].innerHTML);
 iter.style.backgroundColor="blue";
+iter.style.color="white";
             }
         }else{
         e.target.children[1].innerHTML=this.coords.length;
         this.coords.push([Number(e.target.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[0]),Number(e.target.children[0].href.replace("https://www.google.com/maps?q=","").replace("/","").split(",")[1])]);
         time.push(e.target.children[0].innerHTML);
         e.target.style.backgroundColor="blue";
+        e.target.style.color="white";
         }
         this.prevnode=e.target;
                 
@@ -174,7 +183,7 @@ evthdlr.coords=[];
     disp.innerHTML="";
     for (var i of Object.keys(value).reverse()){
     
-    disp.innerHTML+="<div><a href='"+value[i.toString()]["Maps"].substr(0,value[i.toString()]["Maps"].length-1)+"'>"+new Date(Number(value[i.toString()]["timestamp"]))+"</a><span>N</span><br><progress value='"+value[i.toString()]["Battery"].replace("%","")+"' max='100'></progress><br>MCC: "+value[i.toString()]["MCC"]+" | MNC: "+value[i.toString()]["MNC"]+" | LAC: "+value[i.toString()]["Location Area Code"]+" | Cell Id: "+value[i.toString()]["Cell Tower Id"]+"</div>";
+    disp.innerHTML+="<div><a href='"+value[i.toString()]["Maps"].substr(0,value[i.toString()]["Maps"].length-1)+"'>"+new Date(Number(value[i.toString()]["timestamp"])).toLocaleString("hi-IN")+"</a><span>N</span><br><progress value='"+value[i.toString()]["Battery"].replace("%","")+"' max='100'></progress><br>MCC: "+value[i.toString()]["MCC"]+" | MNC: "+value[i.toString()]["MNC"]+" | LAC: "+value[i.toString()]["Location Area Code"]+" | Cell Id: "+value[i.toString()]["Cell Tower Id"]+"</div>";
     tstamp.push(Number(value[i.toString()]["timestamp"]));
     
     
