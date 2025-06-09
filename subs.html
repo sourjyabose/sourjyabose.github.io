@@ -45,8 +45,8 @@ val=atob(val);
 var prevren=localStorage.getItem("tmpstamp");
 eval(val);
 var currentren=localStorage.getItem("tmpstamp");
-if(currentren>prevren){
-alert("Renewal Succesful. Your plan is valid till: "+new Date(currentren).toLocaleString());
+if(parseInt(currentren)>parseInt(prevren)){
+alert("Renewal Succesful. Your plan is valid till: "+new Date(parseInt(currentren)).toLocaleString());
 window.location.href="https://sourjyabose.github.io/";
 
 }else{
@@ -54,5 +54,4 @@ alert("Invalid Code !");
 }
 }
 </script>
-
 
