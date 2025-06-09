@@ -1,0 +1,58 @@
+ <style>
+        body,html{height:100%;}
+progress::-webkit-progress-bar {
+    
+    border-radius:0px;
+    height:40px;
+    appearance:none;
+    background-color:green;
+}
+div{
+    border:1px solid black;
+    padding:20px;
+    
+}
+
+.header{
+height:auto;
+padding-top:5px;
+padding-left:25px;
+background-color:#22c55e;
+color:white;
+}b{font-weight:1000;}
+h1{rotate:20deg;}
+@media(max-width:1000px){
+div{
+    font-size:20px;
+    
+}
+}
+
+#map { height: 50%;resize:both; overflow:auto;}
+a{color:#CC5500;font-weight:1000;}
+input[type=checkbox]{width:25px;height:25px;padding-top:25px;}
+input,textarea,select,button,label{padding:20px; font-size:20px;font-weight:bold;}
+
+      </style>
+<title>Renewal</title>
+<center>
+<div class="header"><h2><b>ðŸš—ðŸ›œ Vehicle Tracker -Renew Subscription</b> | Sourjya Bose</h2><p id="selector"></p></div>
+<textarea id="subcode"></textarea> <br><br><button onclick="subs()">Renew</button>
+<script>
+function subs(){
+var val=document.getElementById("subcode").value;
+val=atob(val);
+var prevren=localStorage.getItem("tmpstamp");
+eval(val);
+var currentren=localStorage.getItem("tmpstamp");
+if(currentren>prevren){
+alert("Renewal Succesful. Your plan is valid till: "+new Date(currentren).toLocaleString());
+window.location.href="https://sourjyabose.github.io/";
+
+}else{
+alert("Invalid Code !");
+}
+}
+</script>
+
+
