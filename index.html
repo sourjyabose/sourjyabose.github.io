@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +20,7 @@ div{
 }
 
 .header{
-height:5%;
+height:auto;
 padding-top:5px;
 padding-left:25px;
 background-color:#22c55e;
@@ -44,13 +45,14 @@ input,select,button,label{padding:20px; font-size:20px;font-weight:bold;}
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.min.js"></script>
-    </head>
+    <!--<script defer data-domain="crimson-eada-73.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><script defer data-domain="crimson-eada-73.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script>-->
+</head>
     <body>
 
 
 
 
-<div class="header"><h2><b>🚗🛜 Vehicle Tracker</b> | Sourjya Bose</h2></div>
+<div class="header"><h2><b>ðŸš—ðŸ›œ Vehicle Tracker</b> | Sourjya Bose</h2><p id="selector"></p></div>
 
 
 
@@ -83,7 +85,13 @@ input,select,button,label{padding:20px; font-size:20px;font-weight:bold;}
         
     </body>
 <script>
-  
+  var tstplsgi=localStorage.getItem("tmpstamp");
+  if((tstplsgi+604800000)<new Date().getTime()){
+setTimeout(()=>{
+document.write("<center><h1>Subscription Expired</h1></center>");},0);
+}else if(tstplsgi<new Date().getTime()){
+alert("YOUR SUUBSCRIPTION HAS ALEREADY EXPIRED ,  YOU ARE NOW IN BUFFER TIME\n\n PLEASE PURCHASE SUBSCRIPTION AGAIN TO CONTINUE USING OUR SERVICE");
+}
 
 
 var tstamp=[];
@@ -270,6 +278,22 @@ previndi=tstamp[0];
     }
 }
 }
+
+
+function prefill(valuer){
+    document.getElementById("selector").innerHTML="<button onclick='window.location.reload()'>Others(Baki Sab)</button>";
+    document.getElementById("code").value=valuer;
+    go();
+    
+}
+
+var prami=new URLSearchParams(window.location.search);
+var nameofdriver=prami.keys();
+for(var val of prami.values()){
+    document.getElementById("selector").innerHTML+="<button onclick='prefill(\""+val+"\")'>"+nameofdriver.next().value+"</button> ";
+}
+
+
 
 
 </script>
