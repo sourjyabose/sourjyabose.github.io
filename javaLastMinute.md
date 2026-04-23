@@ -589,8 +589,8 @@ Examples:
 
 ### User-defined Packages
 
-Created by programmer.
-
+    Created by programmer.
+    To Create Package use `package` keyword
 ---
 
 ## import Keyword
