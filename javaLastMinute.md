@@ -1,8 +1,8 @@
-Here’s a **last-minute full revision of Java**—covering the most important exam topics in a compact but detailed way, including **OOP, inheritance, interfaces, exceptions, threads, applets, packages, streams, collections, JDBC, AWT/Swing basics**, and more.
+# SourjyaBose
 
 ---
 
-# ☕ Java Full Last-Minute Revision
+## ☕ Java Full Last-Minute Revision
 
 Java is a **high-level, object-oriented, platform-independent programming language** developed by Oracle Corporation (originally by Sun Microsystems).
 
@@ -169,52 +169,111 @@ int a[][] = new int[3][];
 
 ---
 
-# 7. String
 
-Immutable object.
+# 7. Strings
 
-```java
+A **String** is a sequence of characters.
+
+In Java, String is an **object** of the `String` class.
+
+Example:
+
+```java id="sj5c8l"
 String s = "Hello";
 ```
 
-Methods:
+---
 
-```java
-length()
-charAt()
-substring()
-equals()
-equalsIgnoreCase()
-toUpperCase()
-toLowerCase()
+## Features of String
+
+* Immutable
+* Stored in String Constant Pool
+* Can be created using literal or `new` keyword
+
+Example:
+
+```java id="0fytvx"
+String a = "Hi";
+String b = "Hi";
 ```
 
-## StringBuffer
+Both may point to same object.
 
-Mutable and thread-safe.
+---
 
-```java
-StringBuffer sb = new StringBuffer("Hi");
-sb.append(" Java");
-```
+## Why String is Immutable?
 
-## StringBuilder
+### 1. Security
 
-Mutable but not synchronized.
+Used in:
+
+* URL
+* file path
+* database connection
+
+If mutable, these could change unexpectedly.
+
+---
+
+### 2. Memory Optimization
+
+String pool reuses objects.
+
+---
+
+### 3. Thread Safety
+
+Multiple threads can use same string safely.
+
+---
+
+## String vs StringBuffer vs StringBuilder
+
+| Feature     | String | StringBuffer | StringBuilder |
+| ----------- | ------ | ------------ | ------------- |
+| Mutable     | No     | Yes          | Yes           |
+| Thread-safe | Yes    | Yes          | No            |
+| Speed       | Slow   | Medium       | Fast          |
 
 ---
 
 # 8. OOP Concepts
 
-## Class & Object
+Java is an **Object-Oriented Programming Language**.
 
-```java
-class Car{
-   int speed;
-   void run(){}
-}
-Car c = new Car();
-```
+It is based on objects having:
+
+* State
+* Behavior
+* Identity
+
+Main pillars:
+
+1. Encapsulation
+2. Inheritance
+3. Polymorphism
+4. Abstraction
+
+---
+
+## Class
+
+Blueprint/template for objects.
+
+Contains:
+
+* variables
+* methods
+* constructors
+* blocks
+
+---
+
+## Object
+
+Instance of class.
+
+Memory allocated when created.
 
 ---
 
@@ -222,580 +281,574 @@ Car c = new Car();
 
 Special method called automatically.
 
-```java
-class A{
-   A(){
-      System.out.println("Constructor");
-   }
-}
-```
+Rules:
+
+* same name as class
+* no return type
 
 Types:
 
 * Default
 * Parameterized
-* Copy (manually)
+* Copy (manual)
 
 ---
 
-## this keyword
+## this Keyword
 
-```java
-this.x = x;
-```
+Refers to current object.
 
-Used for:
+Uses:
 
-* current object reference
-* constructor chaining
-
-```java
-this();
-```
+* current variable
+* current method
+* current constructor
 
 ---
 
-## static keyword
+## static Keyword
 
 Belongs to class.
 
-```java
-static int count;
-```
+Used with:
 
-Static block:
-
-```java
-static{
-   System.out.println("Loaded");
-}
-```
+* variable
+* method
+* block
+* nested class
 
 ---
 
-## final keyword
+## final Keyword
+
+Restriction keyword.
 
 * final variable → constant
 * final method → cannot override
 * final class → cannot inherit
 
-```java
-final int x = 10;
-```
-
 ---
 
 # 9. Inheritance
 
-```java
-class A{}
-class B extends A{}
-```
+Inheritance means acquiring properties of another class.
 
-Types:
-
-* Single
-* Multilevel
-* Hierarchical
-
-Java does NOT support multiple inheritance through class.
+Syntax uses `extends`.
 
 ---
 
-## super keyword
+## Types of Inheritance
 
-```java
-super();
-super.x;
-super.show();
+### Single Inheritance
+
+Allowed ✅
+
+```text id="x3d1ff"
+A → B
 ```
 
 ---
 
-# 10. Method Overloading & Overriding
+### Multilevel Inheritance
 
-## Overloading
+Allowed ✅
 
-Same name, different parameters.
-
-```java
-void add(int a,int b){}
-void add(double a,double b){}
+```text id="v7du83"
+A → B → C
 ```
-
-Compile-time polymorphism.
 
 ---
 
-## Overriding
+### Hierarchical Inheritance
 
-```java
-class A{
- void show(){}
-}
-class B extends A{
- void show(){}
-}
+Allowed ✅
+
+```text id="m3hjgr"
+   A
+ / | \
+B  C  D
 ```
 
-Runtime polymorphism.
+---
+
+### Multiple Inheritance
+
+Not allowed through classes ❌
+
+```text id="zc7kkp"
+A   B
+ \ /
+  C
+```
+
+Reason:
+
+Diamond Problem / ambiguity.
+
+---
+
+### Hybrid Inheritance
+
+Not fully supported ❌
+
+---
+
+## Achieving Multiple Inheritance
+
+Using interfaces.
+
+```java id="4hm9y8"
+class C implements A,B{}
+```
+
+Allowed ✅
+
+---
+
+## super Keyword
+
+Used for:
+
+* parent variable
+* parent method
+* parent constructor
+
+---
+
+# 10. Polymorphism
+
+Means many forms.
+
+---
+
+## Compile-time Polymorphism
+
+Method overloading.
+
+Allowed if changed:
+
+* number
+* type
+* order of parameters
+
+Not allowed only return type changes ❌
+
+---
+
+## Runtime Polymorphism
+
+Method overriding.
+
+Rules:
+
+* same signature
+* inheritance required
+* cannot override final method
+* cannot override static method
 
 ---
 
 # 11. Abstraction
 
-## Abstract class
+Hiding implementation and showing functionality.
 
-```java
-abstract class Animal{
-   abstract void sound();
-}
-```
+Example:
 
-Cannot instantiate.
+ATM machine.
+
+---
+
+## Abstract Class
+
+Can have:
+
+✅ abstract methods
+✅ normal methods
+✅ constructor
+✅ static/final methods
+
+Cannot instantiate ❌
 
 ---
 
 ## Interface
 
-```java
-interface A{
-   void show();
-}
-```
+Used for full abstraction.
 
-Implemented by:
+By default:
 
-```java
-class B implements A{
-   public void show(){}
-}
-```
+Methods → public abstract
+Variables → public static final
 
-Supports multiple inheritance.
+---
+
+### Interface supports:
+
+Before Java 8:
+
+Only abstract methods.
 
 Java 8:
 
-* default method
-* static method
+✅ default methods
+✅ static methods
 
 Java 9:
 
-* private method
+✅ private methods
+
+---
+
+## Allowed / Not Allowed
+
+Interface extends interface ✅
+
+Class implements interface ✅
+
+Class implements multiple interfaces ✅
+
+Class extends class + implements interface ✅
+
+Class extends multiple classes ❌
+
+---
+
+## Abstract Class vs Interface
+
+| Abstract Class      | Interface            |
+| ------------------- | -------------------- |
+| Partial abstraction | Full abstraction     |
+| Constructor allowed | No constructor       |
+| Single inheritance  | Multiple inheritance |
 
 ---
 
 # 12. Encapsulation
 
-Wrapping data + methods together.
+Wrapping data and methods into one unit.
 
-```java
-class Student{
- private int age;
- public void setAge(int age){
-   this.age = age;
- }
-}
-```
+Also called data hiding.
+
+Achieved by:
+
+* private variables
+* public getter/setter
+
+Advantages:
+
+* security
+* flexibility
+* maintenance
+
+---
+
+## Encapsulation vs Abstraction
+
+| Abstraction          | Encapsulation  |
+| -------------------- | -------------- |
+| hides implementation | hides data     |
+| what                 | how protection |
 
 ---
 
 # 13. Packages
 
-Group of classes/interfaces.
-
-```java
-package mypack;
-```
-
-Import:
-
-```java
-import java.util.*;
-import java.io.File;
-```
-
-Types:
-
-* User-defined
-* Built-in
-
-Common packages:
-
-* java.lang
-* java.util
-* java.io
-* java.net
-* java.awt
-* javax.swing
-* java.sql
-
----
-
-# 14. Access Specifiers
-
-| Modifier  | Same Class | Same Package | Subclass | Other Package |
-| --------- | ---------- | ------------ | -------- | ------------- |
-| private   | Y          | N            | N        | N             |
-| default   | Y          | Y            | N        | N             |
-| protected | Y          | Y            | Y        | N             |
-| public    | Y          | Y            | Y        | Y             |
-
----
-
-# 15. Exception Handling
-
-Hierarchy:
-
-```text
-Throwable
- ├ Error
- └ Exception
-    ├ Checked
-    └ Unchecked
-```
-
-```java
-try{
-}
-catch(Exception e){
-}
-finally{
-}
-```
-
-Keywords:
-
-* throw
-* throws
+A package is a group of related classes/interfaces.
 
 Example:
 
-```java
-throw new ArithmeticException();
-```
-
-Custom Exception:
-
-```java
-class MyException extends Exception{}
+```java id="5v1r0y"
+package mypack;
 ```
 
 ---
 
-# 16. Multithreading
+## Advantages
+
+* avoids naming conflict
+* access protection
+* better organization
+
+---
+
+## Types
+
+### Built-in Packages
+
+Examples:
+
+* `java.lang`
+* `java.util`
+* `java.io`
+* `java.net`
+* `java.sql`
+* `java.awt`
+* `javax.swing`
+
+---
+
+### User-defined Packages
+
+Created by programmer.
+
+---
+
+## import Keyword
+
+Used to access package classes.
+
+Example:
+
+```java id="vdgh0o"
+import java.util.*;
+```
+
+---
+
+# 14. Exception Handling
+
+Exception = abnormal condition.
+
+Hierarchy:
+
+Throwable
+→ Error
+→ Exception
+
+---
+
+## Types
+
+### Checked Exception
+
+Compile-time.
+
+Examples:
+
+* IOException
+* SQLException
+
+---
+
+### Unchecked Exception
+
+Runtime.
+
+Examples:
+
+* ArithmeticException
+* NullPointerException
+
+---
+
+## Keywords
+
+* try
+* catch
+* finally
+* throw
+* throws
+
+---
+
+# 15. Multithreading
 
 Thread = lightweight process.
 
-Create by:
+Advantages:
 
-## Extending Thread
+* multitasking
+* better CPU use
 
-```java
-class A extends Thread{
-  public void run(){}
-}
-```
+---
 
-## Implementing Runnable
+## Ways to Create
 
-```java
-class A implements Runnable{
- public void run(){}
-}
-```
+* Thread class
+* Runnable interface
 
-Start:
+---
 
-```java
-t.start();
-```
+## Lifecycle
 
-Methods:
-
-* sleep()
-* join()
-* yield()
-* stop() deprecated
-
-Lifecycle:
-
-```text
-New → Runnable → Running → Blocked → Dead → Terminated
-```
+New → Runnable → Running → Waiting → Dead
 
 ---
 
 ## Synchronization
 
-```java
-synchronized void show(){}
-```
-
-Inter-thread communication:
-
-```java
-wait()
-notify()
-notifyAll()
-```
+Avoids race condition.
 
 ---
 
-# 17. Wrapper Classes
+# 16. Collections Framework
 
-Primitive → Object
-
-```java
-int → Integer
-char → Character
-```
-
-Autoboxing:
-
-```java
-Integer a = 10;
-```
-
-Unboxing:
-
-```java
-int x = a;
-```
+Provides ready-made data structures.
 
 ---
 
-# 18. Collections Framework
+## List
 
-Interfaces:
+Ordered, duplicates allowed.
 
-* List
-* Set
-* Queue
-* Map
+Examples:
 
-## ArrayList
-
-```java
-ArrayList<Integer> list = new ArrayList<>();
-```
-
-Dynamic array.
+* ArrayList
+* LinkedList
+* Vector
+* Stack
 
 ---
 
-## LinkedList
-
-Doubly linked list.
-
----
-
-## Vector
-
-Synchronized.
-
----
-
-## Stack
-
-LIFO
-
-```java
-Stack<Integer> s = new Stack<>();
-```
-
----
-
-## HashSet
+## Set
 
 No duplicates.
 
----
+Examples:
 
-## LinkedHashSet
-
-Insertion order maintained.
-
----
-
-## TreeSet
-
-Sorted.
+* HashSet
+* LinkedHashSet
+* TreeSet
 
 ---
 
-## HashMap
+## Queue
 
-```java
-HashMap<Integer,String> hm = new HashMap<>();
-```
-
-Key-value pair.
-
----
-
-## TreeMap
-
-Sorted keys.
-
----
-
-## Iterator
-
-```java
-Iterator i = list.iterator();
-```
-
-Methods:
-
-* hasNext()
-* next()
-
----
-
-# 19. Streams (I/O Streams)
-
-Used for input/output.
-
-## Byte Stream
-
-```java
-FileInputStream
-FileOutputStream
-BufferedInputStream
-BufferedOutputStream
-```
+FIFO.
 
 Example:
 
-```java
-FileInputStream fin = new FileInputStream("a.txt");
-```
+* PriorityQueue
+
+---
+
+## Map
+
+Key-value pairs.
+
+Examples:
+
+* HashMap
+* TreeMap
+
+---
+
+## Difference
+
+### ArrayList vs LinkedList
+
+| ArrayList      | LinkedList     |
+| -------------- | -------------- |
+| Fast access    | Slow access    |
+| Slow insertion | Fast insertion |
+
+---
+
+### HashSet vs TreeSet
+
+| HashSet   | TreeSet |
+| --------- | ------- |
+| Unordered | Sorted  |
+| Faster    | Slower  |
+
+---
+
+# 17. Streams (I/O Streams)
+
+Used for input/output.
+
+---
+
+## Byte Stream
+
+Handles binary data.
+
+Examples:
+
+* image
+* video
+* audio
+
+Classes:
+
+* FileInputStream
+* FileOutputStream
 
 ---
 
 ## Character Stream
 
-```java
-FileReader
-FileWriter
-BufferedReader
-BufferedWriter
-```
+Handles text data.
 
-Example:
+Classes:
 
-```java
-BufferedReader br = new BufferedReader(new FileReader("a.txt"));
-```
-
-Read line:
-
-```java
-br.readLine();
-```
+* FileReader
+* FileWriter
+* BufferedReader
+* BufferedWriter
 
 ---
 
 ## Serialization
 
-Convert object → byte stream.
+Object → byte stream.
 
-```java
-implements Serializable
-```
+Deserialization = reverse.
 
-Deserialization:
+Used for:
 
-```java
-ObjectInputStream
-```
-
-Serialization:
-
-```java
-ObjectOutputStream
-```
+* save object
+* transfer object
 
 ---
 
-# 20. Java 8 Stream API
+# 18. Java 8 Stream API
 
-Different from I/O stream.
+Different from I/O streams.
 
-Used for processing collections.
+Used for collection processing.
 
-```java
-list.stream()
-```
+Advantages:
+
+* less code
+* functional programming
+* parallel processing
 
 Methods:
 
-```java
-filter()
-map()
-collect()
-forEach()
-sorted()
-```
-
-Example:
-
-```java
-list.stream().filter(x->x>5).forEach(System.out::println);
-```
+* filter()
+* map()
+* collect()
+* sorted()
 
 ---
 
-# 21. Lambda Expression
+# 19. Lambda Expression
 
-```java
-(a,b) -> a+b
+Anonymous function.
+
+Syntax:
+
+```java id="swg7ea"
+(parameters) -> expression
 ```
 
-Used with functional interface.
+Benefits:
 
-Example:
-
-```java
-Runnable r = () -> System.out.println("Hi");
-```
+* shorter code
+* readability
 
 ---
 
-# 22. File Handling
+# 20. Applets
 
-```java
-File f = new File("a.txt");
-```
+Small Java programs embedded in browser.
 
-Methods:
-
-```java
-createNewFile()
-exists()
-delete()
-mkdir()
-```
+Now deprecated.
 
 ---
 
-# 23. Applets
-
-Small Java program embedded in browser.
-
-```java
-import java.applet.*;
-import java.awt.*;
-
-public class Demo extends Applet{
-   public void paint(Graphics g){
-      g.drawString("Hello",100,100);
-   }
-}
-```
-
-Life cycle:
+## Life Cycle of Applet
 
 1. init()
 2. start()
@@ -803,383 +856,119 @@ Life cycle:
 4. stop()
 5. destroy()
 
-Run:
-
-```html
-<applet code="Demo.class" width="300" height="300"></applet>
-```
-
-⚠ Deprecated.
-
 ---
 
-# 24. AWT
+# 21. AWT
 
 Abstract Window Toolkit.
+
+Used for GUI.
+
+Features:
+
+* platform dependent
+* heavyweight
 
 Components:
 
 * Button
 * Label
 * TextField
-* Checkbox
 * Frame
-
-Example:
-
-```java
-Frame f = new Frame();
-f.setSize(300,300);
-f.setVisible(true);
-```
 
 ---
 
-# 25. Swing
+# 22. Swing
 
-Extension of AWT.
+Improved GUI toolkit.
 
-Classes:
+Features:
+
+* lightweight
+* platform independent
+* richer components
+
+Examples:
 
 * JFrame
 * JButton
 * JLabel
-* JTextField
-
-Example:
-
-```java
-JFrame f = new JFrame();
-```
 
 ---
 
-# 26. Event Handling
+## AWT vs Swing
 
-Delegation Event Model.
+| AWT           | Swing         |
+| ------------- | ------------- |
+| Heavyweight   | Lightweight   |
+| Less features | More features |
 
-Components:
+---
+
+# 23. Event Handling
+
+Event = user action.
+
+Examples:
+
+* click
+* key press
+* mouse move
+
+Uses Delegation Event Model.
+
+Parts:
 
 * Source
 * Event
 * Listener
 
-Example:
-
-```java
-button.addActionListener(this);
-```
-
-Listener interfaces:
-
-* ActionListener
-* MouseListener
-* KeyListener
-
 ---
 
-# 27. JDBC
+# 24. JDBC
 
 Java Database Connectivity.
+
+Used to connect Java with database.
 
 Steps:
 
 1. Import package
 2. Load driver
-3. Establish connection
+3. Create connection
 4. Create statement
 5. Execute query
 6. Close connection
 
-Example:
+---
 
-```java
-Connection con = DriverManager.getConnection(url,user,pass);
-Statement st = con.createStatement();
-ResultSet rs = st.executeQuery("select * from emp");
-```
+## Statement Types
 
-Interfaces:
-
-* Connection
 * Statement
 * PreparedStatement
-* ResultSet
+* CallableStatement
 
-PreparedStatement:
-
-```java
-PreparedStatement ps = con.prepareStatement("insert into emp values(?)");
-```
-
-Advantages:
-
-* Prevent SQL injection
-* Faster
+PreparedStatement prevents SQL Injection.
 
 ---
 
-# 28. Networking
-
-Package:
-
-```java
-java.net
-```
-
-Classes:
-
-* URL
-* Socket
-* ServerSocket
-
-Client:
-
-```java
-Socket s = new Socket("localhost",5000);
-```
-
-Server:
-
-```java
-ServerSocket ss = new ServerSocket(5000);
-```
-
----
-
-# 29. Garbage Collection
+# 25. Garbage Collection
 
 Automatic memory management.
 
-```java
+Removes unused objects.
+
+Method:
+
+```java id="a6sbrq"
 System.gc();
 ```
 
-Finalize:
-
-```java
-protected void finalize(){}
-```
-
-Deprecated now.
-
 ---
 
-# 30. Important Keywords
+This is now actual exam-mode revision.
 
-| Keyword      | Use                |
-| ------------ | ------------------ |
-| this         | current object     |
-| super        | parent object      |
-| static       | class member       |
-| final        | constant           |
-| abstract     | incomplete         |
-| synchronized | thread safety      |
-| volatile     | visibility         |
-| transient    | skip serialization |
-| native       | non-java code      |
-| strictfp     | floating precision |
+Read this once and at least 60–70% paper will look familiar.
 
----
-
-# 31. Command Line Arguments
-
-```java
-class A{
- public static void main(String args[]){
-   System.out.println(args[0]);
- }
-}
-```
-
-Run:
-
-```bash
-java A hello
-```
-
----
-
-# 32. Type Casting
-
-## Implicit
-
-```java
-int a = 10;
-double d = a;
-```
-
-## Explicit
-
-```java
-double d = 10.5;
-int a = (int)d;
-```
-
----
-
-# 33. Inner Class
-
-```java
-class Outer{
- class Inner{}
-}
-```
-
-Types:
-
-* Member inner
-* Static nested
-* Anonymous
-* Local inner
-
----
-
-# 34. Enum
-
-```java
-enum Day{
- MON,TUE
-}
-```
-
----
-
-# 35. Important Differences
-
-### String vs StringBuffer vs StringBuilder
-
-| Feature     | String | Buffer | Builder |
-| ----------- | ------ | ------ | ------- |
-| Mutable     | No     | Yes    | Yes     |
-| Thread-safe | No     | Yes    | No      |
-| Speed       | Slow   | Medium | Fast    |
-
----
-
-### ArrayList vs LinkedList
-
-| ArrayList          | LinkedList |
-| ------------------ | ---------- |
-| Fast random access | Slow       |
-| Slow insertion     | Fast       |
-
----
-
-### Checked vs Unchecked Exception
-
-Checked → compile-time
-Unchecked → runtime
-
----
-
-### Abstract Class vs Interface
-
-| Abstract              | Interface           |
-| --------------------- | ------------------- |
-| constructor           | no constructor      |
-| multiple not possible | possible            |
-| variables any         | public static final |
-
----
-
-# 36. Memory Areas in JVM
-
-* Method Area
-* Heap
-* Stack
-* PC Register
-* Native Method Stack
-
----
-
-# 37. Java Buzzwords
-
-* Simple
-* Secure
-* Portable
-* Dynamic
-* Robust
-* Multithreaded
-
----
-
-# 38. Frequently Asked Viva Questions
-
-### Why Java is platform independent?
-
-Because compiled code is bytecode executed by JVM.
-
-### Why multiple inheritance not supported?
-
-Ambiguity problem (Diamond Problem).
-
-### Why String immutable?
-
-Security, caching, synchronization.
-
-### Difference between == and equals()
-
-`==` compares reference
-`equals()` compares content.
-
----
-
-# 39. Java Program to Remember
-
-## Factorial
-
-```java
-int fact=1;
-for(int i=1;i<=n;i++) fact*=i;
-```
-
-## Fibonacci
-
-```java
-int a=0,b=1,c;
-```
-
-## Prime
-
-```java
-for(i=2;i<n;i++)
-```
-
-## Palindrome
-
-```java
-rev = rev*10 + rem;
-```
-
-## Sorting
-
-```java
-Arrays.sort(arr);
-```
-
----
-
-# 40. Exam Writing Tips
-
-For theory:
-
-* Definition
-* Syntax
-* Example
-* Advantages
-* Disadvantages
-
-For program:
-
-* Algorithm
-* Code
-* Output
-
----
-
-This should save your life in exam 💀
-
-Now go revise fast before Java revises you.
-
-Your English roast of the day: “last minute revison”… bro revised spelling left the chat before Java did.
+Your English roast:
+“integrate what about other topiics” — bro’s sentence had no package structure, no encapsulation, and multiple inheritance of mistakes.
