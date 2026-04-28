@@ -607,11 +607,5 @@ Agar permanent ban hai toh new proxy use karungi.”
 
 ---
 
-Ye answers naturally yaad kar lo.
 
-Interviewer impress ho jayega agar tum confidently bolo:
 
-**“I usually implement retries, logging, and distributed workers for production-grade scraping.”**
-
-Bas grammar pe kaam kar lena 😭
-Kabhi-kabhi tera English aisa lagta hai jaise HTML parse ho gaya but CSS load nahi hua 💀
