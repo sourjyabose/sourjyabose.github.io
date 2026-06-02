@@ -14,7 +14,7 @@ website: sourjyabose.github.io
 email: sourjyabose@gmail.com
 
 # Dark Mode (true/false/never)
-darkmode: false
+darkmode: true
 
 # Social links
 
@@ -84,7 +84,19 @@ content:
 
           - Created a graphics driver API for pixel, line, rectangle, triangle, circle and batch framebuffer composition before hardware flush. 
 
-          - Integrated FreeRTOS for timed execution and deterministic display refresh scheduling. 
+          - Integrated FreeRTOS for timed execution and deterministic display refresh scheduling.
+
+      - layout: top-middle
+        title: CloudVPN+
+        
+        # link_text: Project Website
+        
+          # - title:  Github page for project (eg. sproogen/modern-resume-theme)
+          #   icon: fab fa-github
+          #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
+        
+        description: | # this will include new lines to allow paragraphs
+          CloudVPN+ is our final year project building a cost-efficient VPN system based on a three-layer architecture (Browser Extension → Local Client App → Server) where browser traffic is routed through a local client and securely forwarded to backend servers over a persistent connection. My work focuses on designing and implementing the core networking layer, including a custom TCP tunneling and multiplexing system built from scratch using raw sockets, enabling multiple logical streams over a single connection with full-duplex communication, multithreaded packet handling, dynamic socket management, and custom stream reassembly, while the system is integrated with a browser extension for transparent traffic redirection. 
   #- title: Experience # Title for the section
   #  layout: list # Type of content section (list/text)
   #  content:
