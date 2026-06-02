@@ -7,10 +7,11 @@ version: 2
 
 # Personal info
 name: Sourjya Basu
-title: Firmware Developer | Embedded Software Developer
-email: sourjyabose@gmail.com
+title: Firmware Developer | Embedded Software Engineer
+
 phone: +91 8799007739
 website: sourjyabose.github.io
+email: sourjyabose@gmail.com
 
 # Dark Mode (true/false/never)
 darkmode: false
@@ -53,7 +54,7 @@ about_content: | # this will include new lines to allow paragraphs
 
   I am driven by a deep interest in understanding systems at their core and advancing expertise in firmware and network-level engineering. 
 
-  My skills are: <mark>Computer Networks</mark> and <mark>Eating Pizza</mark>
+  My skills are: <mark>Computer Networks</mark> , <mark>FreeRTOS</mark> , <mark>Device Driver</mark> , <mark>Embedded C</mark> , <mark>ESP-IDF</mark> , <mark>SPI</mark> and <mark>drinking carbonated water laced with sugar preferably black in color (CocaCola)</mark>
 
 content:
   - title: Projects # Title for the section
