@@ -6,26 +6,21 @@ favicon: images/favicon.ico
 version: 2
 
 # Personal info
-name: Brett Harris
-title: Senior Network System Administrator
-email: brett.h@email.co.uk
-website: www.github.com/sproogen/resume-theme
+name: Sourjya Basu
+title: Firmware Developer | Embedded Software Developer
+email: sourjyabose@gmail.com
+phone: +91 8799007739
+website: sourjyabose.github.io
 
 # Dark Mode (true/false/never)
 darkmode: false
 
 # Social links
-twitter_username: facespics
-github_username:  sproogen
-# stackoverflow_username: "00000001"
-# dribbble_username: jekyll
-# facebook_username: jekyll
-# flickr_username: jekyll
-instagram_username: jameswgrant
-linkedin_username: jameswgrant
+
+
 # xing_username: jekyll
 # pinterest_username: jekyll
-youtube_username: globalmtb
+
 # googleplus_username: +jekyll
 # orcid_username: 0000-0000-0000-0000
 
@@ -48,9 +43,17 @@ youtube_username: globalmtb
 # about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, my name's Brett and I'm a senior network system administrator. As well as administrating systems I also have experience making software and web apps. I have worked at a number of companies gaining teamwork and leadership skills.
+  Passionate about tinkering, learning and exploring new horizons—hence my interest in Firmware Development and Computer Networks.
 
-  I am most skilled in: <mark>AWS</mark> and <mark>Eating Pizza</mark>
+  My primary interest is in systems where firmware directly interfaces with hardware and communication layers. My focus is on timing behavior, memory interactions, and ensuring deterministic and reliable system operation under real-world constraints.
+
+  In networking, I specialize in protocol design and behavior under real-world conditions, focusing on efficient data flow, multiplexing strategies, and consistently maintaining throughput, latency bounds, and system stability under high congestion.
+
+  Alongside my technical work, I engage in public speaking through hosting and competitive debates, with an emphasis on delivering structured, precise, and confident communication on complex topics.
+
+  I am driven by a deep interest in understanding systems at their core and advancing expertise in firmware and network-level engineering. 
+
+  My skills are: <mark>Computer Networks</mark> and <mark>Eating Pizza</mark>
 
 content:
   - title: Projects # Title for the section
