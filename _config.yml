@@ -96,19 +96,19 @@ content:
           #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
         
         description: | # this will include new lines to allow paragraphs
-          -Designed and implemented a custom TCP tunnelling and multiplexing protocol to route multiple logical streams over a single persistent connection, reducing connection overhead and improving efficiency.
+          - Designed and implemented a custom TCP tunnelling and multiplexing protocol to route multiple logical streams over a single persistent connection, reducing connection overhead and improving efficiency.
 
-          -Built from scratch using raw sockets for fine-grained control over protocol design, data flow, and connection management.
+          - Built from scratch using raw sockets for fine-grained control over protocol design, data flow, and connection management.
 
-          -Developed custom binary framing and stream identification for packet routing and isolation between streams.
+          - Developed custom binary framing and stream identification for packet routing and isolation between streams.
 
-          -Implemented full-duplex communication between client, server, and dynamic endpoints.
+          - Implemented full-duplex communication between client, server, and dynamic endpoints.
 
-          -Designed a multithreaded architecture using producer consumer queues for concurrent data transport.
+          - Designed a multithreaded architecture using producer consumer queues for concurrent data transport.
 
-          -Handled TCP stream fragmentation and reassembly using custom logic for reliable data transmission.
-            
-          -Integrated browser-based traffic routing via PAC scripts with local client-server architecture.
+          - Handled TCP stream fragmentation and reassembly using custom logic for reliable data transmission.
+
+          - Integrated browser-based traffic routing via PAC scripts with local client-server architecture.
   #- title: Experience # Title for the section
   #  layout: list # Type of content section (list/text)
   #  content:
