@@ -157,7 +157,7 @@ content:
 
 # Footer
 footer_show_references: true
-# references_title: References on request (Override references text)
+references_title: You have read everything, I suppose or have you skipped this wall of text ?
 
 # Build settings
 remote_theme: sproogen/resume-theme
