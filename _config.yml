@@ -10,9 +10,8 @@ name: Sourjya Basu
 title: Firmware Developer | Embedded Software Engineer
 
 phone: +91 8799007739
-website: sourjyabose.github.io
 email: sourjyabose@gmail.com
-
+LinkedIn: https://www.linkedin.com/in/sourjya-basu/
 # Dark Mode (true/false/never)
 darkmode: false
 
@@ -97,7 +96,7 @@ content:
         
         description: | # this will include new lines to allow paragraphs
           CloudVPN+ is our (Sourjya Basu(me) , Krishna Sharma , Roshan ,Kartik Rohit)  final year project building a cost-efficient VPN system based on a three-layer architecture (Browser Extension → Local Client App → Server) where browser traffic is routed through a local client and securely forwarded to backend servers over a persistent connection.
-          
+
           The design rationale: browser extension can only redirect traffic but cannot process any of it. The main challenge is communication between local client app and server. 
 
           So in this project my work focuses on designing and implementing the core networking infrastructure, including protocol design and concurrent data transport systems, till now I built the following: 
