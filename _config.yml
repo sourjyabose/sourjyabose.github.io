@@ -94,7 +94,8 @@ content:
           # - title:  Github page for project (eg. sproogen/modern-resume-theme)
           #   icon: fab fa-github
           #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
-        
+        quote: >
+          CloudVPN+ is our (me and my team 4 people in total) final year project aimed at reducing the cost of VPN providers. Research Paper in progress.
         description: | # this will include new lines to allow paragraphs
           - Designed and implemented a custom TCP tunnelling and multiplexing protocol to route multiple logical streams over a single persistent connection, reducing connection overhead and improving efficiency.
 
