@@ -96,7 +96,31 @@ content:
           #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
         
         description: | # this will include new lines to allow paragraphs
-          CloudVPN+ is our final year project building a cost-efficient VPN system based on a three-layer architecture (Browser Extension → Local Client App → Server) where browser traffic is routed through a local client and securely forwarded to backend servers over a persistent connection. My work focuses on designing and implementing the core networking layer, including a custom TCP tunneling and multiplexing system built from scratch using raw sockets, enabling multiple logical streams over a single connection with full-duplex communication, multithreaded packet handling, dynamic socket management, and custom stream reassembly, while the system is integrated with a browser extension for transparent traffic redirection. 
+          CloudVPN+ is our (Sourjya Basu(me) , Krishna Sharma , Roshan ,Kartik Rohit)  final year project building a cost-efficient VPN system based on a three-layer architecture (Browser Extension → Local Client App → Server) where browser traffic is routed through a local client and securely forwarded to backend servers over a persistent connection.
+          
+          The design rationale: browser extension can only redirect traffic but cannot process any of it. The main challenge is communication between local client app and server. 
+
+          So in this project my work focuses on designing and implementing the core networking infrastructure, including protocol design and concurrent data transport systems, till now I built the following: 
+
+          Developed a custom TCP tunneling and multiplexing system where multiple logical TCP streams are encapsulated, tagged, and routed over one underlying persistent connection to our servers, significantly reducing connection overhead while maintaining isolation between streams.
+
+          This system was implemented from scratch using raw sockets, without relying on external networking frameworks or libraries, to achieve fine-grained control over protocol design, data flow, and connection management.
+
+
+
+          My Key Contributions:
+
+          • Designed a custom multiplexed transport protocol with custom binary framing for stream identification and packet routing.
+
+          • Implemented full-duplex communication between client, server, and dynamic target endpoints.
+
+          • Built a multithreaded architecture with producer–consumer queues for efficient data handling.
+
+          • Implemented dynamic socket management with per-stream connection tracking for scalable routing.
+
+          • Handled TCP stream fragmentation with custom reassembly logic.
+
+          • Integrated with browser extension via PAC scripts for transparent traffic routing.
   #- title: Experience # Title for the section
   #  layout: list # Type of content section (list/text)
   #  content:
