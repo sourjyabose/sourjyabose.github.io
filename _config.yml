@@ -86,6 +86,8 @@ content:
 
           - Integrated FreeRTOS for timed execution and deterministic display refresh scheduling.
 
+
+
       - layout: top-middle
         title: CloudVPN+
         
@@ -110,6 +112,58 @@ content:
           - Handled TCP stream fragmentation and reassembly using custom logic for reliable data transmission.
 
           - Integrated browser-based traffic routing via PAC scripts with local client-server architecture.
+
+
+
+        layout: top-middle
+        title: AVR Emulator
+        link: https://github.com/sourjyabose/AVRemulator
+        # link_text: Project Website
+        additional_links:
+          - title:  sourjyabose/AVRemulator
+            icon: fab fa-github
+            url: https://github.com/sourjyabose/AVRemulator
+          # - title:  Github page for project (eg. sproogen/modern-resume-theme)
+          #   icon: fab fa-github
+          #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
+        
+        description: | # this will include new lines to allow paragraphs
+          Built an emulator around ATtiny13 (AVR based). It reads a .bin firmware file and runs it.
+          
+          - Built an instruction-level AVR (8-bit) microcontroller emulator in Python capable of executing compiled AVR machine code using a
+          fetch–decode–execute architecture.
+
+          - Designed a software CPU model implementing a Program Counter (PC), 32 general-purpose registers, Stack Pointer (SPL), Status
+          Register (SREG), RAM, and memory-mapped I/O.
+
+          - Developed a mask-and-pattern based instruction decoder, enabling efficient identification and dispatch of AVR opcodes to their
+          corresponding instruction handlers.
+
+          - Implemented execution support for multiple AVR instructions including LDI, OUT, IN, RJMP, RCALL, RET, EOR, SBI, SUBI, SBCI,
+          SBIW, BRNE, and NOP, accurately reproducing AVR instruction semantics.
+          - Simulated AVR stack operations, including function calls and returns, by implementing PUSH/POP mechanisms and return address
+          management.
+
+          - Implemented memory-mapped I/O emulation, allowing software peripherals to react dynamically to register writes through callback
+          based handlers.
+
+          - Recreated AVR Status Register (SREG) behavior by computing Carry, Zero, Negative, Overflow, Sign, Half-Carry, and other
+          processor flags according to AVR arithmetic specifications.
+
+          - Implemented relative branching and subroutine control flow, including signed offset decoding for branch and jump instructions.
+
+          - Engineered a modular emulator architecture separating CPU state, RAM, I/O subsystem, instruction metadata, and execution logic,
+          improving maintainability and extensibility.
+
+          - Executed raw AVR binaries directly by reading machine code from binary files and interpreting instructions in real time.
+
+
+
+
+
+
+
+
   #- title: Experience # Title for the section
   #  layout: list # Type of content section (list/text)
   #  content:
