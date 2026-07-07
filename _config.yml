@@ -115,7 +115,7 @@ content:
 
 
 
-        layout: top-middle
+      - layout: top-middle
         title: AVR Emulator
         link: https://github.com/sourjyabose/AVRemulator
         # link_text: Project Website
@@ -129,7 +129,7 @@ content:
         
         description: | # this will include new lines to allow paragraphs
           Built an emulator around ATtiny13 (AVR based). It reads a .bin firmware file and runs it.
-          
+
           - Built an instruction-level AVR (8-bit) microcontroller emulator in Python capable of executing compiled AVR machine code using a
           fetch–decode–execute architecture.
 
