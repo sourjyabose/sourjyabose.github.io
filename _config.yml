@@ -87,7 +87,7 @@ content:
           - Integrated FreeRTOS for timed execution and deterministic display refresh scheduling.
 
 
-
+          <br>
       - layout: top-middle
         title: CloudVPN+
         
@@ -114,7 +114,7 @@ content:
           - Integrated browser-based traffic routing via PAC scripts with local client-server architecture.
 
 
-
+          <br>
       - layout: top-middle
         title: AVR Emulator
         link: https://github.com/sourjyabose/AVRemulator
@@ -156,6 +156,11 @@ content:
           improving maintainability and extensibility.
 
           - Executed raw AVR binaries directly by reading machine code from binary files and interpreting instructions in real time.
+
+
+
+
+          <br>
 
 
 
