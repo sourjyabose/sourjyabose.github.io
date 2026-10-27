@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Sourjya Basu | Firmware Developer &amp; Network Engineer</title>
+  <meta name="description" content="Portfolio of Sourjya Basu - Firmware Developer, Network Engineer &amp; Embedded Systems Specialist in ESP32, FreeRTOS, device drivers, and TCP protocol design.">
+  <meta name="theme-color" content="#FFE500" id="metaThemeColor">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Embedded Instant-Load Logo Data -->
+  <script src="logos.js"></script>
+
+  <!-- Distinctive Neo-Brutalist Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS RESET & VARIABLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* THEME SYSTEM: DAY MODE DEFAULT, HIGH-CONTRAST NIGHT MODE TOGGLE */
+    :root, [data-theme="day"] {
+      --bg: #F0F2F5;
+      --card-bg: #FFFFFF;
+      --card-sub-bg: #F6F8FA;
+      --ink: #0A0A0C;
+      --ink-muted: #374151;
+      --border-color: #0A0A0C;
+      --shadow-color: #0A0A0C;
+      --yellow: #FFE500;
+      --cyan: #00E5FF;
+      --lime: #00FF66;
+      --coral: #FF3B30;
+      --badge-contrast-text: #0A0A0C;
+      --btn-bg: #FFFFFF;
+      --btn-text: #0A0A0C;
+      --tag-bg: #E5E7EB;
+      --tag-text: #111827;
+      --border-w: 3px;
+      --shadow-offset: 4px;
+      --shadow-offset-lg: 6px;
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-body: 'Public Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="night"] {
+      --bg: #0B0C0E;              /* Deep matte asphalt black background */
+      --card-bg: #1A1D24;         /* Elevated graphite card */
+      --card-sub-bg: #232731;     /* Inner detail container */
+      --ink: #FFFFFF;
+      --ink-muted: #CBD5E1;
+      --border-color: #383F4D;    /* Solid crisp architectural border */
+      --shadow-color: #000000;    /* Dense pitch black block shadow */
+      --yellow: #FFE500;
+      --cyan: #00E5FF;
+      --lime: #00FF66;
+      --coral: #FF3B30;
+      --badge-contrast-text: #0A0A0C;
+      --btn-bg: #232731;
+      --btn-text: #FFFFFF;
+      --tag-bg: #282D39;
+      --tag-text: #F1F5F9;
+    }
+
+    ::selection {
+      background: var(--yellow);
+      color: #0A0A0C;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    /* ACCESSIBILITY: REDUCED MOTION PREFERENCE */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* CUSTOM NEO-BRUTALIST SCROLLBAR FOR DESKTOP (YELLOW WITH BLACK BORDER) */
+    @media (min-width: 769px) {
+      /* Firefox */
+      html {
+        scrollbar-width: auto;
+        scrollbar-color: #FFE500 var(--bg);
+      }
+
+      /* Webkit / Chromium / Safari / Edge */
+      ::-webkit-scrollbar {
+        width: 14px;
+        height: 14px;
+        background-color: var(--bg);
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: var(--bg);
+        border-left: 2px solid #000000;
+      }
+
+      [data-theme="night"] ::-webkit-scrollbar-track {
+        background-color: var(--bg);
+        border-left: 2px solid #383F4D;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #FFE500;
+        border: 2px solid #000000;
+        box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.4);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #FFD000;
+      }
+
+      ::-webkit-scrollbar-thumb:active {
+        background-color: #E6BC00;
+      }
+
+      ::-webkit-scrollbar-corner {
+        background-color: var(--bg);
+      }
+    }
+
+    /* TOP HEADER BAR */
+    .top-system-bar {
+      background: var(--yellow);
+      color: #0A0A0C;
+      border-bottom: var(--border-w) solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .top-brand-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      line-height: 1.25;
+    }
+
+    .top-brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #0A0A0C;
+    }
+
+    .top-brand-divider {
+      display: none;
+    }
+
+    .top-brand-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: rgba(10, 10, 12, 0.78);
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 640px) {
+      .top-brand-group {
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+      }
+      .top-brand-title {
+        font-size: 0.90rem;
+      }
+      .top-brand-divider {
+        display: inline;
+        color: rgba(10, 10, 12, 0.5);
+      }
+      .top-brand-subtitle {
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
+        color: #0A0A0C;
+      }
+    }
+
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0A0A0C;
+      color: #FFFFFF;
+      border: 2px solid var(--border-color);
+      box-shadow: 2px 2px 0px var(--shadow-color);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    /* Hide manual Day/Night toggle button on mobile (< 768px) */
+    @media (max-width: 767px) {
+      .theme-toggle-btn {
+        display: none !important;
+      }
+    }
+
+    [data-theme="day"] .theme-toggle-btn {
+      background: #FFFFFF;
+      color: #0A0A0C;
+      border: 2px solid #0A0A0C;
+    }
+
+    .theme-toggle-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px var(--shadow-color);
+    }
+
+    .theme-toggle-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px var(--shadow-color);
+    }
+
+    /* CONTAINER & LAYOUT */
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding: 40px 24px;
+      }
+    }
+
+    /* HERO PROFILE HEADER (MOBILE FIRST) */
+    .hero-box {
+      background: var(--card-bg);
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-offset-lg) var(--shadow-offset-lg) 0px var(--shadow-color);
+      padding: 24px 20px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .hero-box {
+        padding: 36px 32px;
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto 20px auto;
+    }
+
+    @media (max-width: 639px) {
+      .avatar-badge {
+        right: 0;
+        bottom: -6px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .avatar-wrapper {
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+
+    .avatar-frame {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+      background: var(--card-sub-bg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-badge {
+      position: absolute;
+      bottom: -10px;
+      right: -8px;
+      background: var(--lime);
+      color: #0A0A0C;
+      border: var(--border-w) solid var(--border-color);
+      padding: 5px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      box-shadow: 2px 2px 0px var(--shadow-color);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .hero-title {
+      font-family: var(--font-mono);
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 700;
+      background: var(--yellow);
+      color: #0A0A0C;
+      border: var(--border-w) solid var(--border-color);
+      padding: 6px 12px;
+      display: inline-block;
+      width: fit-content;
+      box-shadow: 3px 3px 0px var(--shadow-color);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-top: 4px;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    #profileAboutContainer p {
+      margin: 0;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    /* ACTION BUTTONS & LINKS */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .neo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      touch-action: manipulation;
+    }
+
+    .neo-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .neo-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-offset-lg) var(--shadow-offset-lg) 0px var(--shadow-color);
+    }
+
+    .neo-btn.btn-primary {
+      background: var(--yellow);
+      color: #0A0A0C;
+    }
+
+    [data-theme="night"] .neo-btn.btn-primary {
+      background: var(--yellow);
+      color: #0A0A0C;
+    }
+
+    .neo-btn.btn-cyan {
+      background: var(--cyan);
+      color: #0A0A0C;
+    }
+
+    [data-theme="night"] .neo-btn.btn-cyan {
+      background: #2D3342;
+      color: #FFFFFF;
+      border-color: var(--border-color);
+    }
+
+    /* SKILL CHIPS (LIST ON MOBILE, CHIPS ON DESKTOP) */
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    .skill-chip {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 2px solid var(--border-color);
+      padding: 8px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: 2px 2px 0px var(--shadow-color);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-chip::before {
+      content: "▪";
+      color: var(--yellow);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .skill-chip:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--shadow-color);
+      background: var(--yellow);
+      color: #0A0A0C;
+    }
+
+    .skill-chip:hover::before {
+      color: #0A0A0C;
+    }
+
+    @media (min-width: 640px) {
+      .skills-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: auto;
+      }
+
+      .skill-chip {
+        padding: 5px 12px;
+        font-size: 0.85rem;
+        display: inline-block;
+      }
+
+      .skill-chip::before {
+        content: "";
+        display: none;
+      }
+    }
+
+    /* SECTION TITLE BANNER */
+    .section-header {
+      margin-top: 48px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      background: var(--card-bg);
+      color: var(--ink);
+      border: var(--border-w) solid var(--border-color);
+      padding: 8px 18px;
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+      display: inline-block;
+      max-width: 100%;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    @media (max-width: 639px) {
+      .section-header {
+        margin-top: 36px;
+        margin-bottom: 18px;
+        gap: 10px;
+      }
+
+      .section-title {
+        font-size: 1.35rem;
+        padding: 6px 12px;
+      }
+    }
+
+    .section-line {
+      flex: 1;
+      height: 4px;
+      background: var(--border-color);
+      min-width: 12px;
+    }
+
+    /* PROJECT LIST ITEMS & COLLAPSIBLE DETAILS */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .project-item {
+      background: var(--card-bg);
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+      transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.15s cubic-bezier(0, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .project-item:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 7px 7px 0px var(--shadow-color);
+    }
+
+    .project-summary-header {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s ease;
+    }
+
+    .project-summary-header:hover {
+      background-color: rgba(255, 229, 0, 0.08);
+    }
+
+    @media (min-width: 640px) {
+      .project-summary-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+      }
+    }
+
+    .project-title-area {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .project-badge {
+      background: var(--yellow);
+      color: var(--badge-contrast-text);
+      padding: 3px 10px;
+      border: 1.5px solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 1.5px 1.5px 0px var(--shadow-color);
+    }
+
+    .project-title-text {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--ink);
+      transition: color 0.15s ease;
+    }
+
+    @media (max-width: 639px) {
+      .project-title-text {
+        font-size: 1.05rem;
+        line-height: 1.3;
+      }
+    }
+
+    .project-summary-header:hover .project-title-text {
+      color: var(--yellow);
+    }
+
+    [data-theme="day"] .project-summary-header:hover .project-title-text {
+      color: #0A0A0C;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+    }
+
+    .project-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: #0A0A0C;
+      border: 2px solid var(--border-color);
+      box-shadow: 3px 3px 0px var(--shadow-color);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+      align-self: flex-start;
+    }
+
+    .project-toggle-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px var(--shadow-color);
+      background-color: #FFF04D;
+    }
+
+    .project-toggle-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--shadow-color);
+    }
+
+    .project-toggle-btn:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .project-summary-header:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: -3px;
+    }
+
+    @media (min-width: 640px) {
+      .project-toggle-btn {
+        align-self: center;
+      }
+    }
+
+    /* COLLAPSIBLE ACCORDION BODY */
+    .project-detail-body {
+      display: none;
+      padding: 20px 18px 24px 18px;
+      border-top: var(--border-w) solid var(--border-color);
+      background: var(--card-sub-bg);
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-detail-body.is-open {
+      display: block;
+    }
+
+    @media (min-width: 640px) {
+      .project-detail-body {
+        padding: 24px;
+      }
+    }
+
+    .project-summary-card {
+      background: var(--card-bg);
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: 3px 3px 0px var(--shadow-color);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .project-summary-header-strip {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 5px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    [data-theme="day"] .project-summary-header-strip {
+      background: #0A0A0C;
+      color: #FFE500;
+    }
+
+    [data-theme="night"] .project-summary-header-strip {
+      background: #232731;
+      color: #FFE500;
+      border-bottom-color: var(--border-color);
+    }
+
+    .project-summary-text {
+      padding: 12px 14px;
+      font-size: 0.96rem;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--ink);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    /* SPLIT TWO-COLUMN TECHNICAL CARD LAYOUT */
+    .project-split-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 820px) {
+      .project-split-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+    }
+
+    .project-photo-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-photo-frame {
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: 4px 4px 0px var(--shadow-color);
+      background: #000000;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-photo-header-bar {
+      background: var(--yellow);
+      color: #0A0A0C;
+      border-bottom: 2px solid var(--border-color);
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: 0.04em;
+    }
+
+    .project-photo-canvas {
+      width: 100%;
+      height: 220px;
+      background: #0B0C0E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @media (min-width: 820px) {
+      .project-photo-canvas {
+        height: 240px;
+      }
+    }
+
+    .project-photo-canvas img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+      display: block;
+    }
+
+    .project-photo-caption {
+      background: var(--card-bg);
+      color: var(--ink-muted);
+      border-top: 2px solid var(--border-color);
+      padding: 6px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .project-content-column {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    /* BULLET POINTS & LISTS */
+    .bullet-list {
+      list-style: none;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bullet-item {
+      position: relative;
+      padding-left: 24px;
+      font-size: 0.94rem;
+      line-height: 1.55;
+      color: var(--ink-muted);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .bullet-item::before {
+      content: "▪";
+      position: absolute;
+      left: 4px;
+      top: -1px;
+      color: var(--yellow);
+      font-size: 1.25rem;
+    }
+
+    /* TAGS */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tag-item {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1.5px solid var(--border-color);
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: transform 0.1s ease, background-color 0.1s ease;
+      display: inline-block;
+    }
+
+    .tag-item:hover {
+      transform: translateY(-2px);
+      background-color: var(--yellow);
+      color: #0A0A0C;
+    }
+
+    /* EDUCATION & ACHIEVEMENT CARDS */
+    .neo-card {
+      background: var(--card-bg);
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.15s cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .neo-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 7px 7px 0px var(--shadow-color);
+    }
+
+    .card-header-bar {
+      background: #0A0A0C;
+      color: #FFFFFF;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      border-bottom: var(--border-w) solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    [data-theme="day"] .card-header-bar {
+      background: #0A0A0C;
+      color: #FFFFFF;
+    }
+
+    .card-header-title-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
+
+    .card-header-name {
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+    }
+
+    .card-badge {
+      background: var(--yellow);
+      color: var(--badge-contrast-text);
+      padding: 3px 10px;
+      border: 1px solid var(--border-color);
+      font-size: 0.80rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 639px) {
+      .card-header-bar:not(.mobile-accordion-header) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .card-badge {
+        align-self: flex-start;
+      }
+    }
+
+    /* MOBILE ACCORDION & COLLAPSIBLE SYSTEM (< 768px ONLY) */
+    .mobile-accordion-toggle {
+      display: none;
+    }
+
+    .mobile-accordion-body {
+      display: block;
+    }
+
+    .readmore-btn {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      /* Mobile Collapsible Cards for Education, Certifications, Achievements */
+      .neo-card.mobile-collapsible {
+        overflow: hidden;
+      }
+
+      .mobile-accordion-header {
+        padding: 16px 18px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        text-align: left !important;
+        cursor: pointer;
+        user-select: none;
+        background: var(--card-bg) !important;
+        color: var(--ink) !important;
+        border-bottom: none;
+        transition: background-color 0.15s ease;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .mobile-accordion-header:hover {
+        background-color: rgba(255, 229, 0, 0.08) !important;
+      }
+
+      .mobile-accordion-header.is-expanded {
+        border-bottom: var(--border-w) solid var(--border-color) !important;
+      }
+
+      .mobile-accordion-header .card-header-title-group {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+      }
+
+      .mobile-accordion-header .card-header-name {
+        color: var(--ink) !important;
+        font-family: var(--font-display) !important;
+        font-size: 1.05rem !important;
+        font-weight: 800 !important;
+        line-height: 1.3 !important;
+        text-align: left !important;
+        display: block !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+
+      .mobile-accordion-toggle {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: var(--yellow) !important;
+        color: #0A0A0C !important;
+        border: 2px solid var(--border-color) !important;
+        box-shadow: 2.5px 2.5px 0px var(--shadow-color) !important;
+        font-family: var(--font-mono) !important;
+        font-size: 0.95rem !important;
+        font-weight: 800 !important;
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+        padding: 0 !important;
+        cursor: pointer;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+        line-height: 1 !important;
+        transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+        margin-left: 12px !important;
+        align-self: center !important;
+      }
+
+      .mobile-accordion-toggle:hover {
+        background-color: #FFF04D;
+      }
+
+      .mobile-accordion-toggle:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0px var(--shadow-color);
+      }
+
+      .mobile-accordion-body {
+        display: none;
+        padding: 20px 18px 24px 18px;
+        background: var(--card-sub-bg);
+        border-top: var(--border-w) solid var(--border-color);
+        text-align: left;
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      .mobile-accordion-body.is-open {
+        display: block;
+      }
+
+      /* Strict left alignment for mobile education, certifications, and achievements */
+      #educationContainer,
+      #certificationsContainer,
+      #achievementsContainer {
+        text-align: left;
+      }
+
+      #educationContainer .neo-card,
+      #certificationsContainer .neo-card,
+      #achievementsContainer .neo-card {
+        text-align: left;
+      }
+
+      #educationContainer .card-header-title-group,
+      #certificationsContainer .card-header-title-group,
+      #achievementsContainer .card-header-title-group {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      #educationContainer .org-header-row,
+      #certificationsContainer .org-header-row,
+      #achievementsContainer .org-header-row {
+        align-items: flex-start;
+        text-align: left;
+        justify-content: flex-start;
+      }
+
+      #educationContainer .org-header-meta,
+      #certificationsContainer .org-header-meta,
+      #achievementsContainer .org-header-meta {
+        text-align: left;
+      }
+
+      #educationContainer .card-title,
+      #certificationsContainer .card-title,
+      #achievementsContainer .card-title {
+        text-align: left;
+      }
+
+      #educationContainer .org-submeta-row,
+      #certificationsContainer .org-submeta-row,
+      #achievementsContainer .org-submeta-row {
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      #educationContainer .bullet-list,
+      #certificationsContainer .bullet-list,
+      #achievementsContainer .bullet-list {
+        text-align: left;
+      }
+
+      #educationContainer .project-summary-text,
+      #certificationsContainer .project-summary-text,
+      #achievementsContainer .project-summary-text {
+        text-align: left;
+      }
+
+      /* Read More / Read Less button for Profile Bio in mobile */
+      .readmore-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        align-self: flex-start;
+        margin-top: 4px;
+        background: var(--yellow);
+        color: #0A0A0C;
+        border: 2px solid var(--border-color);
+        box-shadow: 2.5px 2.5px 0px var(--shadow-color);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 6px 14px;
+        cursor: pointer;
+        transition: transform 0.1s ease, box-shadow 0.1s ease;
+      }
+
+      .readmore-btn:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0px var(--shadow-color);
+      }
+
+      .about-extra-paragraphs {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      .about-extra-paragraphs.is-open {
+        display: flex;
+      }
+    }
+
+    .card-accreditation-pill {
+      background: var(--yellow);
+      color: #0A0A0C;
+      padding: 2px 8px;
+      border: 1px solid #000000;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-body {
+      padding: 20px 18px;
+    }
+
+    .card-body p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    @media (min-width: 640px) {
+      .card-body {
+        padding: 24px;
+      }
+    }
+
+    /* ADAPTIVE ORGANIZATION LOGO CONTAINER & RESPONSIVE CARD HEADERS */
+    .org-header-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .org-logo-frame {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      box-shadow: 2px 2px 0px var(--shadow-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .org-logo-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .org-header-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 4vw, 1.35rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 6px;
+      color: var(--ink);
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    @media (max-width: 639px) {
+      .card-title {
+        font-size: 1.05rem;
+        line-height: 1.3;
+      }
+    }
+
+    .org-submeta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 8px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    .org-submeta-dot {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .org-submeta-dot {
+        display: inline;
+      }
+    }
+
+    .org-accreditation-badge {
+      background: var(--yellow);
+      color: #0A0A0C;
+      padding: 2px 8px;
+      border: 1px solid var(--border-color);
+      font-weight: 700;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      display: inline-block;
+      box-shadow: 1px 1px 0px var(--shadow-color);
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      background: #0A0A0C;
+      color: #FFFFFF;
+      border-top: var(--border-w) solid var(--border-color);
+      padding: 32px 16px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer-quote {
+      background: var(--yellow);
+      color: #0A0A0C;
+      padding: 8px 16px;
+      font-weight: 700;
+      border: 2px solid #FFFFFF;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-system-bar">
+    <div class="top-brand-group">
+      <strong class="top-brand-title" id="siteHeaderTitle">SOURJYA BASU</strong>
+      <span class="top-brand-divider">//</span>
+      <span class="top-brand-subtitle" id="siteHeaderSubtitle">FIRMWARE &amp; NETWORK ENGINEER</span>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center; flex-shrink: 0;">
+      <!-- DAY / NIGHT MODE TOGGLE BUTTON -->
+      <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Toggle day and night mode">
+        <span id="themeToggleIcon">🌙</span>
+        <span id="themeToggleText">NIGHT MODE</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO / PROFILE SECTION -->
+    <section class="hero-box" id="heroSection" aria-label="Profile and Bio">
+      <div class="avatar-wrapper">
+        <div class="avatar-frame">
+          <img src="profile.jpg" alt="Sourjya Basu profile photo" class="avatar-img" id="profileImg" onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/sourjyabose';">
+        </div>
+        <div class="avatar-badge" id="availabilityBadge">AVAILABLE FOR WORK</div>
+      </div>
+
+      <div class="hero-meta">
+        <h1 class="hero-name" id="profileName">Sourjya Basu</h1>
+        <div class="hero-title" id="profileTitle">Firmware Developer | Network Engineer | Embedded Systems</div>
+        <p class="hero-tagline" id="profileTagline">
+          Passionate about tinkering, learning and exploring new horizons—hence my interest in Firmware Development and Computer Networks.
+        </p>
+
+        <!-- BIO PARAGRAPHS -->
+        <div id="profileAboutContainer" style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px; font-size: 0.95rem;">
+          <!-- Loaded dynamically from details.json -->
+        </div>
+
+        <!-- SKILLS CHIPS -->
+        <div class="skills-container" id="profileSkillsContainer">
+          <!-- Loaded dynamically from details.json -->
+        </div>
+
+        <!-- CONTACT & ACTION BUTTONS WITH OFFICIAL SVG LOGOS -->
+        <nav class="contact-bar" aria-label="Contact and Social links">
+          <a href="mailto:sourjyabose@gmail.com" class="neo-btn btn-primary" id="emailBtn">
+            <!-- Mail Icon SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span id="btnEmailText">EMAIL ME</span>
+          </a>
+          <a href="https://github.com/sourjyabose" target="_blank" rel="noopener noreferrer" class="neo-btn btn-cyan" id="githubBtn">
+            <!-- Official GitHub Icon SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span id="btnGithubText">GITHUB</span>
+          </a>
+          <a href="https://www.linkedin.com/in/sourjya-basu" target="_blank" rel="noopener noreferrer" class="neo-btn" id="linkedinBtn">
+            <!-- Official LinkedIn Icon SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span id="btnLinkedinText">LINKEDIN</span>
+          </a>
+          <a href="tel:+918799007739" class="neo-btn" id="phoneBtn">
+            <!-- Phone Icon SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span id="phoneText">+91 8799007739</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION (LIST VIEW WITH DETAILS EXPANDER) -->
+    <section aria-labelledby="projectsHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="projectsHeading">Featured Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-list" id="projectsContainer">
+        <!-- Rendered dynamically from details.json as a list with view details button -->
+        <div style="padding: 24px; text-align: center; font-family: var(--font-mono); background: var(--card-bg); border: 2px solid var(--border-color);">
+          Loading projects from details.json...
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section aria-labelledby="educationHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="educationHeading">Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-list" id="educationContainer">
+        <!-- Rendered dynamically from details.json -->
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section aria-labelledby="certificationsHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="certificationsHeading">Assessments / Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid-2col" id="certificationsContainer">
+        <!-- Rendered dynamically from details.json -->
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section aria-labelledby="achievementsHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="achievementsHeading">Achievements &amp; Leadership</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid-2col" id="achievementsContainer">
+        <!-- Rendered dynamically from details.json -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-quote" id="footerQuote">
+        "You have read everything, I suppose or have you skipped this wall of text?"
+      </div>
+      <div>
+        <strong id="footerName">Sourjya Basu</strong> &bull; <a href="mailto:sourjyabose@gmail.com" id="footerEmailLink" style="color: var(--yellow); text-decoration: underline;">sourjyabose@gmail.com</a>
+      </div>
+      <div id="footerSubtext" style="font-size: 0.82rem; opacity: 0.85;">
+        Built with Neo-Brutalist Craft &bull; Zero Server Dependencies &bull; 100% GitHub Pages Native
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC DATA ENGINE -->
+  <script>
+    (function() {
+      // 1. THEME CONTROLLER
+      const rootHtml = document.documentElement;
+      const themeBtn = document.getElementById('themeToggleBtn');
+      const themeIcon = document.getElementById('themeToggleIcon');
+      const themeText = document.getElementById('themeToggleText');
+
+      function isMobileNightConditionMet() {
+        // Condition: users system theme is dark mode AND users device time is between 6:00 PM and 7:30 AM
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (!prefersDark) return false;
+
+        const now = new Date();
+        const minutesOfDay = now.getHours() * 60 + now.getMinutes();
+        // 6:00 PM is 18 * 60 = 1080 minutes
+        // 7:30 AM is 7 * 60 + 30 = 450 minutes
+        // "Between 6:00 PM and 7:30 AM" means minutesOfDay >= 1080 OR minutesOfDay < 450
+        const isTimeInNightWindow = (minutesOfDay >= 1080 || minutesOfDay < 450);
+        return isTimeInNightWindow;
+      }
+
+      function isDesktopNightConditionMet() {
+        // Desktop automatic condition: users device time is between 11:00 PM and 5:30 AM
+        const now = new Date();
+        const minutesOfDay = now.getHours() * 60 + now.getMinutes();
+        // 11:00 PM is 23 * 60 = 1380 minutes
+        // 5:30 AM is 5 * 60 + 30 = 330 minutes
+        // "Between 11:00 PM and 5:30 AM" means minutesOfDay >= 1380 OR minutesOfDay < 330
+        return (minutesOfDay >= 1380 || minutesOfDay < 330);
+      }
+
+      function applyTheme() {
+        if (isMobileMode()) {
+          // On mobile: switch to night mode ONLY AND ONLY IF system is dark mode and time is between 6PM and 7:30AM
+          const shouldBeNight = isMobileNightConditionMet();
+          setTheme(shouldBeNight ? 'night' : 'day', false);
+        } else {
+          // Desktop mode:
+          // Check if user manually saved a preference in this session/browser
+          const savedTheme = localStorage.getItem('theme_preference');
+          if (savedTheme) {
+            setTheme(savedTheme, false);
+          } else {
+            // Automatically switch to night mode ONLY AND ONLY IF time is between 11PM and 5:30AM
+            const shouldBeNight = isDesktopNightConditionMet();
+            setTheme(shouldBeNight ? 'night' : 'day', false);
+          }
+        }
+      }
+
+      function setTheme(theme, persist) {
+        rootHtml.setAttribute('data-theme', theme);
+        if (persist) {
+          localStorage.setItem('theme_preference', theme);
+        }
+        const metaThemeColor = document.getElementById('metaThemeColor');
+        if (theme === 'night') {
+          if (themeIcon) themeIcon.textContent = '☀️';
+          if (themeText) themeText.textContent = 'DAY MODE';
+          if (metaThemeColor) metaThemeColor.setAttribute('content', '#0B0C0E');
+        } else {
+          if (themeIcon) themeIcon.textContent = '🌙';
+          if (themeText) themeText.textContent = 'NIGHT MODE';
+          if (metaThemeColor) metaThemeColor.setAttribute('content', '#FFE500');
+        }
+      }
+
+      // Initial theme application
+      applyTheme();
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+          if (!isMobileMode()) {
+            const currentTheme = rootHtml.getAttribute('data-theme') || 'day';
+            const nextTheme = currentTheme === 'night' ? 'day' : 'night';
+            setTheme(nextTheme, true);
+          }
+        });
+      }
+
+      // Listen for system color-scheme changes if in mobile mode
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          if (isMobileMode()) {
+            applyTheme();
+          }
+        });
+      }
+
+      // 2. DATA ENGINE: Load and bind details.json
+      const fallbackData = {
+        "profile": {
+          "name": "Sourjya Basu",
+          "title": "Firmware Developer | Embedded Software Engineer",
+          "tagline": "Passionate about tinkering, learning and exploring new horizons—specializing in hardware-level firmware, memory deterministic systems & computer networks.",
+          "email": "sourjyabose@gmail.com",
+          "phone": "+91 8799007739",
+          "github": "https://github.com/sourjyabose",
+          "linkedin": "https://www.linkedin.com/in/sourjya-basu",
+          "avatar": "profile.jpg",
+          "skills": [
+            "Embedded C / C++",
+            "FreeRTOS",
+            "ESP-IDF",
+            "Device Drivers",
+            "Computer Networks",
+            "SPI / I2C / UART",
+            "TCP/IP Sockets",
+            "Multiplexing Protocols",
+            "Hardware Debugging"
+          ],
+          "about": [
+            "My primary interest is in systems where firmware directly interfaces with hardware and communication layers. My focus is on timing behavior, memory interactions, and ensuring deterministic and reliable system operation under real-world constraints.",
+            "In networking, I specialize in protocol design and behavior under real-world conditions, focusing on efficient data flow, multiplexing strategies, and consistently maintaining throughput, latency bounds, and system stability under high congestion.",
+            "Alongside my technical work, I engage in public speaking through hosting and competitive debates, with an emphasis on delivering structured, precise, and confident communication on complex topics."
+          ]
+        },
+        "projects": [
+          {
+            "id": "pcd8544-driver",
+            "title": "PCD8544 Framebuffer Display Driver Stack for ESP32 (ESP-IDF)",
+            "badge": "Embedded Systems",
+            "period": "Active",
+            "github": "https://github.com/sourjyabose/PCD8544-FRAMEBUFFER-DISPLAY-DRIVER-STACK-FOR-ESP32-ESP-IDF",
+            "link": "https://github.com/sourjyabose/PCD8544-FRAMEBUFFER-DISPLAY-DRIVER-STACK-FOR-ESP32-ESP-IDF",
+            "image": "",
+            "summary": "Built a from-scratch custom LCD driver stack for the Nokia 5110 LCD Module (PCD8544 controller) on Espressif ESP32 using ESP-IDF.",
+            "bulletPoints": [
+              "Built a from-scratch custom LCD driver stack for the Nokia 5110 LCD Module (PCD8544 controller) on Espressif Systems ESP32 using ESP-IDF, implementing GPIO bit-banged serial transport, CE/DC/RST sequencing, and PCD8544 48×84 framebuffer page writes.",
+              "Implemented a framebuffer flush pipeline with scanline-to 8px-page conversion and full-frame serialized transfer into display controller RAM.",
+              "Developed an integer-only raster engine (Bresenham line + midpoint circle) with incremental decision logic and linked-list based coordinate staging for deferred framebuffer rendering.",
+              "Built an 8×8 bitmap font renderer with ASCII mapping, and direct framebuffer glyph composition.",
+              "Designed a text layout + marquee system supporting incremental framebuffer shifting for scrolling output.",
+              "Created a graphics driver API for pixel, line, rectangle, triangle, circle and batch framebuffer composition before hardware flush.",
+              "Integrated FreeRTOS for timed execution and deterministic display refresh scheduling."
+            ],
+            "tags": ["ESP32", "ESP-IDF", "FreeRTOS", "Embedded C", "Display Driver", "Bresenham Raster Engine"]
+          },
+          {
+            "id": "cloudvpn-plus",
+            "title": "CloudVPN+",
+            "badge": "Network Systems",
+            "period": "Final Year Capstone",
+            "github": "",
+            "link": "",
+            "image": "",
+            "summary": "Final year capstone research project aimed at reducing the cost and overhead of VPN providers via raw socket multiplexing. Research paper in progress.",
+            "bulletPoints": [
+              "Designed and implemented a custom TCP tunnelling and multiplexing protocol to route multiple logical streams over a single persistent connection, reducing connection overhead and improving efficiency.",
+              "Built from scratch using raw sockets for fine-grained control over protocol design, data flow, and connection management.",
+              "Developed custom binary framing and stream identification for packet routing and isolation between streams.",
+              "Implemented full-duplex communication between client, server, and dynamic endpoints.",
+              "Designed a multithreaded architecture using producer-consumer queues for concurrent data transport.",
+              "Handled TCP stream fragmentation and reassembly using custom logic for reliable data transmission.",
+              "Integrated browser-based traffic routing via PAC scripts with local client-server architecture."
+            ],
+            "tags": ["TCP Multiplexing", "Raw Sockets", "Concurrency", "Protocol Design", "C / Python", "Networking"]
+          },
+          {
+            "id": "avr-emulator",
+            "title": "AVR Microcontroller Emulator (ATtiny13)",
+            "badge": "Computer Architecture",
+            "period": "Completed",
+            "github": "https://github.com/sourjyabose/AVRemulator",
+            "link": "https://github.com/sourjyabose/AVRemulator",
+            "image": "",
+            "summary": "Instruction-level 8-bit AVR microcontroller emulator capable of parsing compiled .bin machine code through a complete fetch–decode–execute cycle.",
+            "bulletPoints": [
+              "Built an instruction-level AVR (8-bit) microcontroller emulator in Python capable of executing compiled AVR machine code using a fetch–decode–execute architecture.",
+              "Designed a software CPU model implementing Program Counter (PC), 32 general-purpose registers, Stack Pointer (SPL), Status Register (SREG), RAM, and memory-mapped I/O.",
+              "Developed a mask-and-pattern based instruction decoder, enabling efficient identification and dispatch of AVR opcodes to their corresponding instruction handlers.",
+              "Implemented execution support for multiple AVR instructions including LDI, OUT, IN, RJMP, RCALL, RET, EOR, SBI, SUBI, SBCI, SBIW, BRNE, and NOP, accurately reproducing AVR semantics.",
+              "Simulated AVR stack operations including function calls and returns via PUSH/POP mechanisms and return address management.",
+              "Implemented memory-mapped I/O emulation, allowing software peripherals to react dynamically to register writes through callback handlers.",
+              "Recreated AVR Status Register (SREG) behavior by computing Carry, Zero, Negative, Overflow, Sign, and Half-Carry flags per spec.",
+              "Implemented relative branching and subroutine control flow, including signed offset decoding for branch and jump instructions.",
+              "Executed raw AVR binaries directly by reading machine code from binary files and interpreting instructions in real time."
+            ],
+            "tags": ["Microcontroller", "AVR 8-bit", "CPU Emulation", "Assembly / Opcode Decoder", "Python"]
+          }
+        ],
+        "education": [
+          {
+            "id": "parul-university",
+            "institution": "Parul University",
+            "location": "Vadodara, Gujarat",
+            "degree": "B.Tech in Computer Science and Engineering",
+            "period": "2023 - 2027",
+            "accreditation": "NAAC A++ Accredited",
+            "description": "Nurtured deep expertise across 4 years in low-level systems, firmware architecture, and computer networks.",
+            "highlights": [
+              "Selected in Top 45 out of 720+ participating teams recommended for the government-run Smart India Hackathon (SIH).",
+              "Served as Placement Coordinator and Host/Anchor for the Career Development Cell.",
+              "Competitive debater and finalist of Madhyam (Gujarat's largest media and journalism festival, hosted by Dept. of Journalism & Mass Comm)."
+            ]
+          }
+        ],
+        "achievements": [
+          {
+            "id": "sih-top-45",
+            "title": "Smart India Hackathon (SIH) - Top 45 Selection",
+            "organization": "Government of India / Parul University",
+            "year": "2024",
+            "badge": "2024",
+            "year": "2024",
+            "description": "Selected among the top 45 teams out of 720+ competing university teams to represent the institution at the national level hackathon."
+          },
+          {
+            "id": "madhyam-finalist",
+            "title": "Madhyam Journalism & Media Festival Finalist",
+            "organization": "Department of Journalism & Mass Communication",
+            "year": "2024",
+            "badge": "2024",
+            "description": "Finalist in competitive debating and public speaking at Gujarat's premier state-level media festival."
+          },
+          {
+            "id": "cdc-placement-coordinator",
+            "title": "Placement Coordinator & Official Host",
+            "organization": "Career Development Cell (CDC)",
+            "year": "2023 - Present",
+            "badge": "2023 - Present",
+            "description": "Coordinated placement drives and anchored prestigious campus leadership and career conclaves."
+          }
+        ],
+        "certifications": [
+          {
+            "id": "cisco-ccna",
+            "title": "CISCO Certified Network Associate",
+            "provider": "CISCO Network Academy",
+            "year": "2024",
+            "logo": "cisco_logo.svg",
+            "description": "Comprehensive grounding in network architectures, IP routing protocols, Ethernet switching, dynamic configuration (DHCP, TCP, UDP), and network security fundamentals.",
+            "keySkills": ["Computer Networking", "Protocols", "Routing Protocols", "DHCP", "TCP", "UDP"]
+          },
+          {
+            "id": "nptel-cn",
+            "title": "NPTEL Computer Networks",
+            "provider": "IIT Kharagpur",
+            "year": "2024",
+            "logo": "iitkgp_logo.svg",
+            "score": "Aggregate: 70 / 100",
+            "subjects": "Computer Networks",
+            "description": "Advanced curriculum by Indian Institute of Technology, Kharagpur exploring socket architecture, network routing layer algorithms, congestion control, and flow control.",
+            "keySkills": ["Computer Networks", "TCP", "Network Architecture", "Protocols"]
+          }
+        ]
+      };
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function isMobileMode() {
+        return typeof window !== 'undefined' && window.innerWidth < 768;
+      }
+
+      function getVal(obj, key, fallback) {
+        if (!obj || typeof obj !== 'object') return fallback !== undefined ? fallback : '';
+        const capitalized = key.charAt(0).toUpperCase() + key.slice(1);
+        const mobileKey = 'mobileAlternate' + capitalized;
+        if (isMobileMode()) {
+          const mobileVal = obj[mobileKey];
+          if (mobileVal !== undefined && mobileVal !== null && mobileVal !== '') {
+            return mobileVal;
+          }
+        }
+        const val = obj[key];
+        if (val !== undefined && val !== null && val !== '') {
+          return val;
+        }
+        return fallback !== undefined ? fallback : '';
+      }
+
+      let activeButtonsConfig = {
+        viewDetails: "VIEW DETAILS ▼",
+        hideDetails: "HIDE DETAILS ▲",
+        readMore: "READ MORE ▼",
+        readLess: "READ LESS ▲",
+        repoLink: "GITHUB REPO",
+        demoLink: "VIEW DEMO / PAPER"
+      };
+
+      let activeLabelsConfig = {
+        attachmentHeader: "ATTACHMENT // SYSTEM SPEC",
+        figurePrefix: "[FIG: 01] SCHEMATIC",
+        projectSummaryHeader: "PROJECT OVERVIEW // BRIEF",
+        projectSummaryTag: "SYS.SPEC",
+        educationSummaryHeader: "OVERVIEW // DEGREE DETAILS",
+        educationSummaryTag: "ACADEMIC",
+        certificationSummaryHeader: "CERTIFICATION OVERVIEW",
+        certificationSummaryTag: "CREDENTIAL",
+        achievementSummaryHeader: "SUMMARY // BRIEF",
+        achievementSummaryTag: "ACHIEVEMENT"
+      };
+
+      function renderSiteConfig(site, profile) {
+        if (!site) return;
+        const headerTitle = getVal(site, 'headerTitle');
+        if (headerTitle) {
+          const el = document.getElementById('siteHeaderTitle');
+          if (el) el.textContent = headerTitle;
+        }
+        const headerSubtitle = getVal(site, 'headerSubtitle');
+        if (headerSubtitle) {
+          const el = document.getElementById('siteHeaderSubtitle');
+          if (el) el.textContent = headerSubtitle;
+        }
+        const availBadge = getVal(site, 'availabilityBadge');
+        if (availBadge) {
+          const el = document.getElementById('availabilityBadge');
+          if (el) el.textContent = availBadge;
+        }
+        if (site.sections) {
+          const pTitle = getVal(site.sections, 'projectsTitle');
+          if (pTitle) {
+            const el = document.getElementById('projectsHeading');
+            if (el) el.textContent = pTitle;
+          }
+          const eTitle = getVal(site.sections, 'educationTitle');
+          if (eTitle) {
+            const el = document.getElementById('educationHeading');
+            if (el) el.textContent = eTitle;
+          }
+          const cTitle = getVal(site.sections, 'certificationsTitle');
+          if (cTitle) {
+            const el = document.getElementById('certificationsHeading');
+            if (el) el.textContent = cTitle;
+          }
+          const aTitle = getVal(site.sections, 'achievementsTitle');
+          if (aTitle) {
+            const el = document.getElementById('achievementsHeading');
+            if (el) el.textContent = aTitle;
+          }
+        }
+        if (site.buttons) {
+          const btnEmail = getVal(site.buttons, 'email');
+          if (btnEmail) {
+            const el = document.getElementById('btnEmailText');
+            if (el) el.textContent = btnEmail;
+          }
+          const btnGh = getVal(site.buttons, 'github');
+          if (btnGh) {
+            const el = document.getElementById('btnGithubText');
+            if (el) el.textContent = btnGh;
+          }
+          const btnLi = getVal(site.buttons, 'linkedin');
+          if (btnLi) {
+            const el = document.getElementById('btnLinkedinText');
+            if (el) el.textContent = btnLi;
+          }
+          const vd = getVal(site.buttons, 'viewDetails');
+          if (vd) activeButtonsConfig.viewDetails = vd;
+          const hd = getVal(site.buttons, 'hideDetails');
+          if (hd) activeButtonsConfig.hideDetails = hd;
+          const rm = getVal(site.buttons, 'readMore');
+          if (rm) activeButtonsConfig.readMore = rm;
+          const rlLess = getVal(site.buttons, 'readLess');
+          if (rlLess) activeButtonsConfig.readLess = rlLess;
+          const rl = getVal(site.buttons, 'repoLink');
+          if (rl) activeButtonsConfig.repoLink = rl;
+          const dl = getVal(site.buttons, 'demoLink');
+          if (dl) activeButtonsConfig.demoLink = dl;
+        }
+        if (site.labels) {
+          const attH = getVal(site.labels, 'attachmentHeader');
+          if (attH) activeLabelsConfig.attachmentHeader = attH;
+          const figP = getVal(site.labels, 'figurePrefix');
+          if (figP) activeLabelsConfig.figurePrefix = figP;
+          const psh = getVal(site.labels, 'projectSummaryHeader');
+          if (psh) activeLabelsConfig.projectSummaryHeader = psh;
+          const pst = getVal(site.labels, 'projectSummaryTag');
+          if (pst) activeLabelsConfig.projectSummaryTag = pst;
+          const esh = getVal(site.labels, 'educationSummaryHeader');
+          if (esh) activeLabelsConfig.educationSummaryHeader = esh;
+          const est = getVal(site.labels, 'educationSummaryTag');
+          if (est) activeLabelsConfig.educationSummaryTag = est;
+          const csh = getVal(site.labels, 'certificationSummaryHeader');
+          if (csh) activeLabelsConfig.certificationSummaryHeader = csh;
+          const cst = getVal(site.labels, 'certificationSummaryTag');
+          if (cst) activeLabelsConfig.certificationSummaryTag = cst;
+          const ash = getVal(site.labels, 'achievementSummaryHeader');
+          if (ash) activeLabelsConfig.achievementSummaryHeader = ash;
+          const ast = getVal(site.labels, 'achievementSummaryTag');
+          if (ast) activeLabelsConfig.achievementSummaryTag = ast;
+        }
+        if (site.footer) {
+          const quote = getVal(site.footer, 'quote');
+          if (quote) {
+            const el = document.getElementById('footerQuote');
+            if (el) el.textContent = '"' + quote.replace(/^"|"$/g, '') + '"';
+          }
+          const subtext = getVal(site.footer, 'subtext');
+          if (subtext) {
+            const el = document.getElementById('footerSubtext');
+            if (el) el.textContent = subtext;
+          }
+        }
+        if (profile) {
+          const profName = getVal(profile, 'name');
+          if (profName) {
+            const el = document.getElementById('footerName');
+            if (el) el.textContent = profName;
+          }
+          const profEmail = getVal(profile, 'email');
+          if (profEmail) {
+            const el = document.getElementById('footerEmailLink');
+            if (el) {
+              el.textContent = profEmail;
+              el.href = 'mailto:' + profEmail;
+            }
+          }
+        }
+      }
+
+      function renderProfile(profile) {
+        if (!profile) return;
+        const name = getVal(profile, 'name');
+        if (name) {
+          document.getElementById('profileName').textContent = name;
+          const footerName = document.getElementById('footerName');
+          if (footerName) footerName.textContent = name;
+        }
+        const title = getVal(profile, 'title');
+        if (title) document.getElementById('profileTitle').textContent = title;
+        const tagline = getVal(profile, 'tagline');
+        if (tagline) document.getElementById('profileTagline').textContent = tagline;
+        const avatar = getVal(profile, 'avatar');
+        if (avatar) document.getElementById('profileImg').src = avatar;
+
+        const email = getVal(profile, 'email');
+        if (email) {
+          document.getElementById('emailBtn').href = 'mailto:' + email;
+          const footerEmail = document.getElementById('footerEmailLink');
+          if (footerEmail) {
+            footerEmail.textContent = email;
+            footerEmail.href = 'mailto:' + email;
+          }
+        }
+        const phone = getVal(profile, 'phone');
+        if (phone) {
+          const phoneBtn = document.getElementById('phoneBtn');
+          phoneBtn.href = 'tel:' + phone.replace(/\s+/g, '');
+          const phoneText = document.getElementById('phoneText');
+          if (phoneText) phoneText.textContent = phone;
+        }
+        const github = getVal(profile, 'github');
+        if (github) document.getElementById('githubBtn').href = github;
+        const linkedin = getVal(profile, 'linkedin');
+        if (linkedin) document.getElementById('linkedinBtn').href = linkedin;
+
+        const aboutContainer = document.getElementById('profileAboutContainer');
+        const aboutList = Array.isArray(profile.about) ? profile.about : [];
+
+        // Controlled via details.json (aboutVisibleParagraphs)
+        const visibleParaCountVal = profile.aboutVisibleParagraphs;
+        const visibleParaCount = (visibleParaCountVal !== undefined && visibleParaCountVal !== null && !isNaN(Number(visibleParaCountVal)))
+          ? Math.max(1, parseInt(visibleParaCountVal, 10))
+          : 1;
+
+        if (Array.isArray(aboutList) && aboutList.length > 0) {
+          if (isMobileMode() && aboutList.length > visibleParaCount) {
+            // Mobile mode: first N paragraphs shown based on details.json, rest collapsed under Read More
+            const initialParas = aboutList.slice(0, visibleParaCount).map(function(p) {
+              return '<p>' + escapeHtml(p) + '</p>';
+            }).join('');
+            const restParas = aboutList.slice(visibleParaCount).map(function(p) {
+              return '<p>' + escapeHtml(p) + '</p>';
+            }).join('');
+            aboutContainer.innerHTML = `
+              ${initialParas}
+              <div class="about-extra-paragraphs" id="aboutExtraParas">
+                ${restParas}
+              </div>
+              <button type="button" class="readmore-btn" id="aboutReadMoreBtn" onclick="toggleAboutBio()" aria-expanded="false" aria-controls="aboutExtraParas">
+                <span>${escapeHtml(activeButtonsConfig.readMore)}</span>
+              </button>
+            `;
+          } else {
+            // Desktop mode (or if all paragraphs fit within visibleParaCount): full text displayed without toggle
+            aboutContainer.innerHTML = aboutList
+              .map(function(p) { return '<p>' + escapeHtml(p) + '</p>'; })
+              .join('');
+          }
+        }
+
+        const skillsContainer = document.getElementById('profileSkillsContainer');
+        const skillsList = (isMobileMode() && Array.isArray(profile.mobileAlternateSkills) && profile.mobileAlternateSkills.length > 0)
+          ? profile.mobileAlternateSkills
+          : profile.skills;
+
+        if (Array.isArray(skillsList) && skillsList.length > 0) {
+          skillsContainer.innerHTML = skillsList
+            .map(function(skill) { return '<span class="skill-chip">' + escapeHtml(skill) + '</span>'; })
+            .join('');
+        }
+      }
+
+      // Render Projects as an interactive List with expander button
+      function renderProjects(projects) {
+        const container = document.getElementById('projectsContainer');
+        if (!Array.isArray(projects) || projects.length === 0) {
+          container.innerHTML = '<div class="project-item" style="padding: 24px; font-family: var(--font-mono);">No projects found in details.json</div>';
+          return;
+        }
+
+        container.innerHTML = projects.map(function(p, index) {
+          const title = getVal(p, 'title');
+          const badge = getVal(p, 'badge', 'FIRMWARE');
+          const period = getVal(p, 'period');
+          const github = getVal(p, 'github');
+          const githubText = getVal(p, 'githubText');
+          const link = getVal(p, 'link');
+          const linkText = getVal(p, 'linkText');
+          const image = getVal(p, 'image');
+          const attachmentHeader = getVal(p, 'attachmentHeader', activeLabelsConfig.attachmentHeader);
+          const figurePrefix = getVal(p, 'figurePrefix', activeLabelsConfig.figurePrefix);
+          const summaryHeader = getVal(p, 'summaryHeader', activeLabelsConfig.projectSummaryHeader);
+          const summaryTag = getVal(p, 'summaryTag', activeLabelsConfig.projectSummaryTag);
+          const summary = getVal(p, 'summary');
+
+          const bullets = (isMobileMode() && Array.isArray(p.mobileAlternateBulletPoints) && p.mobileAlternateBulletPoints.length > 0)
+            ? p.mobileAlternateBulletPoints
+            : (Array.isArray(p.bulletPoints) ? p.bulletPoints : []);
+
+          let bulletsHtml = '';
+          if (bullets.length > 0) {
+            bulletsHtml = '<ul class="bullet-list">' + bullets.map(function(b) {
+              return '<li class="bullet-item">' + escapeHtml(b) + '</li>';
+            }).join('') + '</ul>';
+          }
+
+          const tags = (isMobileMode() && Array.isArray(p.mobileAlternateTags) && p.mobileAlternateTags.length > 0)
+            ? p.mobileAlternateTags
+            : (Array.isArray(p.tags) ? p.tags : []);
+
+          let tagsHtml = '';
+          if (tags.length > 0) {
+            tagsHtml = '<div class="tag-cloud">' + tags.map(function(t) {
+              return '<span class="tag-item">#' + escapeHtml(t) + '</span>';
+            }).join('') + '</div>';
+          }
+
+          let linksHtml = '<div class="contact-bar" style="margin-top: 18px;">';
+          if (github && github.trim() !== '') {
+            const repoLabel = githubText || activeButtonsConfig.repoLink;
+            linksHtml += `
+              <a href="${escapeHtml(github)}" target="_blank" rel="noopener noreferrer" class="neo-btn btn-cyan">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>${escapeHtml(repoLabel)}</span>
+              </a>`;
+          }
+          if (link && link.trim() !== '' && link !== github) {
+            const linkButtonLabel = linkText || activeButtonsConfig.demoLink;
+            linksHtml += `
+              <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" class="neo-btn btn-primary">
+                <span>${escapeHtml(linkButtonLabel)}</span>
+              </a>`;
+          }
+          linksHtml += '</div>';
+
+          // Mobile-first behavior: no project expanded on mobile (< 768px). On desktop (>= 768px), respects details.json initiallyExpanded setting.
+          const isDesktop = !isMobileMode();
+          const shouldBeOpen = isDesktop && (typeof p.initiallyExpanded === 'boolean' ? p.initiallyExpanded : (index === 0));
+          const isOpen = shouldBeOpen ? 'is-open' : '';
+          const btnText = shouldBeOpen ? activeButtonsConfig.hideDetails : activeButtonsConfig.viewDetails;
+
+          let contentInnerHtml = '';
+          const hasImage = image && image.trim() !== '';
+
+          if (hasImage) {
+            contentInnerHtml = `
+              <div class="project-split-layout">
+                <aside class="project-photo-column" aria-label="Project photo and schematic">
+                  <div class="project-photo-frame">
+                    <div class="project-photo-header-bar">
+                      <span>${escapeHtml(attachmentHeader)}</span>
+                    </div>
+                    <div class="project-photo-canvas">
+                      <img src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy" onerror="this.closest('.project-split-layout').classList.remove('project-split-layout'); this.closest('.project-photo-column').remove();">
+                    </div>
+                    <div class="project-photo-caption">${escapeHtml(figurePrefix)}</div>
+                  </div>
+                </aside>
+                <div class="project-content-column">
+                  ${summary ? `
+                    <div class="project-summary-card">
+                      <div class="project-summary-header-strip">
+                        <span>${escapeHtml(summaryHeader)}</span>
+                        ${summaryTag ? `<span style="font-size: 0.65rem; opacity: 0.85;">${escapeHtml(summaryTag)}</span>` : ''}
+                      </div>
+                      <div class="project-summary-text">${escapeHtml(summary)}</div>
+                    </div>` : ''}
+                  ${bulletsHtml}
+                  ${tagsHtml}
+                  ${linksHtml}
+                </div>
+              </div>
+            `;
+          } else {
+            contentInnerHtml = `
+              ${summary ? `
+                <div class="project-summary-card">
+                  <div class="project-summary-header-strip">
+                    <span>${escapeHtml(summaryHeader)}</span>
+                    ${summaryTag ? `<span style="font-size: 0.65rem; opacity: 0.85;">${escapeHtml(summaryTag)}</span>` : ''}
+                  </div>
+                  <div class="project-summary-text">${escapeHtml(summary)}</div>
+                </div>` : ''}
+              ${bulletsHtml}
+              ${tagsHtml}
+              ${linksHtml}
+            `;
+          }
+
+          return `
+            <article class="project-item" id="${escapeHtml(p.id || '')}">
+              <div class="project-summary-header" onclick="toggleProjectDetails('${escapeHtml(p.id || 'proj-' + index)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleProjectDetails('${escapeHtml(p.id || 'proj-' + index)}');}" tabindex="0" role="button" aria-expanded="${shouldBeOpen}" aria-controls="body-${escapeHtml(p.id || 'proj-' + index)}">
+                <div class="project-title-area">
+                  <div class="project-badge-row">
+                    <span class="project-badge">${escapeHtml(badge)}</span>
+                    ${period ? `<span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-muted);">[${escapeHtml(period)}]</span>` : ''}
+                  </div>
+                  <h3 class="project-title-text">${escapeHtml(title)}</h3>
+                </div>
+                <button type="button" class="project-toggle-btn" id="btn-${escapeHtml(p.id || 'proj-' + index)}" aria-expanded="${shouldBeOpen}" tabindex="-1" aria-hidden="true">
+                  ${btnText}
+                </button>
+              </div>
+              <div class="project-detail-body ${isOpen}" id="body-${escapeHtml(p.id || 'proj-' + index)}">
+                ${contentInnerHtml}
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // Global toggle function
+      window.toggleProjectDetails = function(projectId) {
+        const bodyEl = document.getElementById('body-' + projectId);
+        const btnEl = document.getElementById('btn-' + projectId);
+        if (!bodyEl || !btnEl) return;
+
+        const headerEl = bodyEl.previousElementSibling;
+        const isCurrentlyOpen = bodyEl.classList.contains('is-open');
+        if (isCurrentlyOpen) {
+          bodyEl.classList.remove('is-open');
+          btnEl.textContent = activeButtonsConfig.viewDetails;
+          btnEl.setAttribute('aria-expanded', 'false');
+          if (headerEl) headerEl.setAttribute('aria-expanded', 'false');
+        } else {
+          bodyEl.classList.add('is-open');
+          btnEl.textContent = activeButtonsConfig.hideDetails;
+          btnEl.setAttribute('aria-expanded', 'true');
+          if (headerEl) headerEl.setAttribute('aria-expanded', 'true');
+        }
+      };
+
+      // Global toggle function for Profile Bio Read More
+      window.toggleAboutBio = function() {
+        const extraParas = document.getElementById('aboutExtraParas');
+        const btn = document.getElementById('aboutReadMoreBtn');
+        if (!extraParas || !btn) return;
+        const isOpen = extraParas.classList.contains('is-open');
+        if (isOpen) {
+          extraParas.classList.remove('is-open');
+          btn.innerHTML = '<span>' + escapeHtml(activeButtonsConfig.readMore) + '</span>';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          extraParas.classList.add('is-open');
+          btn.innerHTML = '<span>' + escapeHtml(activeButtonsConfig.readLess) + '</span>';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      };
+
+      // Global toggle function for Mobile Card Accordion (Education, Certs, Achievements)
+      window.toggleCardAccordion = function(bodyId, btnId, headerId) {
+        const bodyEl = document.getElementById(bodyId);
+        const btnEl = document.getElementById(btnId);
+        const headerEl = document.getElementById(headerId);
+        if (!bodyEl) return;
+        const isOpen = bodyEl.classList.contains('is-open');
+        if (isOpen) {
+          bodyEl.classList.remove('is-open');
+          if (btnEl) {
+            btnEl.textContent = '▼';
+            btnEl.setAttribute('aria-expanded', 'false');
+          }
+          if (headerEl) {
+            headerEl.classList.remove('is-expanded');
+            headerEl.setAttribute('aria-expanded', 'false');
+          }
+        } else {
+          bodyEl.classList.add('is-open');
+          if (btnEl) {
+            btnEl.textContent = '▲';
+            btnEl.setAttribute('aria-expanded', 'true');
+          }
+          if (headerEl) {
+            headerEl.classList.add('is-expanded');
+            headerEl.setAttribute('aria-expanded', 'true');
+          }
+        }
+      };
+
+      // Render education
+      function renderEducation(educationList) {
+        const container = document.getElementById('educationContainer');
+        if (!Array.isArray(educationList) || educationList.length === 0) {
+          container.innerHTML = '<div class="neo-card" style="padding: 24px; font-family: var(--font-mono);">No education entries found.</div>';
+          return;
+        }
+
+        const isMobile = isMobileMode();
+
+        container.innerHTML = educationList.map(function(edu, index) {
+          const institution = getVal(edu, 'institution');
+          const location = getVal(edu, 'location');
+          const degree = getVal(edu, 'degree');
+          const period = getVal(edu, 'period');
+          const accreditation = getVal(edu, 'accreditation');
+          const description = getVal(edu, 'description');
+          const logo = getVal(edu, 'logo');
+          const eduId = edu.id || 'edu-' + index;
+
+          const highlights = (isMobile && Array.isArray(edu.mobileAlternateHighlights) && edu.mobileAlternateHighlights.length > 0)
+            ? edu.mobileAlternateHighlights
+            : (Array.isArray(edu.highlights) ? edu.highlights : []);
+
+          let highlightsHtml = '';
+          if (highlights.length > 0) {
+            highlightsHtml = '<ul class="bullet-list" style="margin-top: 14px;">' + highlights.map(function(h) {
+              return '<li class="bullet-item">' + escapeHtml(h) + '</li>';
+            }).join('') + '</ul>';
+          }
+
+          function getLogoSrc(logoPath, fallbackVar) {
+            if (window[fallbackVar]) return window[fallbackVar];
+            return logoPath || '';
+          }
+
+          let logoHtml = '';
+          const logoSrc = getLogoSrc(logo, 'PARUL_LOGO');
+          if (logoSrc) {
+            logoHtml = `
+              <div class="org-logo-frame">
+                <img src="${escapeHtml(logoSrc)}" alt="${escapeHtml(institution)} logo" class="org-logo-img">
+              </div>
+            `;
+          }
+
+          if (isMobile) {
+            // Mobile mode: collapsible accordion with right triangle indicator button
+            // University name styled with font-display (same font used in CCNA / titles)
+            return `
+              <article class="neo-card mobile-collapsible" id="${escapeHtml(eduId)}">
+                <div class="card-header-bar mobile-accordion-header" id="header-${escapeHtml(eduId)}" onclick="toggleCardAccordion('body-${escapeHtml(eduId)}', 'btn-${escapeHtml(eduId)}', 'header-${escapeHtml(eduId)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCardAccordion('body-${escapeHtml(eduId)}', 'btn-${escapeHtml(eduId)}', 'header-${escapeHtml(eduId)}');}" tabindex="0" role="button" aria-expanded="false" aria-controls="body-${escapeHtml(eduId)}">
+                  <div class="card-header-title-group" style="flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px;">
+                    <span class="card-header-name" style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 800;">${escapeHtml(institution)}</span>
+                    ${accreditation ? `<span class="card-accreditation-pill">${escapeHtml(accreditation)}</span>` : ''}
+                  </div>
+                  <button type="button" class="mobile-accordion-toggle" id="btn-${escapeHtml(eduId)}" aria-expanded="false" tabindex="-1" aria-hidden="true" title="Toggle Details">
+                    ▼
+                  </button>
+                </div>
+                <div class="card-body mobile-accordion-body" id="body-${escapeHtml(eduId)}">
+                  <div class="org-header-row">
+                    ${logoHtml}
+                    <div class="org-header-meta">
+                      <h3 class="card-title">${escapeHtml(degree)}</h3>
+                      <div class="org-submeta-row">
+                        ${period ? `<span style="color: var(--ink); font-weight: 700;">${escapeHtml(period)}</span>` : ''}
+                        ${period && location ? `<span class="org-submeta-dot">&bull;</span>` : ''}
+                        <span>${escapeHtml(location)}</span>
+                      </div>
+                    </div>
+                  </div>
+                  ${description ? `
+                    <div class="project-summary-card" style="margin-bottom: 16px;">
+                      <div class="project-summary-header-strip">
+                        <span>${escapeHtml(activeLabelsConfig.educationSummaryHeader)}</span>
+                        ${activeLabelsConfig.educationSummaryTag ? `<span style="font-size: 0.65rem; opacity: 0.85;">${escapeHtml(activeLabelsConfig.educationSummaryTag)}</span>` : ''}
+                      </div>
+                      <div class="project-summary-text">${escapeHtml(description)}</div>
+                    </div>` : ''}
+                  ${highlightsHtml}
+                </div>
+              </article>
+            `;
+          }
+
+          // Desktop mode: full static card
+          return `
+            <article class="neo-card" id="${escapeHtml(eduId)}">
+              <div class="card-header-bar">
+                <div class="card-header-title-group">
+                  <span class="card-header-name">${escapeHtml(institution)}</span>
+                  ${accreditation ? `<span class="card-accreditation-pill">${escapeHtml(accreditation)}</span>` : ''}
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="org-header-row">
+                  ${logoHtml}
+                  <div class="org-header-meta">
+                    <h3 class="card-title">${escapeHtml(degree)}</h3>
+                    <div class="org-submeta-row">
+                      ${period ? `<span style="color: var(--ink); font-weight: 700;">${escapeHtml(period)}</span>` : ''}
+                      ${period && location ? `<span class="org-submeta-dot">&bull;</span>` : ''}
+                      <span>${escapeHtml(location)}</span>
+                    </div>
+                  </div>
+                </div>
+                ${description ? `<p style="font-size: 0.95rem; margin-bottom: 10px; color: var(--ink);">${escapeHtml(description)}</p>` : ''}
+                ${highlightsHtml}
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // Render certifications
+      function renderCertifications(certifications) {
+        const container = document.getElementById('certificationsContainer');
+        if (!Array.isArray(certifications) || certifications.length === 0) {
+          container.innerHTML = '<div class="neo-card" style="padding: 24px; font-family: var(--font-mono);">No certifications listed.</div>';
+          return;
+        }
+
+        const isMobile = isMobileMode();
+
+        container.innerHTML = certifications.map(function(cert, index) {
+          const title = getVal(cert, 'title');
+          const mobileAlternateTitle = cert.mobileAlternateTitle || '';
+          const provider = getVal(cert, 'provider');
+          const year = getVal(cert, 'year') || getVal(cert, 'badge');
+          const badge = year;
+          const logo = getVal(cert, 'logo');
+          const score = getVal(cert, 'score');
+          const subjects = getVal(cert, 'subjects');
+          const description = getVal(cert, 'description');
+          const certId = cert.id || 'cert-' + index;
+
+          const skills = (isMobile && Array.isArray(cert.mobileAlternateKeySkills) && cert.mobileAlternateKeySkills.length > 0)
+            ? cert.mobileAlternateKeySkills
+            : (Array.isArray(cert.keySkills) ? cert.keySkills : []);
+
+          let skillsHtml = '';
+          if (skills.length > 0) {
+            skillsHtml = '<div class="tag-cloud" style="margin-top: 14px;">' + skills.map(function(s) {
+              return '<span class="tag-item">#' + escapeHtml(s) + '</span>';
+            }).join('') + '</div>';
+          }
+
+          let logoHtml = '';
+          if (logo) {
+            logoHtml = `
+              <div class="org-logo-frame">
+                <img src="${escapeHtml(logo)}" alt="${escapeHtml(provider || title)} logo" class="org-logo-img">
+              </div>
+            `;
+          }
+
+          if (isMobile) {
+            // Mobile mode:
+            // 1. Right triangle button indicator (▼/▲)
+            // 2. Header displays: mobileAlternateTitle || title (no badge in header bar)
+            // 3. In expanded body: date/year shown normally just above provider (not as badge)
+            // 4. No repeated title in expanded body; styled with project section spacing & container
+            const headerDisplayTitle = mobileAlternateTitle || title;
+            return `
+              <article class="neo-card mobile-collapsible" id="${escapeHtml(certId)}">
+                <div class="card-header-bar mobile-accordion-header" id="header-${escapeHtml(certId)}" onclick="toggleCardAccordion('body-${escapeHtml(certId)}', 'btn-${escapeHtml(certId)}', 'header-${escapeHtml(certId)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCardAccordion('body-${escapeHtml(certId)}', 'btn-${escapeHtml(certId)}', 'header-${escapeHtml(certId)}');}" tabindex="0" role="button" aria-expanded="false" aria-controls="body-${escapeHtml(certId)}">
+                  <div style="flex: 1; min-width: 0; padding-right: 8px;">
+                    <span class="card-header-name" style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 800;">${escapeHtml(headerDisplayTitle)}</span>
+                  </div>
+                  <button type="button" class="mobile-accordion-toggle" id="btn-${escapeHtml(certId)}" aria-expanded="false" tabindex="-1" aria-hidden="true" title="Toggle Details">
+                    ▼
+                  </button>
+                </div>
+                <div class="card-body mobile-accordion-body" id="body-${escapeHtml(certId)}">
+                  <div class="org-header-row">
+                    ${logoHtml}
+                    <div class="org-header-meta">
+                      <div class="org-submeta-row" style="margin-top: 0;">
+                        <span style="font-weight: 700; color: var(--ink); font-size: 0.95rem;">Provider: ${escapeHtml(provider)}</span>
+                        ${score ? `<span class="org-submeta-dot">&bull;</span><span style="color: var(--ink); font-weight: 700;">${escapeHtml(score)}</span>` : ''}
+                      </div>
+                      ${year ? `<div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--ink-muted); margin-top: 3px;">Year: ${escapeHtml(year)}</div>` : ''}
+                    </div>
+                  </div>
+                  ${description ? `
+                    <div class="project-summary-card" style="margin-bottom: 16px;">
+                      <div class="project-summary-header-strip">
+                        <span>${escapeHtml(activeLabelsConfig.certificationSummaryHeader)}</span>
+                        ${activeLabelsConfig.certificationSummaryTag ? `<span style="font-size: 0.65rem; opacity: 0.85;">${escapeHtml(activeLabelsConfig.certificationSummaryTag)}</span>` : ''}
+                      </div>
+                      <div class="project-summary-text">${escapeHtml(description)}</div>
+                    </div>` : ''}
+                  ${subjects ? `<p style="font-family: var(--font-mono); font-size: 0.84rem; margin-bottom: 8px; color: var(--ink-muted);">Subjects: ${escapeHtml(subjects)}</p>` : ''}
+                  ${skillsHtml}
+                </div>
+              </article>
+            `;
+          }
+
+          // Desktop mode: full static card with year badge on the right of header
+          return `
+            <article class="neo-card" id="${escapeHtml(certId)}">
+              <div class="card-header-bar">
+                <span class="card-header-name">${escapeHtml(provider)}</span>
+                <span class="card-badge" style="background: var(--yellow); color: var(--badge-contrast-text);">${escapeHtml(badge || 'YEAR')}</span>
+              </div>
+              <div class="card-body">
+                <div class="org-header-row">
+                  ${logoHtml}
+                  <div class="org-header-meta">
+                    <h3 class="card-title">${escapeHtml(title)}</h3>
+                    <div class="org-submeta-row">
+                      <span>Provider: ${escapeHtml(provider)}</span>
+                    </div>
+                    ${score ? `<div class="org-submeta-row" style="margin-top: 2px;"><span style="color: var(--ink); font-weight: 700;">${escapeHtml(score)}</span></div>` : ''}
+                  </div>
+                </div>
+                ${subjects ? `<p style="font-family: var(--font-mono); font-size: 0.84rem; margin-bottom: 8px; color: var(--ink-muted);">Subjects: ${escapeHtml(subjects)}</p>` : ''}
+                ${description ? `<p style="font-size: 0.92rem; line-height: 1.5; color: var(--ink); margin-bottom: 6px;">${escapeHtml(description)}</p>` : ''}
+                ${skillsHtml}
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // Render achievements
+      function renderAchievements(achievements) {
+        const container = document.getElementById('achievementsContainer');
+        if (!Array.isArray(achievements) || achievements.length === 0) {
+          container.innerHTML = '<div class="neo-card" style="padding: 24px; font-family: var(--font-mono);">No achievements found.</div>';
+          return;
+        }
+
+        const isMobile = isMobileMode();
+
+        container.innerHTML = achievements.map(function(ach, index) {
+          const title = getVal(ach, 'title');
+          const mobileAlternateTitle = ach.mobileAlternateTitle || '';
+          const organization = getVal(ach, 'organization');
+          const year = getVal(ach, 'year');
+          const badge = getVal(ach, 'badge', 'AWARD');
+          const description = getVal(ach, 'description');
+          const logo = getVal(ach, 'logo');
+          const achId = ach.id || 'ach-' + index;
+
+          let logoSrc = '';
+          if (logo && logo.includes('sih') && window.SIH_LOGO) {
+            logoSrc = window.SIH_LOGO;
+          } else if (logo && logo.includes('parul') && window.PARUL_LOGO) {
+            logoSrc = window.PARUL_LOGO;
+          } else {
+            logoSrc = logo || (window.PARUL_LOGO || '');
+          }
+
+          let logoHtml = '';
+          if (logoSrc) {
+            logoHtml = `
+              <div class="org-logo-frame">
+                <img src="${escapeHtml(logoSrc)}" alt="${escapeHtml(organization || title)} logo" class="org-logo-img">
+              </div>
+            `;
+          }
+
+          if (isMobile) {
+            // Mobile mode:
+            // 1. Right triangle button indicator (▼/▲)
+            // 2. Before expanding, header shows mobileAlternateTitle (or title)
+            // 3. Inside expanded body, info is not repeated (title not repeated); organization and year shown cleanly
+            // 4. Spacing and container styled like project section
+            const headerDisplayTitle = mobileAlternateTitle || title;
+            return `
+              <article class="neo-card mobile-collapsible" id="${escapeHtml(achId)}">
+                <div class="card-header-bar mobile-accordion-header" id="header-${escapeHtml(achId)}" onclick="toggleCardAccordion('body-${escapeHtml(achId)}', 'btn-${escapeHtml(achId)}', 'header-${escapeHtml(achId)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCardAccordion('body-${escapeHtml(achId)}', 'btn-${escapeHtml(achId)}', 'header-${escapeHtml(achId)}');}" tabindex="0" role="button" aria-expanded="false" aria-controls="body-${escapeHtml(achId)}">
+                  <div style="flex: 1; min-width: 0; padding-right: 8px;">
+                    <span class="card-header-name" style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 800;">${escapeHtml(headerDisplayTitle)}</span>
+                  </div>
+                  <button type="button" class="mobile-accordion-toggle" id="btn-${escapeHtml(achId)}" aria-expanded="false" tabindex="-1" aria-hidden="true" title="Toggle Details">
+                    ▼
+                  </button>
+                </div>
+                <div class="card-body mobile-accordion-body" id="body-${escapeHtml(achId)}">
+                  <div class="org-header-row">
+                    ${logoHtml}
+                    <div class="org-header-meta">
+                      <div class="org-submeta-row" style="margin-top: 0;">
+                        <span style="font-weight: 700; color: var(--ink); font-size: 0.95rem;">${escapeHtml(organization)}</span>
+                      </div>
+                      ${year ? `<div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--ink-muted); margin-top: 3px;">Year: ${escapeHtml(year)}</div>` : ''}
+                    </div>
+                  </div>
+                  ${description ? `
+                    <div class="project-summary-card" style="margin-top: 14px; margin-bottom: 0;">
+                      <div class="project-summary-header-strip">
+                        <span>${escapeHtml(activeLabelsConfig.achievementSummaryHeader)}</span>
+                        ${activeLabelsConfig.achievementSummaryTag ? `<span style="font-size: 0.65rem; opacity: 0.85;">${escapeHtml(activeLabelsConfig.achievementSummaryTag)}</span>` : ''}
+                      </div>
+                      <div class="project-summary-text">${escapeHtml(description)}</div>
+                    </div>` : ''}
+                </div>
+              </article>
+            `;
+          }
+
+          // Desktop mode: full static card with original black header and year on top
+          return `
+            <article class="neo-card" id="${escapeHtml(achId)}">
+              <div class="card-header-bar">
+                <span>YEAR: ${escapeHtml(year)}</span>
+                <span class="card-badge" style="background: var(--coral); color: #FFF;">${escapeHtml(badge)}</span>
+              </div>
+              <div class="card-body">
+                <div class="org-header-row">
+                  ${logoHtml}
+                  <div class="org-header-meta">
+                    <h3 class="card-title">${escapeHtml(title)}</h3>
+                    <div class="org-submeta-row">
+                      <span>${escapeHtml(organization)}</span>
+                    </div>
+                  </div>
+                </div>
+                <p style="font-size: 0.92rem; line-height: 1.5; color: var(--ink);">${escapeHtml(description)}</p>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      let activeLoadedData = null;
+
+      function renderAllData(data) {
+        if (!data) return;
+        renderSiteConfig(data.site, data.profile);
+        renderProfile(data.profile);
+        renderProjects(data.projects);
+        renderEducation(data.education);
+        renderCertifications(data.certifications);
+        renderAchievements(data.achievements);
+      }
+
+      function loadPortfolioData() {
+        fetch('details.json?t=' + Date.now())
+          .then(function(res) {
+            if (!res.ok) throw new Error('Status: ' + res.status);
+            return res.json();
+          })
+          .then(function(data) {
+            activeLoadedData = data;
+            renderAllData(activeLoadedData);
+          })
+          .catch(function(err) {
+            console.warn('Loading fallback dataset:', err);
+            activeLoadedData = fallbackData;
+            renderAllData(activeLoadedData);
+          });
+      }
+
+      // Responsive re-render on orientation/viewport change across 768px boundary
+      let lastWasMobile = isMobileMode();
+      window.addEventListener('resize', function() {
+        const nowMobile = isMobileMode();
+        if (nowMobile !== lastWasMobile) {
+          lastWasMobile = nowMobile;
+          applyTheme();
+          if (activeLoadedData) {
+            renderAllData(activeLoadedData);
+          }
+        }
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadPortfolioData);
+      } else {
+        loadPortfolioData();
+      }
+    })();
+  </script>
+</body>
+</html>
