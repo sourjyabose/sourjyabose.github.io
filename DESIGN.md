@@ -22,12 +22,17 @@ A committed Neo-Brutalist aesthetic tuned for an Embedded Firmware Engineer and 
 - **Code & Metadata:** `Space Mono`, `JetBrains Mono`, `Fira Code`, or monospace for memory addresses, commit tags, registers, and technical specs.
 
 ## Elevation & Depth (Neo-Brutalist System)
-- **Borders:** `3px solid #121212` across cards, buttons, badges, inputs.
+- **Borders:** `3px solid var(--border-color)` across cards, buttons, badges, inputs.
 - **Shadows:** Hard offset block shadows with zero blur:
-  - Standard Card: `box-shadow: 4px 4px 0px #121212;`
-  - Large / Hero / Featured: `box-shadow: 6px 6px 0px #121212;`
-  - Hover State: `transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #121212;`
-  - Active Press: `transform: translate(2px, 2px); box-shadow: 1px 1px 0px #121212;`
+  - Standard Card: `box-shadow: 4px 4px 0px var(--shadow-color);`
+  - Large / Hero / Featured: `box-shadow: 6px 6px 0px var(--shadow-color);`
+  - Hover State: `transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--shadow-color);`
+  - Active Press: `transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--shadow-color);`
+  - Night Mode: shadows use deep matte architectural charcoal grey (`#121418`) to preserve high-contrast brutalist depth on dark canvases.
+
+## Theme & Editorial Affordances
+- **Day/Night Inversion:** Minimal editorial inversion dot (black square with white center dot in day mode, white square with black center dot in night mode) with static button dimensions and text placement.
+- **Footer Surface:** Dark matte charcoal grey (`#14171C`) with architectural borders (`#2D333F`) in night mode.
 
 ## Image Handling
 - All project and profile images sit inside framed borders with `object-fit: cover` and flexible responsive containers (`aspect-ratio` or adaptive max-heights).

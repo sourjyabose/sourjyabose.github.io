@@ -349,11 +349,6 @@
       margin: 0 auto 20px auto;
     }
 
-    html.mode-mobile:not(.is-landscape):not(.is-foldable-unfolded) .avatar-badge {
-      right: -8px;
-      bottom: -10px;
-    }
-
     html.mode-desktop .avatar-wrapper {
       margin: 0;
       max-width: 100%;
@@ -380,16 +375,18 @@
 
     .avatar-badge {
       position: absolute;
-      bottom: -10px;
-      right: -8px;
+      bottom: -16px;
+      right: -16px;
       background: var(--lime);
       color: #0A0A0C;
       border: var(--border-w) solid var(--border-color);
-      padding: 5px 10px;
+      padding: 6px 12px;
       font-family: var(--font-mono);
       font-size: 0.82rem;
       font-weight: 700;
       box-shadow: 2px 2px 0px var(--shadow-color);
+      white-space: nowrap;
+      z-index: 2;
     }
 
     .hero-meta {
@@ -574,12 +571,6 @@
     html.mode-mobile.is-foldable-unfolded .avatar-wrapper {
       margin: 0;
       max-width: 100%;
-    }
-
-    html.mode-mobile.is-landscape .avatar-badge,
-    html.mode-mobile.is-foldable-unfolded .avatar-badge {
-      right: -6px;
-      bottom: -8px;
     }
 
     html.mode-mobile.is-landscape .skills-container,

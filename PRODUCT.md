@@ -24,14 +24,19 @@ An authentic, crafted systems engineering portfolio that merges raw hardware-lev
 
 ## Operating Context
 
-Viewed across mobile and desktop devices. On mobile, cards feature collapsible accordions with right-side triangle indicators (`▼` / `▲`) and inline read-more bio expansion. On desktop, cards render as full, structured technical sheets. Fast loading, responsive, and fully keyboard accessible.
+Viewed across mobile, foldable (folded and unfolded states), and desktop devices.
+- On mobile portrait: cards feature collapsible accordions with left-aligned headers and right-side toggle buttons, single-column profile layout, and inline read-more bio expansion.
+- On mobile landscape & unfolded foldables: profile section renders in two-column grid matching desktop aesthetics while preserving read-more functionality.
+- On desktop: cards render as full, structured technical sheets with two-column split layouts.
+- Fast loading, responsive, zero-build vanilla stack, and fully keyboard/screen-reader accessible.
 
 ## Capabilities and Constraints
 
 - 100% data-driven presentation via `details.json` (titles, badges, descriptions, custom tags, header strips, and button labels).
 - Mobile-specific collapsible accordions for Education, Certifications, and Achievements with clean left-aligned text and right-aligned indicators.
-- Dynamic project summary cards and two-column technical schematics.
-- High-contrast day/night mode with persistent theme preference in `localStorage`.
+- Device & mode detection driven by User-Agent inspection with dimensions fallback (no CSS media query decision hacks).
+- Foldable detection supporting unfolded tablet-like postures for responsive layout matching.
+- High-contrast day/night mode with editorial inversion switch, automated time-window switching (desktop: 11PM-5:30AM; mobile: dark system theme + 6PM-7:30AM), and dark-matte charcoal/grey accents.
 - Zero npm/webpack/vite build step; deployed directly via GitHub Pages.
 
 ## Product Principles
