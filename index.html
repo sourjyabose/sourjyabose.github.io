@@ -495,6 +495,16 @@
       border-color: var(--border-color);
     }
 
+    .neo-btn.btn-lime {
+      background: var(--lime);
+      color: #0A0A0C;
+    }
+
+    [data-theme="night"] .neo-btn.btn-lime {
+      background: var(--lime);
+      color: #0A0A0C;
+    }
+
     /* SKILL CHIPS (LIST ON MOBILE, CHIPS ON DESKTOP) */
     .skills-container {
       display: flex;
@@ -1492,6 +1502,11 @@
 
         <!-- CONTACT & ACTION BUTTONS WITH OFFICIAL SVG LOGOS -->
         <nav class="contact-bar" aria-label="Contact and Social links">
+          <a href="Sourjya_Basu_Resume.pdf" download="Sourjya_Basu_Resume.pdf" target="_blank" rel="noopener noreferrer" class="neo-btn btn-lime" id="resumeBtn">
+            <!-- Download Resume Document Icon SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            <span id="btnResumeText">RESUME</span>
+          </a>
           <a href="mailto:sourjyabose@gmail.com" class="neo-btn btn-primary" id="emailBtn">
             <!-- Mail Icon SVG -->
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -2012,6 +2027,11 @@
           }
         }
         if (site.buttons) {
+          const btnResume = getVal(site.buttons, 'resume');
+          if (btnResume) {
+            const el = document.getElementById('btnResumeText');
+            if (el) el.textContent = btnResume;
+          }
           const btnEmail = getVal(site.buttons, 'email');
           if (btnEmail) {
             const el = document.getElementById('btnEmailText');
@@ -2132,6 +2152,14 @@
           phoneBtn.href = 'tel:' + phone.replace(/\s+/g, '');
           const phoneText = document.getElementById('phoneText');
           if (phoneText) phoneText.textContent = phone;
+        }
+        const resume = getVal(profile, 'resume');
+        if (resume) {
+          const resumeBtn = document.getElementById('resumeBtn');
+          if (resumeBtn) {
+            resumeBtn.href = resume;
+            resumeBtn.setAttribute('download', resume);
+          }
         }
         const github = getVal(profile, 'github');
         if (github) document.getElementById('githubBtn').href = github;

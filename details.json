@@ -17,6 +17,8 @@
       "mobileAlternateAchievementsTitle": "Achiev."
     },
     "buttons": {
+      "resume": "RESUME",
+      "mobileAlternateResume": "RESUME",
       "email": "sourjyabose@gmail.com",
       "mobileAlternateEmail": "EMAIL ME",
       "github": "GITHUB",
@@ -74,6 +76,8 @@
     "mobileAlternateTagline": "",
     "email": "sourjyabose@gmail.com",
     "mobileAlternateEmail": "",
+    "resume": "Sourjya_Basu_Resume.pdf",
+    "mobileAlternateResume": "",
     "phone": "+91 8799007739",
     "mobileAlternatePhone": "",
     "github": "https://github.com/sourjyabose",
